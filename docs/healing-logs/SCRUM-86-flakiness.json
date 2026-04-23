@@ -1,0 +1,80 @@
+{
+  "Invalid username and password": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T00:10:07.105504"
+  },
+  "Locked account with incorrect password": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105507"
+  },
+  "Invalid credentials combinations (username=not_a_real_username, password=wrong_password, expected_error=Epic failure)": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105509"
+  },
+  "Invalid credentials combinations (username=real_username, password=no_password, expected_error=Password required)": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105510"
+  },
+  "Invalid credentials combinations (username=no_username, password=real_password, expected_error=Username required)": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105511"
+  },
+  "Invalid credentials combinations (username=real_username, password=wrong_password, expected_error=Wrong password)": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105512"
+  },
+  "Login button disabled with invalid credentials": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T00:10:07.105513"
+  },
+  "Error message shown on locked account": {
+    "passes": 1,
+    "failures": 0,
+    "consecutive_failures": 0,
+    "last_seen": "2026-04-23T00:10:07.105514"
+  },
+  "Invalid login with incorrect password": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T10:33:47.276745"
+  },
+  "Locked login account shows deterministic error": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T10:33:47.276751"
+  },
+  "Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.)": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T10:33:47.276754"
+  },
+  "Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.)": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T10:33:47.276756"
+  },
+  "Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.)": {
+    "passes": 0,
+    "failures": 1,
+    "consecutive_failures": 1,
+    "last_seen": "2026-04-23T10:33:47.276757"
+  }
+}

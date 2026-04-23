@@ -1,0 +1,61 @@
+{
+  "project_key": "SCRUM-86",
+  "timestamp": "2026-04-23 00:10",
+  "cycle_key": null,
+  "totals": {
+    "PASS": 6,
+    "FAIL": 2,
+    "DRIFT": 0,
+    "FLAKY": 0
+  },
+  "results": [
+    {
+      "title": "Invalid username and password",
+      "tea_status": "FAIL",
+      "duration_ms": 895,
+      "drift_type": "none"
+    },
+    {
+      "title": "Locked account with incorrect password",
+      "tea_status": "PASS",
+      "duration_ms": 546,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid credentials combinations (username=not_a_real_username, password=wrong_password, expected_error=Epic failure)",
+      "tea_status": "PASS",
+      "duration_ms": 345,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid credentials combinations (username=real_username, password=no_password, expected_error=Password required)",
+      "tea_status": "PASS",
+      "duration_ms": 345,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid credentials combinations (username=no_username, password=real_password, expected_error=Username required)",
+      "tea_status": "PASS",
+      "duration_ms": 330,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid credentials combinations (username=real_username, password=wrong_password, expected_error=Wrong password)",
+      "tea_status": "PASS",
+      "duration_ms": 338,
+      "drift_type": "none"
+    },
+    {
+      "title": "Login button disabled with invalid credentials",
+      "tea_status": "FAIL",
+      "duration_ms": 468,
+      "drift_type": "none"
+    },
+    {
+      "title": "Error message shown on locked account",
+      "tea_status": "PASS",
+      "duration_ms": 517,
+      "drift_type": "none"
+    }
+  ]
+}

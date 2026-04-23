@@ -1,0 +1,165 @@
+{
+  "project_key": "SCRUM",
+  "target_issue_id": "SCRUM-86",
+  "created_at": "2026-04-23T10:16:26.252320",
+  "epic": {
+    "key": "SCRUM-52",
+    "summary": "SauceDemo \u2014 Authentication",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "## Application Under Test\n- App name: SauceDemo\n- Target URL: https://www.saucedemo.com/\n- Environment: production\n- Auth required: yes\n\n## Feature Overview\nCovers login behavior for valid, invalid, locked, and performance-sensitive users. This is the best-supported starter target for the agentic automation stack because the DOM is stable and credentials are known.\n\n## Known UI Entry Points\n- Login page: /\n- Inventory: /inventory.html\n\n## Test Types Required\n- Functional\n- Negative\n- Boundary\n- Cross-browser\n\n## Automation Framework\n- Primary: Playwright\n- Language: TypeScript\n- Script format: gherkin + playwright\n"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "story": {
+    "key": "SCRUM-86",
+    "summary": "As a user, I want invalid and locked SauceDemo logins to show deterministic errors so that negative authentication is covered",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "## Target URL\nhttps://www.saucedemo.com/\n\n## User Flow\n1. Navigate to the SauceDemo login page\n2. Enter invalid or locked credentials\n3. Submit the login form\n4. Verify the page remains on login and the Epic sadface error is visible\n\n## DOM Selectors\n- Username: #user-name\n- Password: #password\n- Submit: #login-button\n- Error: [data-test='error']\n\n## Test Data\n- Locked: locked_out_user / secret_sauce\n- Invalid: invalid_user / wrong_pass\n\n## Acceptance Criteria\n- Given locked credentials When login is submitted Then the locked-out error is displayed\n- Given invalid credentials When login is submitted Then an invalid-credentials error is displayed\n\n## Expected Outcomes\n- User remains on the login page\n- A deterministic error message is visible\n\n## Out of Scope\n- Password reset and SSO\n"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "related_issues": [
+    {
+      "key": "SCRUM-52",
+      "summary": "SauceDemo \u2014 Authentication",
+      "type": "Epic"
+    }
+  ],
+  "acceptance_criteria": {},
+  "attachments_parsed": 5,
+  "requirements": [
+    {
+      "type": "requirement",
+      "source": "FRD_SauceDemo_Auth.pdf",
+      "data": {
+        "content": "Page 1:\nProject:  SCRUM -84 - SauceDemo Authentication Validation Functional Requirements:  \n\u2022 R1: Persistent Login Page:  Any authentication failure MUST NOT redirect the user. \nThe browser must remain on the root index.  \n\u2022 R2: Epic Sadface Branding:  All error messages must be prepended with the string \n\"Epic sadface:\". Failure to include this branding indicates a UI regression.  \n\u2022 R3: Lockout Protocol:  The system must distinguish between a \"bad password\" and \na \"locked account\" to prevent brute -force confusion.  \n \nThe Script -Driven Execution Flow  \nNow that your data is ready, here is how the BMAD Factory  handles it without manual \nintervention:  \n1. Jira Sync (Phase 0):  python3 jira_sync_agent.py pulls the story text and these 3 \nattachments into docs/inbox/.  \n2. BMM Ingest (Phase 1):  vectorize_and_upload.py reads the PDF and CSVs. It \ncreates a vector \"Memory\" that links the word \"Locked\"  to the specific error text in \nthe CSV.  \n3. Discovery (Phase 2):  Your generalized dom_capture.py hits SauceDemo. It finds \n#user -name and tags it as Input  because it matches the selectors.csv hint.  \n4. TEA (Phase 3):  Playwright enters locked_out_user. It sees the error. It checks the \nHealer Guard \u2014if the error container changed its ID, the agent queries Qdrant and \nsays: \"I found a new 'Feedback' element that contains the word 'Locked' from the \nFRD. This is the correct error.\"  \n ",
+        "pages": 1
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "requirements_brief.txt",
+      "data": {
+        "content": "SauceDemo negative authentication brief\nTarget URL: https://www.saucedemo.com/\n\nContext\n- Use the stable SauceDemo selectors only.\n- Do not assert generic dashboard text; use URL and visible error banner.\n"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "selectors.csv",
+      "data": {
+        "element_name": "username_field",
+        "selector_type": "css",
+        "selector_value": "#user-name",
+        "intent": "Input",
+        "expected_role": "textbox"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "selectors.csv",
+      "data": {
+        "element_name": "password_field",
+        "selector_type": "css",
+        "selector_value": "#password",
+        "intent": "Input",
+        "expected_role": "password"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "selectors.csv",
+      "data": {
+        "element_name": "login_button",
+        "selector_type": "css",
+        "selector_value": "#login-button",
+        "intent": "Primary Action",
+        "expected_role": "button"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "selectors.csv",
+      "data": {
+        "element_name": "error_message_container",
+        "selector_type": "css",
+        "selector_value": "[data-test='error']",
+        "intent": "Feedback",
+        "expected_role": "alert"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "selectors.csv",
+      "data": {
+        "element_name": "error_close_icon",
+        "selector_type": "css",
+        "selector_value": ".error-button",
+        "intent": "Secondary Action",
+        "expected_role": "button"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "test_data.csv",
+      "data": {
+        "scenario_id": "AUTH_NEG_01",
+        "username": "locked_out_user",
+        "password": "secret_sauce",
+        "expected_error_text": "Sorry, this user has been locked out."
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "test_data.csv",
+      "data": {
+        "scenario_id": "AUTH_NEG_02",
+        "username": "invalid_user",
+        "password": "wrong_pass",
+        "expected_error_text": "Username and password do not match any user in this service"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "test_data.csv",
+      "data": {
+        "scenario_id": "AUTH_NEG_03",
+        "username": "standard_user",
+        "password": "",
+        "expected_error_text": "Password is required"
+      }
+    },
+    {
+      "type": "requirement",
+      "source": "test_data.csv",
+      "data": {
+        "scenario_id": "AUTH_NEG_04",
+        "username": "",
+        "password": "secret_sauce",
+        "expected_error_text": "Username is required"
+      }
+    }
+  ],
+  "consolidated_text": "Epic: SauceDemo \u2014 Authentication\n\n{'type': 'doc', 'version': 1, 'content': [{'type': 'paragraph', 'content': [{'type': 'text', 'text': '## Application Under Test\\n- App name: SauceDemo\\n- Target URL: https://www.saucedemo.com/\\n- Environment: production\\n- Auth required: yes\\n\\n## Feature Overview\\nCovers login behavior for valid, invalid, locked, and performance-sensitive users. This is the best-supported starter target for the agentic automation stack because the DOM is stable and credentials are known.\\n\\n## Known UI Entry Points\\n- Login page: /\\n- Inventory: /inventory.html\\n\\n## Test Types Required\\n- Functional\\n- Negative\\n- Boundary\\n- Cross-browser\\n\\n## Automation Framework\\n- Primary: Playwright\\n- Language: TypeScript\\n- Script format: gherkin + playwright\\n'}]}]}\n\nStory: As a user, I want invalid and locked SauceDemo logins to show deterministic errors so that negative authentication is covered\n\n{'type': 'doc', 'version': 1, 'content': [{'type': 'paragraph', 'content': [{'type': 'text', 'text': \"## Target URL\\nhttps://www.saucedemo.com/\\n\\n## User Flow\\n1. Navigate to the SauceDemo login page\\n2. Enter invalid or locked credentials\\n3. Submit the login form\\n4. Verify the page remains on login and the Epic sadface error is visible\\n\\n## DOM Selectors\\n- Username: #user-name\\n- Password: #password\\n- Submit: #login-button\\n- Error: [data-test='error']\\n\\n## Test Data\\n- Locked: locked_out_user / secret_sauce\\n- Invalid: invalid_user / wrong_pass\\n\\n## Acceptance Criteria\\n- Given locked credentials When login is submitted Then the locked-out error is displayed\\n- Given invalid credentials When login is submitted Then an invalid-credentials error is displayed\\n\\n## Expected Outcomes\\n- User remains on the login page\\n- A deterministic error message is visible\\n\\n## Out of Scope\\n- Password reset and SSO\\n\"}]}]}\n\nPage 1:\nProject:  SCRUM -84 - SauceDemo Authentication Validation Functional Requirements:  \n\u2022 R1: Persistent Login Page:  Any authentication failure MUST NOT redirect the user. \nThe browser must remain on the root index.  \n\u2022 R2: Epic Sadface Branding:  All error messages must be prepended with the string \n\"Epic sadface:\". Failure to include this branding indicates a UI regression.  \n\u2022 R3: Lockout Protocol:  The system must distinguish between a \"bad password\" and \na \"locked account\" to prevent brute -force confusion.  \n \nThe Script -Driven Execution Flow  \nNow that your data is ready, here is how the BMAD Factory  handles it without manual \nintervention:  \n1. Jira Sync (Phase 0):  python3 jira_sync_agent.py pulls the story text and these 3 \nattachments into docs/inbox/.  \n2. BMM Ingest (Phase 1):  vectorize_and_upload.py reads the PDF and CSVs. It \ncreates a vector \"Memory\" that links the word \"Locked\"  to the specific error text in \nthe CSV.  \n3. Discovery (Phase 2):  Your generalized dom_capture.py hits SauceDemo. It finds \n#user -name and tags it as Input  because it matches the selectors.csv hint.  \n4. TEA (Phase 3):  Playwright enters locked_out_user. It sees the error. It checks the \nHealer Guard \u2014if the error container changed its ID, the agent queries Qdrant and \nsays: \"I found a new 'Feedback' element that contains the word 'Locked' from the \nFRD. This is the correct error.\"  \n \n\nSauceDemo negative authentication brief\nTarget URL: https://www.saucedemo.com/\n\nContext\n- Use the stable SauceDemo selectors only.\n- Do not assert generic dashboard text; use URL and visible error banner.\n"
+}

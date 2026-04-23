@@ -1,0 +1,17 @@
+1. Install Playwright Core & Cucumber Support
+This installs the library that your playwright.config.ts is trying to import.
+
+Bash
+npm install @playwright/test playwright-gherkin
+2. Install Browser Binaries
+Playwright needs its own versions of Chromium, Firefox, and WebKit to run.
+
+Bash
+npx playwright install
+3. Install System Dependencies (If prompted)
+If your Mac asks for permissions or mentions missing system libraries, run:
+
+Bash
+npx playwright install-deps
+
+npm install @cucumber/cucumber

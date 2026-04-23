@@ -1,0 +1,360 @@
+{
+  "url": "https://www.saucedemo.com/",
+  "timestamp": "2026-04-23T04:25:40.091Z",
+  "pageTitle": "Swag Labs",
+  "input_elements": [
+    {
+      "type": "text",
+      "id": "user-name",
+      "name": "user-name",
+      "placeholder": "Username",
+      "className": "input_error form_input error",
+      "label": "Username",
+      "xpath": "//*[@id=\"user-name\"]",
+      "relativeSelectors": [
+        "#user-name",
+        "[aria-label=\"Username\"]",
+        "[placeholder=\"Username\"]",
+        "[name=\"user-name\"]",
+        "input.input_error.form_input"
+      ],
+      "isVisible": true,
+      "isDisabled": false,
+      "isRequired": false,
+      "ariaRole": "textbox",
+      "intent": "Input",
+      "intentConfidence": 0.9,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "username"
+    },
+    {
+      "type": "password",
+      "id": "password",
+      "name": "password",
+      "placeholder": "Password",
+      "className": "input_error form_input error",
+      "label": "Password",
+      "xpath": "//*[@id=\"password\"]",
+      "relativeSelectors": [
+        "#password",
+        "[aria-label=\"Password\"]",
+        "[placeholder=\"Password\"]",
+        "[name=\"password\"]",
+        "input.input_error.form_input"
+      ],
+      "isVisible": true,
+      "isDisabled": false,
+      "isRequired": false,
+      "ariaRole": "textbox",
+      "intent": "Input",
+      "intentConfidence": 0.9,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "password"
+    },
+    {
+      "type": "submit",
+      "id": "login-button",
+      "name": "login-button",
+      "placeholder": null,
+      "className": "submit-button btn_action",
+      "label": null,
+      "xpath": "//*[@id=\"login-button\"]",
+      "relativeSelectors": [
+        "#login-button",
+        "[name=\"login-button\"]",
+        "input.submit-button.btn_action"
+      ],
+      "isVisible": true,
+      "isDisabled": false,
+      "isRequired": false,
+      "ariaRole": "button",
+      "intent": "PrimaryAction",
+      "intentConfidence": 0.6,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "login-button"
+    }
+  ],
+  "button_elements": [
+    {
+      "text": null,
+      "id": null,
+      "name": null,
+      "className": "error-button",
+      "xpath": "/html/body/div/div/div[2]/div/div/div/form/div[3]/h3/button",
+      "ariaRole": "button",
+      "intent": "PrimaryAction",
+      "intentConfidence": 0.6,
+      "isDisabled": false,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "error-button"
+    },
+    {
+      "text": "Login",
+      "id": "login-button",
+      "name": "login-button",
+      "className": "submit-button btn_action",
+      "xpath": "//*[@id=\"login-button\"]",
+      "ariaRole": "button",
+      "intent": "PrimaryAction",
+      "intentConfidence": 0.6,
+      "isDisabled": false,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "login-button"
+    }
+  ],
+  "dropdown_elements": [],
+  "textarea_elements": [],
+  "custom_dropdown_elements": [],
+  "all_interactive_elements": [
+    {
+      "tagName": "input",
+      "id": "user-name",
+      "className": "input_error form_input error",
+      "text": null,
+      "xpath": "//*[@id=\"user-name\"]",
+      "role": null,
+      "type": "text",
+      "name": "user-name",
+      "placeholder": "Username",
+      "ariaRole": "textbox",
+      "intent": "Input",
+      "intentConfidence": 0.9,
+      "href": null,
+      "ariaLabel": null,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "username"
+    },
+    {
+      "tagName": "input",
+      "id": "password",
+      "className": "input_error form_input error",
+      "text": null,
+      "xpath": "//*[@id=\"password\"]",
+      "role": null,
+      "type": "password",
+      "name": "password",
+      "placeholder": "Password",
+      "ariaRole": "textbox",
+      "intent": "Input",
+      "intentConfidence": 0.9,
+      "href": null,
+      "ariaLabel": null,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "password"
+    },
+    {
+      "tagName": "button",
+      "id": null,
+      "className": "error-button",
+      "text": null,
+      "xpath": "/html/body/div/div/div[2]/div/div/div/form/div[3]/h3/button",
+      "role": null,
+      "type": "submit",
+      "name": null,
+      "placeholder": null,
+      "ariaRole": "button",
+      "intent": "PrimaryAction",
+      "intentConfidence": 0.6,
+      "href": null,
+      "ariaLabel": null,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "error-button"
+    },
+    {
+      "tagName": "input",
+      "id": "login-button",
+      "className": "submit-button btn_action",
+      "text": null,
+      "xpath": "//*[@id=\"login-button\"]",
+      "role": null,
+      "type": "submit",
+      "name": "login-button",
+      "placeholder": null,
+      "ariaRole": "button",
+      "intent": "PrimaryAction",
+      "intentConfidence": 0.6,
+      "href": null,
+      "ariaLabel": null,
+      "testid": null,
+      "cy": null,
+      "qa": null,
+      "test": "login-button"
+    }
+  ],
+  "form_structure": {
+    "form_0": {
+      "id": null,
+      "name": null,
+      "action": "https://www.saucedemo.com/",
+      "method": "get",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "text",
+          "id": "user-name",
+          "name": "user-name",
+          "label": "Username",
+          "xpath": "//*[@id=\"user-name\"]"
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "id": "password",
+          "name": "password",
+          "label": "Password",
+          "xpath": "//*[@id=\"password\"]"
+        },
+        {
+          "tag": "button",
+          "type": "submit",
+          "id": null,
+          "name": null,
+          "label": null,
+          "xpath": "/html/body/div/div/div[2]/div/div/div/form/div[3]/h3/button"
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "id": "login-button",
+          "name": "login-button",
+          "label": null,
+          "xpath": "//*[@id=\"login-button\"]"
+        }
+      ]
+    }
+  },
+  "label_associations": [
+    {
+      "fieldType": "input",
+      "label": "Username",
+      "placeholder": "Username",
+      "xpath": "//*[@id=\"user-name\"]",
+      "relativeSelector": "#user-name",
+      "elementType": "text"
+    },
+    {
+      "fieldType": "input",
+      "label": "Password",
+      "placeholder": "Password",
+      "xpath": "//*[@id=\"password\"]",
+      "relativeSelector": "#password",
+      "elementType": "password"
+    }
+  ],
+  "accessibility_hints": [],
+  "accessibility_tree": {
+    "role": "WebArea",
+    "name": "Swag Labs",
+    "children": [
+      {
+        "role": "text",
+        "name": "Swag Labs"
+      },
+      {
+        "role": "textbox",
+        "name": "Username"
+      },
+      {
+        "role": "textbox",
+        "name": "Password"
+      },
+      {
+        "role": "button",
+        "name": ""
+      },
+      {
+        "role": "text",
+        "name": "Epic sadface: Username is required"
+      },
+      {
+        "role": "button",
+        "name": "Login",
+        "focused": true
+      },
+      {
+        "role": "heading",
+        "name": "Accepted usernames are:",
+        "level": 4
+      },
+      {
+        "role": "text",
+        "name": "standard_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "text",
+        "name": "locked_out_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "text",
+        "name": "problem_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "text",
+        "name": "performance_glitch_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "text",
+        "name": "error_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "text",
+        "name": "visual_user"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "heading",
+        "name": "Password for all users:",
+        "level": 4
+      },
+      {
+        "role": "text",
+        "name": "secret_sauce"
+      }
+    ]
+  },
+  "project_key": "SCRUM-86",
+  "login_success": true,
+  "system_status": "Normal",
+  "extraction_timestamp": "2026-04-23T09:55:40.113782",
+  "mobile_viewport": false,
+  "iframe_elements": []
+}

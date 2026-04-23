@@ -1,0 +1,43 @@
+{
+  "project_key": "SCRUM-86",
+  "timestamp": "2026-04-23 10:33",
+  "cycle_key": null,
+  "totals": {
+    "PASS": 0,
+    "FAIL": 5,
+    "DRIFT": 0,
+    "FLAKY": 0
+  },
+  "results": [
+    {
+      "title": "Invalid login with incorrect password",
+      "tea_status": "FAIL",
+      "duration_ms": 863,
+      "drift_type": "none"
+    },
+    {
+      "title": "Locked login account shows deterministic error",
+      "tea_status": "FAIL",
+      "duration_ms": 924,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.)",
+      "tea_status": "FAIL",
+      "duration_ms": 526,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.)",
+      "tea_status": "FAIL",
+      "duration_ms": 494,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.)",
+      "tea_status": "FAIL",
+      "duration_ms": 526,
+      "drift_type": "none"
+    }
+  ]
+}

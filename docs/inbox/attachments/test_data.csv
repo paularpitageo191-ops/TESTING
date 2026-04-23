@@ -1,0 +1,5 @@
+scenario_id,username,password,expected_error_text
+AUTH_NEG_01,locked_out_user,secret_sauce,"Sorry, this user has been locked out."
+AUTH_NEG_02,invalid_user,wrong_pass,"Username and password do not match any user in this service"
+AUTH_NEG_03,standard_user,,"Password is required"
+AUTH_NEG_04,,secret_sauce,"Username is required"

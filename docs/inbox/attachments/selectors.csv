@@ -1,0 +1,6 @@
+element_name,selector_type,selector_value,intent,expected_role
+username_field,css,#user-name,Input,textbox
+password_field,css,#password,Input,password
+login_button,css,#login-button,Primary Action,button
+error_message_container,css,[data-test='error'],Feedback,alert
+error_close_icon,css,.error-button,Secondary Action,button

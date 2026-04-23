@@ -1,0 +1,38 @@
+{
+  "name": "orangehrm-leave-automation",
+  "version": "1.0.0",
+  "description": "OrangeHRM Leave Management Test Automation - Generated from Qdrant Vector Analysis",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^20.19.39",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "keywords": [
+    "playwright",
+    "orangehrm",
+    "test-automation",
+    "qdrant",
+    "bdd",
+    "gherkin"
+  ],
+  "author": "BMAD Testing Special Agents",
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@cucumber/cucumber": "^12.8.1",
+    "playwright-gherkin": "^0.1.10"
+  }
+}

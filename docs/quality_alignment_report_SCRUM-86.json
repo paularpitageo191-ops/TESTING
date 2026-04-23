@@ -1,0 +1,304 @@
+{
+  "project_key": "SCRUM-86",
+  "generated_at": "2026-04-23T10:20:39.353317",
+  "feature_file": "tests/features/SCRUM-86.feature",
+  "summary": {
+    "cross_reference_queries": 3,
+    "requirements_checked": 3,
+    "requirements_met": 1,
+    "requirements_missing": 2,
+    "validations_total": 3,
+    "high_confidence": 0,
+    "medium_confidence": 0,
+    "low_confidence": 3,
+    "self_healing_needed": 3,
+    "selectors_checked": 0,
+    "selectors_found": 0
+  },
+  "cross_reference": [
+    {
+      "query": "Story SCRUM-86: As a user, I want invalid and locked SauceDemo logins to show deterministic errors so that negative authentication is covered",
+      "dom_elements_found": [
+        {
+          "text": "button text=Login id=login-button className=submit-button btn_action",
+          "score": 0.542
+        },
+        {
+          "text": "button text=Login id=login-button className=submit-button btn_action",
+          "score": 0.542
+        },
+        {
+          "text": "button text=Login id=login-button className=submit-button btn_action",
+          "score": 0.542
+        },
+        {
+          "text": "button text=Login id=login-button className=submit-button btn_action",
+          "score": 0.542
+        },
+        {
+          "text": "button text=Login id=login-button className=submit-button btn_action",
+          "score": 0.542
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Story SCRUM-86: As a user, I want invalid and locked SauceDemo logins to show deterministic errors s",
+          "score": 0.916
+        },
+        {
+          "text": "Epic: SauceDemo \u2014 Authentication\n\n{'type': 'doc', 'version': 1, 'content': [{'type': 'paragraph', 'c",
+          "score": 0.837
+        },
+        {
+          "text": "Epic SCRUM-52: SauceDemo \u2014 Authentication\n## Application Under Test\n- App name: SauceDemo\n- Target U",
+          "score": 0.723
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Epic: SauceDemo \u2014 Authentication",
+      "dom_elements_found": [
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.596
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.596
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.596
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.596
+        },
+        {
+          "text": "input type=password placeholder=Password label=Password name=password",
+          "score": 0.581
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Epic: SauceDemo \u2014 Authentication\n\n{'type': 'doc', 'version': 1, 'content': [{'type': 'paragraph', 'c",
+          "score": 0.772
+        },
+        {
+          "text": "Epic SCRUM-52: SauceDemo \u2014 Authentication\n## Application Under Test\n- App name: SauceDemo\n- Target U",
+          "score": 0.713
+        },
+        {
+          "text": "Story SCRUM-86: As a user, I want invalid and locked SauceDemo logins to show deterministic errors s",
+          "score": 0.703
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Epic SCRUM-52: SauceDemo \u2014 Authentication",
+      "dom_elements_found": [
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.565
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.565
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.565
+        },
+        {
+          "text": "interactive tagName=input placeholder=Password",
+          "score": 0.565
+        },
+        {
+          "text": "input type=password placeholder=Password label=Password name=password",
+          "score": 0.543
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Epic SCRUM-52: SauceDemo \u2014 Authentication\n## Application Under Test\n- App name: SauceDemo\n- Target U",
+          "score": 0.788
+        },
+        {
+          "text": "Epic: SauceDemo \u2014 Authentication\n\n{'type': 'doc', 'version': 1, 'content': [{'type': 'paragraph', 'c",
+          "score": 0.78
+        },
+        {
+          "text": "Story SCRUM-86: As a user, I want invalid and locked SauceDemo logins to show deterministic errors s",
+          "score": 0.736
+        }
+      ],
+      "match_count": 5
+    }
+  ],
+  "drift_analysis": [
+    {
+      "requirement": "Story SCRUM-86: As a user, I want invalid and locked SauceDemo logins to show de",
+      "keywords": [
+        "story",
+        "scrum",
+        "user",
+        "want",
+        "invalid"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Epic: SauceDemo \u2014 Authentication",
+      "keywords": [
+        "epic",
+        "saucedemo",
+        "authentication"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Epic SCRUM-52: SauceDemo \u2014 Authentication",
+      "keywords": [
+        "epic",
+        "scrum",
+        "saucedemo",
+        "authentication"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    }
+  ],
+  "validation": [
+    {
+      "element_label": "Username",
+      "best_requirement": "",
+      "confidence_data": {
+        "composite_score": 0.0,
+        "confidence_level": "LOW",
+        "needs_self_healing": true
+      },
+      "element": {
+        "type": "text",
+        "id": "user-name",
+        "name": "user-name",
+        "placeholder": "Username",
+        "className": "input_error form_input error",
+        "label": "Username",
+        "xpath": "//*[@id=\"user-name\"]",
+        "relativeSelectors": [
+          "#user-name",
+          "[aria-label=\"Username\"]",
+          "[placeholder=\"Username\"]",
+          "[name=\"user-name\"]",
+          "input.input_error.form_input"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "textbox",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": "username"
+      }
+    },
+    {
+      "element_label": "Password",
+      "best_requirement": "",
+      "confidence_data": {
+        "composite_score": 0.0,
+        "confidence_level": "LOW",
+        "needs_self_healing": true
+      },
+      "element": {
+        "type": "password",
+        "id": "password",
+        "name": "password",
+        "placeholder": "Password",
+        "className": "input_error form_input error",
+        "label": "Password",
+        "xpath": "//*[@id=\"password\"]",
+        "relativeSelectors": [
+          "#password",
+          "[aria-label=\"Password\"]",
+          "[placeholder=\"Password\"]",
+          "[name=\"password\"]",
+          "input.input_error.form_input"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "textbox",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": "password"
+      }
+    },
+    {
+      "element_label": "Login",
+      "best_requirement": "",
+      "confidence_data": {
+        "composite_score": 0.0,
+        "confidence_level": "LOW",
+        "needs_self_healing": true
+      },
+      "element": {
+        "text": "Login",
+        "id": "login-button",
+        "name": "login-button",
+        "className": "submit-button btn_action",
+        "xpath": "//*[@id=\"login-button\"]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.6,
+        "isDisabled": false,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": "login-button"
+      }
+    }
+  ],
+  "self_healing": [
+    {
+      "label": "Username",
+      "requirement": "",
+      "confidence_score": 0.0,
+      "recommendations": [
+        "Label 'Username' has low alignment with any known requirement.",
+        "Re-run dom_capture.py to refresh element metadata.",
+        "Check if element purpose is described in the Jira story."
+      ]
+    },
+    {
+      "label": "Password",
+      "requirement": "",
+      "confidence_score": 0.0,
+      "recommendations": [
+        "Label 'Password' has low alignment with any known requirement.",
+        "Re-run dom_capture.py to refresh element metadata.",
+        "Check if element purpose is described in the Jira story."
+      ]
+    },
+    {
+      "label": "Login",
+      "requirement": "",
+      "confidence_score": 0.0,
+      "recommendations": [
+        "Label 'Login' has low alignment with any known requirement.",
+        "Re-run dom_capture.py to refresh element metadata.",
+        "Check if element purpose is described in the Jira story."
+      ]
+    }
+  ],
+  "selector_coverage": []
+}

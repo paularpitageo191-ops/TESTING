@@ -1,0 +1,801 @@
+{
+  "runs": [
+    {
+      "run_id": "SCRUM-86-20260422175420-976f16e1",
+      "project_key": "SCRUM-86",
+      "status": "completed",
+      "completed_phases": [],
+      "errors": [],
+      "summary": {
+        "completed_phases": [],
+        "error_count": 0,
+        "tool_calls": 0,
+        "bugs_created": 0
+      },
+      "started_at": "2026-04-22T17:54:20.356944",
+      "finished_at": "2026-04-22T17:54:32.210482"
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "project_key": "SCRUM-86",
+      "status": "completed",
+      "completed_phases": [
+        "jira_sync",
+        "dom_capture",
+        "vectorize",
+        "quality_alignment",
+        "step_generation",
+        "execution",
+        "self_healing",
+        "reporting"
+      ],
+      "errors": [],
+      "summary": {
+        "completed_phases": [
+          "jira_sync",
+          "dom_capture",
+          "vectorize",
+          "quality_alignment",
+          "step_generation",
+          "execution",
+          "self_healing",
+          "reporting"
+        ],
+        "error_count": 0,
+        "tool_calls": 0,
+        "bugs_created": 0
+      },
+      "started_at": "2026-04-22T18:39:39.448246",
+      "finished_at": "2026-04-22T18:42:02.862649"
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "project_key": "SCRUM-86",
+      "status": "completed",
+      "completed_phases": [
+        "jira_sync",
+        "dom_capture",
+        "vectorize",
+        "quality_alignment",
+        "step_generation",
+        "execution",
+        "self_healing",
+        "reporting"
+      ],
+      "errors": [],
+      "summary": {
+        "completed_phases": [
+          "jira_sync",
+          "dom_capture",
+          "vectorize",
+          "quality_alignment",
+          "step_generation",
+          "execution",
+          "self_healing",
+          "reporting"
+        ],
+        "error_count": 0,
+        "tool_calls": 0,
+        "bugs_created": 0
+      },
+      "started_at": "2026-04-23T05:02:46.396412",
+      "finished_at": "2026-04-23T05:11:51.907646"
+    }
+  ],
+  "decisions": [
+    {
+      "run_id": "SCRUM-86-20260422174101-c0fac318",
+      "timestamp": "2026-04-22T17:41:17.716649",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422174625-c052e70d",
+      "timestamp": "2026-04-22T17:46:38.203467",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422175420-976f16e1",
+      "timestamp": "2026-04-22T17:54:32.209667",
+      "planner_decision": {
+        "action": null,
+        "phase": null,
+        "tool": null,
+        "args": {},
+        "reason": null
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422175806-399018cf",
+      "timestamp": "2026-04-22T17:58:19.944848",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422180731-b7e7640e",
+      "timestamp": "2026-04-22T18:07:52.047499",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181203-c189c736",
+      "timestamp": "2026-04-22T18:12:08.110748",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181203-c189c736",
+      "timestamp": "2026-04-22T18:13:15.876353",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: jira_sync",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181203-c189c736",
+      "timestamp": "2026-04-22T18:14:13.508982",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "vectorize",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: vectorize"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:19:22.005532",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:19:45.860729",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: jira_sync",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:20:46.625629",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "dom_capture",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: dom_capture"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:21:17.665919",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: dom_capture",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:21:47.678404",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "vectorize",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: vectorize"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:22:23.224028",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: vectorize",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:22:45.624977",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "vectorize",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: vectorize"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:23:06.886986",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: vectorize",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:23:34.839375",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "quality_alignment",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: quality_alignment"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:25:10.319755",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: quality_alignment",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:25:44.616117",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:29:29.637084",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: step_generation",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:30:52.692609",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "execution",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: execution"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:31:16.326584",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: step_generation",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "timestamp": "2026-04-22T18:31:56.292143",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "execution",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: execution"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422183811-019385ea",
+      "timestamp": "2026-04-22T18:38:23.636655",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "timestamp": "2026-04-22T18:40:06.960092",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "self_healing",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: self_healing"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "timestamp": "2026-04-22T18:40:20.228337",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: self_healing",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "timestamp": "2026-04-22T18:41:05.223839",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "reporting",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: reporting"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "timestamp": "2026-04-22T18:41:29.995871",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: reporting",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422183939-d4ca6922",
+      "timestamp": "2026-04-22T18:42:02.861132",
+      "planner_decision": {
+        "action": "stop",
+        "args": {},
+        "reason": "All phases completed"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422184542-cb76c89b",
+      "timestamp": "2026-04-22T18:46:11.097470",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260422184542-cb76c89b",
+      "timestamp": "2026-04-22T18:47:04.933479",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: jira_sync",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260422184542-cb76c89b",
+      "timestamp": "2026-04-22T18:48:46.351852",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "dom_capture",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: dom_capture"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:22:40.126125",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:24:32.676655",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: jira_sync",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:25:32.472442",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "dom_capture",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: dom_capture"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:26:33.616884",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: dom_capture",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:27:21.680004",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "vectorize",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: vectorize"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:28:31.038306",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: vectorize",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:29:13.634858",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "quality_alignment",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: quality_alignment"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:30:36.548369",
+      "human_decision": "edit",
+      "reason": "Fallback progression to next incomplete phase: quality_alignment",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:31:15.172162",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: quality_alignment",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:31:20.174278",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:32:56.911432",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: quality_alignment",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:33:00.288604",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "timestamp": "2026-04-23T04:33:58.943955",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423043328-357555c3",
+      "timestamp": "2026-04-23T04:35:28.215207",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044302-a4058eb6",
+      "timestamp": "2026-04-23T04:43:39.751119",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:46:19.618438",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "jira_sync",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: jira_sync"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:46:33.655257",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: jira_sync",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:47:50.121297",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "dom_capture",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: dom_capture"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:47:57.320132",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: dom_capture",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:49:05.406131",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "vectorize",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: vectorize"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:49:15.424030",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: vectorize",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:49:56.821539",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "quality_alignment",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: quality_alignment"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:51:11.238841",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: quality_alignment",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:52:08.205000",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "step_generation",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: step_generation"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:57:26.781885",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: step_generation",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:57:57.348450",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "execution",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: execution"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:58:34.182311",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: step_generation",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T04:59:44.419513",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "execution",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: execution"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T05:00:11.372122",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: step_generation",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "timestamp": "2026-04-23T05:00:43.892317",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "execution",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: execution"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "timestamp": "2026-04-23T05:03:47.034325",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "self_healing",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: self_healing"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "timestamp": "2026-04-23T05:10:04.976955",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: self_healing",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "timestamp": "2026-04-23T05:10:37.641482",
+      "planner_decision": {
+        "action": "run_phase",
+        "phase": "reporting",
+        "args": {},
+        "reason": "Fallback progression to next incomplete phase: reporting"
+      }
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "timestamp": "2026-04-23T05:11:19.612929",
+      "human_decision": "approve",
+      "reason": "Fallback progression to next incomplete phase: reporting",
+      "retry_reason": null
+    },
+    {
+      "run_id": "SCRUM-86-20260423050246-aa90d28c",
+      "timestamp": "2026-04-23T05:11:51.904810",
+      "planner_decision": {
+        "action": "stop",
+        "args": {},
+        "reason": "All phases completed"
+      }
+    }
+  ],
+  "failures": [
+    {
+      "run_id": "SCRUM-86-20260422174101-c0fac318",
+      "phase": "jira_sync",
+      "error": "/opt/anaconda3/bin/python: can't open file '/Users/arpitapaul/Documents/Testing_Special_Agents/ui/jira_sync_agent.py': [Errno 2] No such file or directory\n",
+      "context": {
+        "ok": false,
+        "phase": "jira_sync",
+        "command": [
+          "/opt/anaconda3/bin/python",
+          "jira_sync_agent.py",
+          "--issue",
+          "SCRUM-86",
+          "--project",
+          "SCRUM"
+        ],
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "/opt/anaconda3/bin/python: can't open file '/Users/arpitapaul/Documents/Testing_Special_Agents/ui/jira_sync_agent.py': [Errno 2] No such file or directory\n"
+      },
+      "timestamp": "2026-04-22T17:41:17.802550"
+    },
+    {
+      "run_id": "SCRUM-86-20260422181909-fa38c215",
+      "phase": "execution",
+      "error": "r: //*[@id=\"login-button\"] for intent \"I enter an invalid username \"not_a_real_username\" and password \"wrong_password\"\"\n  \u2718  7 [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials (668ms)\n\u2713 Healed selector: //*[@id=\"login-button\"] for intent \"I have a locked account with username \"locked_user\" and no password\"\n\u2713 Healed selector: //*[@id=\"password\"] for intent \"I enter the username \"locked_user\" and any password\"\n\u2713 Healed selector: //*[@id=\"login-button\"] for intent \"I should see error message \"Account is currently locked\"\"\n  \u2713  8 [chromium] \u203a tests/steps/SCRUM-86.spec.ts:42:9 \u203a SauceDemo Login with Invalid Credentials \u203a Error message shown on locked account (1.2s)\n\n\n  1) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:14:9 \u203a SauceDemo Login with Invalid Credentials \u203a Invalid username and password \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"not_a_real_usernamewrong_password\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:15:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  2) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"not_a_real_username|wrong_password\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:38:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  2 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:14:9 \u203a SauceDemo Login with Invalid Credentials \u203a Invalid username and password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials \n  6 passed (9.4s)\n\n\u001b[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.\u001b[39m\n",
+      "context": {
+        "ok": false,
+        "phase": "execution",
+        "command": [
+          "npm",
+          "run",
+          "test"
+        ],
+        "returncode": -2,
+        "stdout": "r: //*[@id=\"login-button\"] for intent \"I enter an invalid username \"not_a_real_username\" and password \"wrong_password\"\"\n  \u2718  7 [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials (668ms)\n\u2713 Healed selector: //*[@id=\"login-button\"] for intent \"I have a locked account with username \"locked_user\" and no password\"\n\u2713 Healed selector: //*[@id=\"password\"] for intent \"I enter the username \"locked_user\" and any password\"\n\u2713 Healed selector: //*[@id=\"login-button\"] for intent \"I should see error message \"Account is currently locked\"\"\n  \u2713  8 [chromium] \u203a tests/steps/SCRUM-86.spec.ts:42:9 \u203a SauceDemo Login with Invalid Credentials \u203a Error message shown on locked account (1.2s)\n\n\n  1) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:14:9 \u203a SauceDemo Login with Invalid Credentials \u203a Invalid username and password \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"not_a_real_usernamewrong_password\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:15:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-SauceDemo-L-a3b39-valid-username-and-password-chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  2) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"not_a_real_username|wrong_password\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:38:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-SauceDemo-L-35b79-ed-with-invalid-credentials-chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  2 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:14:9 \u203a SauceDemo Login with Invalid Credentials \u203a Invalid username and password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:37:9 \u203a SauceDemo Login with Invalid Credentials \u203a Login button disabled with invalid credentials \n  6 passed (9.4s)\n\n\u001b[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.\u001b[39m\n",
+        "stderr": ""
+      },
+      "timestamp": "2026-04-22T18:39:06.609716"
+    },
+    {
+      "run_id": "SCRUM-86-20260423042153-bdc8c42f",
+      "phase": "step_generation",
+      "error": "Testing_Special_Agents/step_generator.py\", line 351, in map_step_to_action\n    llm_result = gateway.analyze_gherkin_step(step_text, step_keyword)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 654, in analyze_gherkin_step\n    response = self.chat(prompt, system_prompt, model_override=model_to_use)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 301, in chat\n    return self._chat_ollama(prompt, system_prompt, model_override=model_override, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 402, in _chat_ollama\n    resp = requests.post(\n           ^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/adapters.py\", line 667, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n               ^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connection.py\", line 516, in getresponse\n    httplib_response = super().getresponse()\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 1428, in getresponse\n    response.begin()\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 331, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 292, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+      "context": {
+        "ok": false,
+        "phase": "step_generation",
+        "command": [
+          "/opt/anaconda3/bin/python",
+          "step_generator.py",
+          "--project",
+          "SCRUM-86"
+        ],
+        "returncode": -2,
+        "stdout": "============================================================\nStep 2.5: Step Definition Generator (TEA)\n============================================================\nProject Key       : SCRUM-86\nFeatures Directory: /Users/arpitapaul/Documents/Testing_Special_Agents/tests/features\nSteps Directory   : /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps\nBASE_URL          : https://www.saucedemo.com/\n\n[1/4] Reading feature file: /Users/arpitapaul/Documents/Testing_Special_Agents/tests/features/SCRUM-86.feature\n  \u2713 Found 8 scenarios\n\n[2/4] Connecting to Qdrant memory...\n  \u2713 DOM collection 'SCRUM-86_ui_memory' found\n\n[3/4] Mapping Gherkin steps to Playwright actions (preview)...\n  Background steps  : 1\n  Scenario steps    : 12\n  Total steps       : 13\n  Scenarios (after Outline expansion): 8\n\n[4/4] Generating TypeScript test file...\nOllama chat error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)\nOllama embedding error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)\nOllama chat error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)\n  \u21b3 Qdrant URL match (score=0.57): https://www.saucedemo.com/\n",
+        "stderr": "Testing_Special_Agents/step_generator.py\", line 351, in map_step_to_action\n    llm_result = gateway.analyze_gherkin_step(step_text, step_keyword)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 654, in analyze_gherkin_step\n    response = self.chat(prompt, system_prompt, model_override=model_to_use)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 301, in chat\n    return self._chat_ollama(prompt, system_prompt, model_override=model_override, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 402, in _chat_ollama\n    resp = requests.post(\n           ^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/adapters.py\", line 667, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n               ^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connection.py\", line 516, in getresponse\n    httplib_response = super().getresponse()\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 1428, in getresponse\n    response.begin()\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 331, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 292, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+        "artifact_path": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts",
+        "preview": "import { test, expect } from '@playwright/test';\nimport { BasePage } from '../_bmad/BasePage';\n\ntest.describe(\"SauceDemo Login with Invalid Credentials\", () => {\n\n    let basePage: BasePage;\n\n    test.beforeEach(async ({ page }) => {\n        basePage = new BasePage(page, \"SCRUM-86\");\n        await basePage.initialize();\n            await basePage.page.goto(\"https://www.saucedemo.com/\");\n    });\n\n    test(\"Invalid username and password\", async ({ page }) => {\n            await basePage.smartAction(\"I enter an invalid username \\\"not_a_real_username\\\" and password \\\"wrong_password\\\"\", \"not_a_real_usernamewrong_password\");\n            await basePage.smartAction(\"I should see error message \\\" Epic failure\\\"\");\n    });\n\n    test(\"Locked account with incorrect password\", async ({ page }) => {\n            await basePage.smartAction(\"I have a locked account with username \\\"locked_user\\\" and password \\\"wrong_password\\\"\", \"locked_user\");\n            await basePage.smartAction(\"I enter the username \\\"locked_user\\\" and password \\\"wrong_password\\\"\", \"locked_user\");\n            await basePage.smartAction(\"I should see error message \\\"Account is currently locked\\\"\");\n    });\n\n    test(\"Invalid credentials combinations (username=not_a_real_username, password=wrong_password, expected_error=Epic failure)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=real_username, password=no_password, expected_error=Password required)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=no_username, password=real_password, expected_error=Username required)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=real_username, password=wrong_password, expected_error=Wrong password)\", async ({ page }) => {\n    });\n\n    test(\"Login button disabled with invalid credentials\", async ({ page }) => {\n            await basePage.smartAction(\"I enter an invalid username \\\"not_a_real_username\\\" and password \\\"wrong_password\\\"\", \"not_a_real_username|wrong_password\");\n            await basePage.smartAction(\"the login button should be disabled\");\n    });\n\n    test(\"Error message shown on locked account\", async ({ page }) => {\n            await basePage.smartAction(\"I have a locked account with username \\\"locked_user\\\" and no password\");\n            await basePage.smartAction(\"I enter the username \\\"locked_user\\\" and any password\", \"locked_user\");\n            await basePage.smartAction(\"I should see error message \\\"Account is currently locked\\\"\");\n    });\n\n});\n"
+      },
+      "timestamp": "2026-04-23T04:42:36.960138"
+    },
+    {
+      "run_id": "SCRUM-86-20260423044302-a4058eb6",
+      "phase": "step_generation",
+      "error": "Testing_Special_Agents/step_generator.py\", line 351, in map_step_to_action\n    llm_result = gateway.analyze_gherkin_step(step_text, step_keyword)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 654, in analyze_gherkin_step\n    response = self.chat(prompt, system_prompt, model_override=model_to_use)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 301, in chat\n    return self._chat_ollama(prompt, system_prompt, model_override=model_override, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 402, in _chat_ollama\n    resp = requests.post(\n           ^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/adapters.py\", line 667, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n               ^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connection.py\", line 516, in getresponse\n    httplib_response = super().getresponse()\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 1428, in getresponse\n    response.begin()\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 331, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 292, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+      "context": {
+        "ok": false,
+        "phase": "step_generation",
+        "command": [
+          "/opt/anaconda3/bin/python",
+          "step_generator.py",
+          "--project",
+          "SCRUM-86"
+        ],
+        "returncode": -2,
+        "stdout": "============================================================\nStep 2.5: Step Definition Generator (TEA)\n============================================================\nProject Key       : SCRUM-86\nFeatures Directory: /Users/arpitapaul/Documents/Testing_Special_Agents/tests/features\nSteps Directory   : /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps\nBASE_URL          : https://www.saucedemo.com/\n\n[1/4] Reading feature file: /Users/arpitapaul/Documents/Testing_Special_Agents/tests/features/SCRUM-86.feature\n  \u2713 Found 8 scenarios\n\n[2/4] Connecting to Qdrant memory...\n  \u2713 DOM collection 'SCRUM-86_ui_memory' found\n\n[3/4] Mapping Gherkin steps to Playwright actions (preview)...\n  Background steps  : 1\n  Scenario steps    : 12\n  Total steps       : 13\n  Scenarios (after Outline expansion): 8\n\n[4/4] Generating TypeScript test file...\n",
+        "stderr": "Testing_Special_Agents/step_generator.py\", line 351, in map_step_to_action\n    llm_result = gateway.analyze_gherkin_step(step_text, step_keyword)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 654, in analyze_gherkin_step\n    response = self.chat(prompt, system_prompt, model_override=model_to_use)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 301, in chat\n    return self._chat_ollama(prompt, system_prompt, model_override=model_override, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/arpitapaul/Documents/Testing_Special_Agents/llm_gateway.py\", line 402, in _chat_ollama\n    resp = requests.post(\n           ^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/requests/adapters.py\", line 667, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n               ^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/site-packages/urllib3/connection.py\", line 516, in getresponse\n    httplib_response = super().getresponse()\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 1428, in getresponse\n    response.begin()\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 331, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/http/client.py\", line 292, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+        "artifact_path": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts",
+        "preview": "import { test, expect } from '@playwright/test';\nimport { BasePage } from '../_bmad/BasePage';\n\ntest.describe(\"SauceDemo Login with Invalid Credentials\", () => {\n\n    let basePage: BasePage;\n\n    test.beforeEach(async ({ page }) => {\n        basePage = new BasePage(page, \"SCRUM-86\");\n        await basePage.initialize();\n            await basePage.page.goto(\"https://www.saucedemo.com/\");\n    });\n\n    test(\"Invalid username and password\", async ({ page }) => {\n            await basePage.smartAction(\"I enter an invalid username \\\"not_a_real_username\\\" and password \\\"wrong_password\\\"\", \"not_a_real_usernamewrong_password\");\n            await basePage.smartAction(\"I should see error message \\\" Epic failure\\\"\");\n    });\n\n    test(\"Locked account with incorrect password\", async ({ page }) => {\n            await basePage.smartAction(\"I have a locked account with username \\\"locked_user\\\" and password \\\"wrong_password\\\"\", \"locked_user\");\n            await basePage.smartAction(\"I enter the username \\\"locked_user\\\" and password \\\"wrong_password\\\"\", \"locked_user\");\n            await basePage.smartAction(\"I should see error message \\\"Account is currently locked\\\"\");\n    });\n\n    test(\"Invalid credentials combinations (username=not_a_real_username, password=wrong_password, expected_error=Epic failure)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=real_username, password=no_password, expected_error=Password required)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=no_username, password=real_password, expected_error=Username required)\", async ({ page }) => {\n    });\n\n    test(\"Invalid credentials combinations (username=real_username, password=wrong_password, expected_error=Wrong password)\", async ({ page }) => {\n    });\n\n    test(\"Login button disabled with invalid credentials\", async ({ page }) => {\n            await basePage.smartAction(\"I enter an invalid username \\\"not_a_real_username\\\" and password \\\"wrong_password\\\"\", \"not_a_real_username|wrong_password\");\n            await basePage.smartAction(\"the login button should be disabled\");\n    });\n\n    test(\"Error message shown on locked account\", async ({ page }) => {\n            await basePage.smartAction(\"I have a locked account with username \\\"locked_user\\\" and no password\");\n            await basePage.smartAction(\"I enter the username \\\"locked_user\\\" and any password\", \"locked_user\");\n            await basePage.smartAction(\"I should see error message \\\"Account is currently locked\\\"\");\n    });\n\n});\n"
+      },
+      "timestamp": "2026-04-23T04:44:38.121084"
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "phase": "execution",
+      "error": "2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:15:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid login with incorrect password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:20:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Locked login account shows deterministic error \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:26:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:31:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n\u001b[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.\u001b[39m\n",
+      "context": {
+        "ok": false,
+        "phase": "execution",
+        "command": [
+          "npm",
+          "run",
+          "test"
+        ],
+        "returncode": -2,
+        "stdout": "2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:15:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid login with incorrect password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:20:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Locked login account shows deterministic error \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:26:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:31:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n\u001b[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.\u001b[39m\n",
+        "stderr": ""
+      },
+      "timestamp": "2026-04-23T05:02:13.007778"
+    },
+    {
+      "run_id": "SCRUM-86-20260423044548-cee1609b",
+      "phase": "execution",
+      "error": "m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:15:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid login with incorrect password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:20:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Locked login account shows deterministic error \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:26:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:31:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n\u001b[36m  Serving HTML report at http://localhost:53367. Press Ctrl+C to quit.\u001b[39m\n",
+      "context": {
+        "ok": false,
+        "phase": "execution",
+        "command": [
+          "npm",
+          "run",
+          "test"
+        ],
+        "returncode": -2,
+        "stdout": "m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-0495f-se-try-again-in-30-minutes--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5) [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n    Error: locator.fill: Error: Input of type \"submit\" cannot be filled\n    Call log:\n    \u001b[2m  - waiting for locator('//*[@id=\"login-button\"]')\u001b[22m\n    \u001b[2m    - locator resolved to <input type=\"submit\" value=\"Login\" id=\"login-button\" name=\"login-button\" data-test=\"login-button\" class=\"submit-button btn_action\"/>\u001b[22m\n    \u001b[2m    - fill(\"standard_user\")\u001b[22m\n    \u001b[2m  - attempting fill action\u001b[22m\n    \u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n       at _bmad/BasePage.ts:453\n\n      451 |                     throw new Error(`smartAction fill failed: value required for intent \"${intent}\"`);\n      452 |                 }\n    > 453 |                 await locator.fill(value);\n          |                               ^\n      454 |                 break;\n      455 |             case 'verify':\n      456 |                 if (value && value.trim()) {\n        at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:453:31)\n        at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-86.spec.ts:12:13\n\n    attachment #1: screenshot (image/png) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/test-failed-1.png\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    attachment #2: video (video/webm) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/video.webm\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    Error Context: test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/error-context.md\n\n    attachment #4: trace (application/zip) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n    Usage:\n\n        npx playwright show-trace test-results/steps-SCRUM-86-Invalid-and-627ef--password-Please-try-again--chromium/trace.zip\n\n    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n  5 failed\n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:15:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid login with incorrect password \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:20:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Locked login account shows deterministic error \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:26:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=standard_user, password=wrong_password, expected_error=Invalid password. Please try again.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:31:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=locked_out_user, expected_error=Your account is currently locked due to too many failed attempts. Please try again in 30 minutes.) \n    [chromium] \u203a tests/steps/SCRUM-86.spec.ts:36:9 \u203a Invalid and Locked SauceDemo Logins Show Deterministic Errors \u203a Invalid logins show deterministic errors for different reasons (username=random_user, password=incorrect_password, expected_error=Invalid username or password. Please try again.) \n\n\u001b[36m  Serving HTML report at http://localhost:53367. Press Ctrl+C to quit.\u001b[39m\n",
+        "stderr": ""
+      },
+      "timestamp": "2026-04-23T05:02:13.088911"
+    }
+  ],
+  "stats": {
+    "total_runs": 3,
+    "failed_runs": 0
+  }
+}

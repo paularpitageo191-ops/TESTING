@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["ESNext", "dom"],
+    "types": ["node", "@playwright/test"],
+    "baseUrl": ".",
+    "paths": {
+      "@bmad/*": ["tests/_bmad/*"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "tests/**/*.ts",
+    "playwright.config.ts"
+  ],
+  "reporter": [
+  ["list"],
+  ["json", { "outputFile": "test-results/results.json" }]
+],
+}

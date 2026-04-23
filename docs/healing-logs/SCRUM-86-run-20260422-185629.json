@@ -1,0 +1,37 @@
+{
+  "project_key": "SCRUM-86",
+  "timestamp": "2026-04-22 18:56",
+  "cycle_key": null,
+  "totals": {
+    "PASS": 4,
+    "FAIL": 0,
+    "DRIFT": 0,
+    "FLAKY": 0
+  },
+  "results": [
+    {
+      "title": "Invalid username @SCRUM-86 @invalid @username",
+      "tea_status": "PASS",
+      "duration_ms": 1647,
+      "drift_type": "none"
+    },
+    {
+      "title": "Locked account @SCRUM-86 @locked @account",
+      "tea_status": "PASS",
+      "duration_ms": 841,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid password @SCRUM-86 @invalid @password",
+      "tea_status": "PASS",
+      "duration_ms": 769,
+      "drift_type": "none"
+    },
+    {
+      "title": "Invalid credentials @SCRUM-86 @invalid @credentials",
+      "tea_status": "PASS",
+      "duration_ms": 728,
+      "drift_type": "none"
+    }
+  ]
+}

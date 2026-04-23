@@ -1,0 +1,6 @@
+SauceDemo negative authentication brief
+Target URL: https://www.saucedemo.com/
+
+Context
+- Use the stable SauceDemo selectors only.
+- Do not assert generic dashboard text; use URL and visible error banner.

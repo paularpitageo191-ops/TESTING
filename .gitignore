@@ -1,0 +1,41 @@
+# Python
+
+**pycache**/
+*.pyc
+
+# Virtual env
+
+.venv/
+venv/
+
+# Env
+
+.env
+
+# Mac
+
+.DS_Store
+
+# Logs
+
+*.log
+
+# Playwright
+
+test-results/
+playwright-report/
+
+# IDE
+
+.vscode/
+.idea/
+
+# Build
+
+dist/
+build/
+
+# Coverage
+
+.coverage
+htmlcov/
