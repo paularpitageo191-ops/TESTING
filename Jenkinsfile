@@ -59,9 +59,9 @@ pipeline {
         stage('Run tests') {
             steps {
                 script {
-                    def planPath = "${WORKSPACE}/tests/steps/${PROJECT_KEY}_test_plan.json"
-                    def plan     = readJSON file: planPath
-                    def specFile = "tests/steps/${PROJECT_KEY}.spec.ts"
+                    def planContent = readFile("${WORKSPACE}/tests/steps/${PROJECT_KEY}_test_plan.json")
+                    def plan        = new groovy.json.JsonSlurper().parseText(planContent)
+                    def specFile    = "tests/steps/${PROJECT_KEY}.spec.ts"
 
                     def grepArg = ""
                     if (plan.grep_tags && plan.grep_tags.size() > 0) {
@@ -73,20 +73,13 @@ pipeline {
                 }
                 sh '''
                     cd "$WORKSPACE"
-
-                    # Resolve npx — try nvm first, then which, then common paths
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
                     NPX=$(which npx 2>/dev/null \
                           || ls /usr/local/bin/npx 2>/dev/null \
                           || ls /usr/bin/npx 2>/dev/null \
                           || echo "npx")
-
-                    # Install Playwright browsers if first run
                     $NPX playwright install chromium --with-deps 2>/dev/null || true
-
-                    # Run tests — || true so pipeline continues to RCA even on test failure
                     eval "$PW_COMMAND" > pw_report.json 2>&1 || true
                     echo "--- playwright output ---"
                     cat pw_report.json | head -50
