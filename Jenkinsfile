@@ -3,32 +3,59 @@ pipeline {
 
     environment {
         PROJECT_KEY = "SCRUM-70"
+        PYTHON      = "python3"
+        PIP         = "python3 -m pip"
     }
 
     stages {
 
-        // ── Stage 1: Bootstrap DB (idempotent) ───────────────────────────
+        // ── Stage 1: Setup — install Python deps inside workspace venv ───
+        stage('Setup') {
+            steps {
+                sh '''
+                    cd "$WORKSPACE"
+
+                    # Create venv inside Jenkins workspace if not cached
+                    if [ ! -f ".ws_venv/bin/activate" ]; then
+                        $PYTHON -m venv .ws_venv
+                    fi
+
+                    # Install requirements
+                    .ws_venv/bin/pip install --quiet --upgrade pip
+                    .ws_venv/bin/pip install --quiet -r requirements.txt 2>/dev/null || \
+                    .ws_venv/bin/pip install --quiet \
+                        requests python-dotenv qdrant-client
+
+                    # Confirm python works
+                    .ws_venv/bin/python3 --version
+                '''
+            }
+        }
+
+        // ── Stage 2: Bootstrap DB (idempotent) ───────────────────────────
         stage('Bootstrap') {
             steps {
                 sh '''
                     cd "$WORKSPACE"
-                    .venv/bin/python3 db_init.py
+                    .ws_venv/bin/python3 db_init.py
                 '''
             }
         }
 
-        // ── Stage 2: Score + plan (UC-2) ─────────────────────────────────
+        // ── Stage 3: Risk scoring + planning (UC-2) ──────────────────────
         stage('Risk scoring') {
             steps {
                 sh '''
                     cd "$WORKSPACE"
-                    .venv/bin/python3 risk_scorer.py --project $PROJECT_KEY
-                    .venv/bin/python3 priority_planner.py --project $PROJECT_KEY --budget-minutes 20
+                    .ws_venv/bin/python3 risk_scorer.py --project $PROJECT_KEY
+                    .ws_venv/bin/python3 priority_planner.py \
+                        --project $PROJECT_KEY \
+                        --budget-minutes 20
                 '''
             }
         }
 
-        // ── Stage 3: Run Playwright tests ────────────────────────────────
+        // ── Stage 4: Run Playwright tests ────────────────────────────────
         stage('Run tests') {
             steps {
                 script {
@@ -38,28 +65,41 @@ pipeline {
 
                     def grepArg = ""
                     if (plan.grep_tags && plan.grep_tags.size() > 0) {
-                        def pattern = plan.grep_tags.join("|")
-                        grepArg = "--grep \"${pattern}\""
+                        grepArg = "--grep \"${plan.grep_tags.join('|')}\""
                     }
 
                     env.PW_COMMAND = "npx playwright test ${specFile} ${grepArg} --project=chromium --reporter=json"
-                    env.RUN_ID     = "${PROJECT_KEY}-${currentBuild.number}-${currentBuild.startTimeInMillis}"
+                    env.RUN_ID     = "${PROJECT_KEY}-${currentBuild.number}"
                 }
                 sh '''
                     cd "$WORKSPACE"
+
+                    # Resolve npx — try nvm first, then which, then common paths
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+                    NPX=$(which npx 2>/dev/null \
+                          || ls /usr/local/bin/npx 2>/dev/null \
+                          || ls /usr/bin/npx 2>/dev/null \
+                          || echo "npx")
+
+                    # Install Playwright browsers if first run
+                    $NPX playwright install chromium --with-deps 2>/dev/null || true
+
+                    # Run tests — || true so pipeline continues to RCA even on test failure
                     eval "$PW_COMMAND" > pw_report.json 2>&1 || true
+                    echo "--- playwright output ---"
+                    cat pw_report.json | head -50
                 '''
             }
         }
 
-        // ── Stage 4: Analyse results (UC-3) ──────────────────────────────
+        // ── Stage 5: Analyse results (UC-3) ──────────────────────────────
         stage('Analyse results') {
             steps {
                 sh '''
                     cd "$WORKSPACE"
-                    .venv/bin/python3 result_analyzer.py \
+                    .ws_venv/bin/python3 result_analyzer.py \
                         --project $PROJECT_KEY \
                         --report  pw_report.json \
                         --run-id  "$RUN_ID"
@@ -67,17 +107,24 @@ pipeline {
             }
         }
 
-        // ── Stage 5: Archive report ───────────────────────────────────────
+        // ── Stage 6: Archive report ───────────────────────────────────────
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'pw_report.json', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'pw_report.json,tests/steps/*_risk_scores.json,tests/steps/*_test_plan.json',
+                                 allowEmptyArchive: true
             }
         }
     }
 
     post {
         always {
-            echo "Pipeline done — run_id: ${env.RUN_ID}"
+            echo "Pipeline done — run_id: ${env.RUN_ID ?: 'not set'}"
+        }
+        success {
+            echo "All stages passed."
+        }
+        failure {
+            echo "Pipeline failed — check console above for stage that errored."
         }
     }
 }
