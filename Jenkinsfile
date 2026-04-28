@@ -92,8 +92,9 @@ pipeline {
             steps {
                 sh '''
                     cd "$WORKSPACE"
-                    if [ ! -s pw_report.json ]; then
-                        echo "pw_report.json is empty or missing — skipping analysis"
+                    # Check file exists AND starts with { (valid JSON)
+                    if [ ! -f pw_report.json ] || ! head -c1 pw_report.json | grep -q '{'; then
+                        echo "pw_report.json missing or not valid JSON — skipping analysis"
                         exit 0
                     fi
                     .ws_venv/bin/python3 result_analyzer.py \
