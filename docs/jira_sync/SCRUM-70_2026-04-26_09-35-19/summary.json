@@ -1,0 +1,13 @@
+{
+  "issue": "SCRUM-70",
+  "epic": "SCRUM-36",
+  "subtasks": [
+    "SCRUM-115",
+    "SCRUM-116",
+    "SCRUM-117",
+    "SCRUM-118"
+  ],
+  "total_comments": 1,
+  "total_attachments": 11,
+  "created_at": "2026-04-26T09:35:31.085850"
+}

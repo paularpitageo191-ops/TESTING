@@ -1,0 +1,341 @@
+{
+  "step_coverage": {
+    "total_steps": 64,
+    "mapped_steps": 62,
+    "coverage_pct": 96.9
+  },
+  "confidence_breakdown": {
+    "high": {
+      "count": 40,
+      "pct": 62.5
+    },
+    "medium": {
+      "count": 24,
+      "pct": 37.5
+    },
+    "low": {
+      "count": 0,
+      "pct": 0.0
+    }
+  },
+  "page_coverage": {
+    "https://demoqa.com/text-box": {
+      "steps": 57
+    },
+    "https://demoqa.com/radio-button": {
+      "steps": 4
+    },
+    "https://demoqa.com/webtables": {
+      "steps": 3
+    }
+  },
+  "element_usage": [
+    {
+      "selector": "#currentAddress",
+      "used_by_steps": 28
+    },
+    {
+      "selector": "text=static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: Input. page: https://demoqa.com/text-box",
+      "used_by_steps": 5
+    },
+    {
+      "selector": "#impressiveRadio",
+      "used_by_steps": 4
+    },
+    {
+      "selector": "text=Upload and Download",
+      "used_by_steps": 2
+    },
+    {
+      "selector": "/html/body/div/div/div/div/div/div/div/div/div/ul/li[4]/a",
+      "used_by_steps": 1
+    },
+    {
+      "selector": "/html/body/div/div/div/div/div/div/div/div/div/ul/li[8]/a",
+      "used_by_steps": 1
+    },
+    {
+      "selector": "/html/body/div/div/div/div/div/div/div/div/div/ul/li/a",
+      "used_by_steps": 1
+    }
+  ],
+  "risk_summary": {
+    "needs_retry": {
+      "count": 0,
+      "steps": []
+    },
+    "needs_overlay_dismiss": {
+      "count": 0,
+      "steps": []
+    },
+    "needs_scroll": {
+      "count": 0,
+      "steps": []
+    },
+    "low_confidence": {
+      "count": 0,
+      "steps": []
+    },
+    "ambiguous_match": {
+      "count": 29,
+      "steps": [
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the output section should not be displayed",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the Submit button should be disabled",
+        "the Registration modal should remain open",
+        "no submission is possible",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the UI remains stable and all elements remain interactable",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "I am on the \"https://demoqa.com/webtables\" page",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the page should be accessible",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the \"Full Name\" field selector \"#userName\" exists and is enabled",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the Output container should display the submitted data",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the Output container should not be rendered",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the Output container should not be rendered",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "the result should display \"Age: 12\"",
+        "I should see the success message",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "I should not see the success message",
+        "I am on the \"https://demoqa.com/text-box\" page",
+        "I should not see the success message",
+        "I am on the \"https://demoqa.com/text-box\" page"
+      ]
+    }
+  },
+  "warnings_log": [
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the output section should not be displayed",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.789 vs 0.777 (\u0394=0.012<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the Submit button should be disabled",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.897 vs 0.892 (\u0394=0.005<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the Registration modal should remain open",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.973 vs 0.934 (\u0394=0.039<0.05)"
+      ]
+    },
+    {
+      "step": "no submission is possible",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.915 vs 0.904 (\u0394=0.010<0.05)"
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the UI remains stable and all elements remain interactable",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 1.010 vs 1.006 (\u0394=0.004<0.05)"
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/webtables\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.703 vs 0.691 (\u0394=0.011<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the page should be accessible",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 1.096 vs 1.086 (\u0394=0.010<0.05)"
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the \"Full Name\" field selector \"#userName\" exists and is enabled",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.839 vs 0.809 (\u0394=0.030<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the Output container should display the submitted data",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 1.020 vs 0.995 (\u0394=0.025<0.05)"
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the Output container should not be rendered",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.811 vs 0.793 (\u0394=0.018<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the Output container should not be rendered",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.811 vs 0.793 (\u0394=0.018<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "the result should display \"Age: 12\"",
+      "keyword": "Then",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.973 vs 0.969 (\u0394=0.004<0.05)"
+      ]
+    },
+    {
+      "step": "I should see the success message",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.916 vs 0.910 (\u0394=0.006<0.05)"
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I should not see the success message",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.816 vs 0.810 (\u0394=0.006<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I should not see the success message",
+      "keyword": "And",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.816 vs 0.810 (\u0394=0.006<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    },
+    {
+      "step": "I am on the \"https://demoqa.com/text-box\" page",
+      "keyword": "Given",
+      "warnings": [
+        "Ambiguous: top-2 scores 0.748 vs 0.718 (\u0394=0.031<0.05)",
+        "No stable selector found \u2014 smartAction() will use semantic intent."
+      ]
+    }
+  ]
+}

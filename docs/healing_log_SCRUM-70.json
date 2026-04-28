@@ -1,0 +1,53 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-27T15:33:24.974155",
+  "total_healed": 3,
+  "total_todo": 1,
+  "healings": [
+    {
+      "old_selector": "#currentAddress",
+      "new_selector": "#currentAddress",
+      "strategy": "UNCHANGED",
+      "confidence": 1.0,
+      "test_title": "Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "line": 13,
+      "action": "unknown"
+    },
+    {
+      "old_selector": "xpath=/html/body/div/header/a",
+      "new_selector": "#addNewRecordButton",
+      "strategy": "LABEL_MATCH",
+      "confidence": 0.7,
+      "test_title": "Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "line": 48,
+      "action": "unknown"
+    },
+    {
+      "old_selector": "#currentAddress",
+      "new_selector": "#currentAddress",
+      "strategy": "UNCHANGED",
+      "confidence": 1.0,
+      "test_title": "Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "line": 13,
+      "action": "unknown"
+    },
+    {
+      "old_selector": "xpath=/html/body/div/header/a",
+      "new_selector": "#addNewRecordButton",
+      "strategy": "LABEL_MATCH",
+      "confidence": 0.7,
+      "test_title": "Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "line": 48,
+      "action": "unknown"
+    },
+    {
+      "old_selector": "#output",
+      "new_selector": "/* TODO: manually map '#output' \u2014 not found in current DOM */",
+      "strategy": "TODO_PLACEHOLDER",
+      "confidence": 0.0,
+      "test_title": "",
+      "line": 18,
+      "action": "assert_visible"
+    }
+  ]
+}

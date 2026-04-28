@@ -1,0 +1,653 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-27T15:32:39.031756",
+  "summary": {
+    "total_failures": 12,
+    "true_failures": 8,
+    "false_failures": 4,
+    "unknown": 0
+  },
+  "true_failures": [
+    {
+      "title": "Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 29,
+      "status": "unexpected",
+      "duration": 17345,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 43,
+            "line": 589
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#noRadio')\nExpected substring: \u001b[32m\"#noRadio\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#noRadio')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input disabled name=\"like\" id=\"noRadio\" type=\"radio\" class=\"form-check-input disabled\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:32:13\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#noRadio')\nExpected substring: \u001b[32m\"#noRadio\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#noRadio')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input disabled name=\"like\" id=\"noRadio\" type=\"radio\" class=\"form-check-input disabled\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:32:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #noRadio for intent \"I select the \"#noRadio\" radio button\"\n"
+        },
+        {
+          "text": "\u2139 Disabled-element guard: asserting toBeDisabled() for intent \"I select the \"#noRadio\" radio button\". If a click was intended, make the element enabled first.\n"
+        },
+        {
+          "text": "\u2713 Healed selector: #noRadio for intent \"the \"#noRadio\" radio button should be disabled\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#noRadio",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Valid age input (numeric value) @SCRUM-70 @negative @AC14 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Valid age input (numeric value) @SCRUM-70 @negative @AC14 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 101,
+      "status": "unexpected",
+      "duration": 17903,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 43,
+            "line": 589
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#userName')\nExpected substring: \u001b[32m\"Age: 12\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#userName')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input type=\"text\" id=\"userName\" autocomplete=\"off\" placeholder=\"Full Name\" class=\" mr-sm-2 form-control\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:104:13\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#userName')\nExpected substring: \u001b[32m\"Age: 12\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#userName')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input type=\"text\" id=\"userName\" autocomplete=\"off\" placeholder=\"Full Name\" class=\" mr-sm-2 form-control\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:104:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #userName for intent \"the result should display \"Age: 12\"\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#userName",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 108,
+      "status": "unexpected",
+      "duration": 17576,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 111
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Invalid Age\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 109 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m\"https://demoqa.com/text-box\"\u001b[39m)\u001b[33m;\u001b[39m  \u001b[90m// AMBIGUOUS-MATCH\u001b[39m\n \u001b[90m 110 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"abc\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 111 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Invalid Age\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 112 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 113 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:111:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Invalid Age\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 109 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m\"https://demoqa.com/text-box\"\u001b[39m)\u001b[33m;\u001b[39m  \u001b[90m// AMBIGUOUS-MATCH\u001b[39m\n \u001b[90m 110 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"abc\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 111 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Invalid Age\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 112 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 113 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:111:68\u001b[22m",
+      "stdout": [],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 115,
+      "status": "unexpected",
+      "duration": 17543,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 119
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Name: 50\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 117 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 118 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Name: 50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 121 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:119:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Name: 50\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 117 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 118 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Name: 50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 121 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:119:68\u001b[22m",
+      "stdout": [],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 29,
+      "status": "unexpected",
+      "duration": 17345,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 43,
+            "line": 589
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#noRadio')\nExpected substring: \u001b[32m\"#noRadio\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#noRadio')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input disabled name=\"like\" id=\"noRadio\" type=\"radio\" class=\"form-check-input disabled\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:32:13\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#noRadio')\nExpected substring: \u001b[32m\"#noRadio\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#noRadio')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input disabled name=\"like\" id=\"noRadio\" type=\"radio\" class=\"form-check-input disabled\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:32:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #noRadio for intent \"I select the \"#noRadio\" radio button\"\n"
+        },
+        {
+          "text": "\u2139 Disabled-element guard: asserting toBeDisabled() for intent \"I select the \"#noRadio\" radio button\". If a click was intended, make the element enabled first.\n"
+        },
+        {
+          "text": "\u2713 Healed selector: #noRadio for intent \"the \"#noRadio\" radio button should be disabled\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-ffb46-UM-70-positive-AC4-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#noRadio",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Valid age input (numeric value) @SCRUM-70 @negative @AC14 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Valid age input (numeric value) @SCRUM-70 @negative @AC14 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 101,
+      "status": "unexpected",
+      "duration": 17903,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 43,
+            "line": 589
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#userName')\nExpected substring: \u001b[32m\"Age: 12\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#userName')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input type=\"text\" id=\"userName\" autocomplete=\"off\" placeholder=\"Full Name\" class=\" mr-sm-2 form-control\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:104:13\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#userName')\nExpected substring: \u001b[32m\"Age: 12\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#userName')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <input type=\"text\" id=\"userName\" autocomplete=\"off\" placeholder=\"Full Name\" class=\" mr-sm-2 form-control\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:589\n\n\u001b[0m \u001b[90m 587 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 588 |\u001b[39m                 } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (parsed\u001b[33m.\u001b[39mvalue \u001b[33m&&\u001b[39m parsed\u001b[33m.\u001b[39mvalue\u001b[33m.\u001b[39mtrim()) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 589 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoContainText(parsed\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 590 |\u001b[39m                 } \u001b[36melse\u001b[39m {\n \u001b[90m 591 |\u001b[39m                     \u001b[36mawait\u001b[39m expect(locator)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 592 |\u001b[39m                 }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:589:43)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:104:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #userName for intent \"the result should display \"Age: 12\"\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-05ceb-M-70-negative-AC14-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#userName",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 108,
+      "status": "unexpected",
+      "duration": 17576,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 111
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Invalid Age\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 109 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m\"https://demoqa.com/text-box\"\u001b[39m)\u001b[33m;\u001b[39m  \u001b[90m// AMBIGUOUS-MATCH\u001b[39m\n \u001b[90m 110 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"abc\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 111 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Invalid Age\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 112 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 113 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:111:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Invalid Age\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 109 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m\"https://demoqa.com/text-box\"\u001b[39m)\u001b[33m;\u001b[39m  \u001b[90m// AMBIGUOUS-MATCH\u001b[39m\n \u001b[90m 110 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"abc\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 111 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Invalid Age\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 112 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 113 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:111:68\u001b[22m",
+      "stdout": [],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-1db55-M-70-positive-AC15-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 115,
+      "status": "unexpected",
+      "duration": 17543,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 119
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Name: 50\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 117 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 118 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Name: 50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 121 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:119:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected substring: \u001b[32m\"Name: 50\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\u001b[2m    18 \u00d7 locator resolved to <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 117 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 118 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 119 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Name: 50\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 120 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 121 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:119:68\u001b[22m",
+      "stdout": [],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-e8dff-M-70-negative-AC16-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "TRUE_FAILURE",
+      "signal_type": "CONTENT_ASSERTION_FAILURE",
+      "root_cause": "Output element does not contain expected text \u2014 possible application logic defect",
+      "recommendation": "Raise Jira defect. Verify: Output element does not contain expected text \u2014 possible application logic defect. Provide error message and screenshot to dev team.",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    }
+  ],
+  "false_failures": [
+    {
+      "title": "Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 13,
+      "status": "unexpected",
+      "duration": 5576,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 17
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected: visible\nError: strict mode violation: locator('#currentAddress') resolved to 2 elements:\n    1) <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea> aka getByRole('textbox', { name: 'Current Address' })\n    2) <p class=\"mb-1\" id=\"currentAddress\">Current Address :test@domain </p> aka getByText('Current Address :test@domain')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\n\n\u001b[0m \u001b[90m 15 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"test@domain\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39msmartAction(\u001b[32m\"I click the Submit button\"\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m/* selector: #currentAddress */\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 19 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:17:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected: visible\nError: strict mode violation: locator('#currentAddress') resolved to 2 elements:\n    1) <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea> aka getByRole('textbox', { name: 'Current Address' })\n    2) <p class=\"mb-1\" id=\"currentAddress\">Current Address :test@domain </p> aka getByText('Current Address :test@domain')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\n\n\u001b[0m \u001b[90m 15 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"test@domain\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39msmartAction(\u001b[32m\"I click the Submit button\"\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m/* selector: #currentAddress */\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 19 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:17:68\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #submit for intent \"Submit button\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "FALSE_FAILURE",
+      "signal_type": "STRICT_MODE_VIOLATION",
+      "root_cause": "Selector matches multiple elements \u2014 needs more specific locator",
+      "recommendation": "Run spec_fixer.py to replace with more specific selector",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 48,
+      "status": "unexpected",
+      "duration": 17670,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 31,
+            "line": 596
+          },
+          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('xpath=/html/body/div/header/a')\u001b[22m\n\u001b[2m    - locator resolved to <a href=\"https://demoqa.com\">\u2026</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:596\n\n\u001b[0m \u001b[90m 594 |\u001b[39m\n \u001b[90m 595 |\u001b[39m             \u001b[36mcase\u001b[39m \u001b[32m'navigate'\u001b[39m\u001b[33m:\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 596 |\u001b[39m                 \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 597 |\u001b[39m                 \u001b[36mbreak\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 598 |\u001b[39m         }\n \u001b[90m 599 |\u001b[39m     }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:596:31)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:51:13\u001b[22m"
+        }
+      ],
+      "error_msg": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('xpath=/html/body/div/header/a')\u001b[22m\n\u001b[2m    - locator resolved to <a href=\"https://demoqa.com\">\u2026</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:596\n\n\u001b[0m \u001b[90m 594 |\u001b[39m\n \u001b[90m 595 |\u001b[39m             \u001b[36mcase\u001b[39m \u001b[32m'navigate'\u001b[39m\u001b[33m:\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 596 |\u001b[39m                 \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 597 |\u001b[39m                 \u001b[36mbreak\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 598 |\u001b[39m         }\n \u001b[90m 599 |\u001b[39m     }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:596:31)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:51:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #addNewRecordButton for intent \"I click #addNewR\"\n"
+        },
+        {
+          "text": "\u2713 Healed selector: /html/body/div/header/a for intent \"the modal should be opened\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/trace.zip"
+        }
+      ],
+      "classification": "FALSE_FAILURE",
+      "signal_type": "ELEMENT_TIMEOUT",
+      "root_cause": "Element not found within timeout \u2014 possible selector change or timing issue",
+      "recommendation": "Run self_healing_agent.py to re-map selector from current DOM",
+      "failing_selector": "xpath=/html/body/div/header/a",
+      "selector_in_dom": false
+    },
+    {
+      "title": "Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 13,
+      "status": "unexpected",
+      "duration": 5576,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+            "column": 68,
+            "line": 17
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected: visible\nError: strict mode violation: locator('#currentAddress') resolved to 2 elements:\n    1) <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea> aka getByRole('textbox', { name: 'Current Address' })\n    2) <p class=\"mb-1\" id=\"currentAddress\">Current Address :test@domain </p> aka getByText('Current Address :test@domain')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\n\n\u001b[0m \u001b[90m 15 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"test@domain\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39msmartAction(\u001b[32m\"I click the Submit button\"\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m/* selector: #currentAddress */\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 19 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:17:68\u001b[22m"
+        }
+      ],
+      "error_msg": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#currentAddress')\nExpected: visible\nError: strict mode violation: locator('#currentAddress') resolved to 2 elements:\n    1) <textarea rows=\"5\" cols=\"20\" id=\"currentAddress\" class=\"form-control\" placeholder=\"Current Address\"></textarea> aka getByRole('textbox', { name: 'Current Address' })\n    2) <p class=\"mb-1\" id=\"currentAddress\">Current Address :test@domain </p> aka getByText('Current Address :test@domain')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#currentAddress')\u001b[22m\n\n\n\u001b[0m \u001b[90m 15 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m)\u001b[33m.\u001b[39mfill(\u001b[32m\"test@domain\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m             \u001b[36mawait\u001b[39m basePage\u001b[33m.\u001b[39msmartAction(\u001b[32m\"I click the Submit button\"\u001b[39m)\u001b[33m;\u001b[39m \u001b[90m/* selector: #currentAddress */\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#currentAddress\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m             \u001b[36mawait\u001b[39m expect(basePage\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m\"#output\"\u001b[39m))\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m  \u001b[90m// FIX RC-4: negation\u001b[39m\n \u001b[90m 19 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:17:68\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #submit for intent \"Submit button\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-6d1d1-UM-70-negative-AC2-SCRUM-70-chromium/trace.zip"
+        }
+      ],
+      "classification": "FALSE_FAILURE",
+      "signal_type": "STRICT_MODE_VIOLATION",
+      "root_cause": "Selector matches multiple elements \u2014 needs more specific locator",
+      "recommendation": "Run spec_fixer.py to replace with more specific selector",
+      "failing_selector": "#currentAddress",
+      "selector_in_dom": true
+    },
+    {
+      "title": "Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "full_path": "steps/SCRUM-70.spec.ts > Negative Path Validation for DemoQA Elements Module > Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "file": "steps/SCRUM-70.spec.ts",
+      "line": 48,
+      "status": "unexpected",
+      "duration": 17670,
+      "errors": [
+        {
+          "location": {
+            "file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts",
+            "column": 31,
+            "line": 596
+          },
+          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('xpath=/html/body/div/header/a')\u001b[22m\n\u001b[2m    - locator resolved to <a href=\"https://demoqa.com\">\u2026</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:596\n\n\u001b[0m \u001b[90m 594 |\u001b[39m\n \u001b[90m 595 |\u001b[39m             \u001b[36mcase\u001b[39m \u001b[32m'navigate'\u001b[39m\u001b[33m:\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 596 |\u001b[39m                 \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 597 |\u001b[39m                 \u001b[36mbreak\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 598 |\u001b[39m         }\n \u001b[90m 599 |\u001b[39m     }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:596:31)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:51:13\u001b[22m"
+        }
+      ],
+      "error_msg": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('xpath=/html/body/div/header/a')\u001b[22m\n\u001b[2m    - locator resolved to <a href=\"https://demoqa.com\">\u2026</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-header\">\u2026</div> from <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" class=\"fade modal show\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n\u001b[90m   at \u001b[39m_bmad/BasePage.ts:596\n\n\u001b[0m \u001b[90m 594 |\u001b[39m\n \u001b[90m 595 |\u001b[39m             \u001b[36mcase\u001b[39m \u001b[32m'navigate'\u001b[39m\u001b[33m:\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 596 |\u001b[39m                 \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 597 |\u001b[39m                 \u001b[36mbreak\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 598 |\u001b[39m         }\n \u001b[90m 599 |\u001b[39m     }\u001b[0m\n\u001b[2m    at BasePage.smartAction (/Users/arpitapaul/Documents/Testing_Special_Agents/tests/_bmad/BasePage.ts:596:31)\u001b[22m\n\u001b[2m    at /Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts:51:13\u001b[22m",
+      "stdout": [
+        {
+          "text": "\u2713 Healed selector: #addNewRecordButton for intent \"I click #addNewR\"\n"
+        },
+        {
+          "text": "\u2713 Healed selector: /html/body/div/header/a for intent \"the modal should be opened\"\n"
+        }
+      ],
+      "stderr": [],
+      "attachments": [
+        {
+          "name": "screenshot",
+          "contentType": "image/png",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/test-failed-1.png"
+        },
+        {
+          "name": "video",
+          "contentType": "video/webm",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/video.webm"
+        },
+        {
+          "name": "error-context",
+          "contentType": "text/markdown",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/error-context.md"
+        },
+        {
+          "name": "trace",
+          "contentType": "application/zip",
+          "path": "/Users/arpitapaul/Documents/Testing_Special_Agents/test-results/steps-SCRUM-70-Negative-Pa-8b79c-M-70-positive-AC7-SCRUM-115-chromium/trace.zip"
+        }
+      ],
+      "classification": "FALSE_FAILURE",
+      "signal_type": "ELEMENT_TIMEOUT",
+      "root_cause": "Element not found within timeout \u2014 possible selector change or timing issue",
+      "recommendation": "Run self_healing_agent.py to re-map selector from current DOM",
+      "failing_selector": "xpath=/html/body/div/header/a",
+      "selector_in_dom": false
+    }
+  ],
+  "unknown": []
+}

@@ -1,0 +1,393 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-27T15:30:34.564286",
+  "time_budget_minutes": 60,
+  "summary": {
+    "total_scenarios": 16,
+    "high_risk": 0,
+    "medium_risk": 0,
+    "low_risk": 16,
+    "within_budget": 16,
+    "deferred": 0,
+    "estimated_total_min": 48.1
+  },
+  "execution_order": [
+    {
+      "title": "Email Validation",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC1",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.2,
+      "step_count": 5,
+      "recommended_order": 1
+    },
+    {
+      "title": "Web Tables Validation",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC2",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.2,
+      "step_count": 5,
+      "recommended_order": 2
+    },
+    {
+      "title": "Radio Button Validation",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC3",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.0,
+      "step_count": 4,
+      "recommended_order": 3
+    },
+    {
+      "title": "UI Stability",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC4",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 4
+    },
+    {
+      "title": "Invalid email behavior",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC5",
+        "@SCRUM_116"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 5
+    },
+    {
+      "title": "Modal interaction: Add new row",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC6",
+        "@SCRUM_116"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 6
+    },
+    {
+      "title": "Access to web pages",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC7",
+        "@SCRUM_115"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 7
+    },
+    {
+      "title": "Selectors against live DOM",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC8",
+        "@SCRUM_115"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.5,
+      "step_count": 6,
+      "recommended_order": 8
+    },
+    {
+      "title": "Valid email format",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC9",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 9
+    },
+    {
+      "title": "Invalid email format (missing @)",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC10",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.0,
+      "step_count": 4,
+      "recommended_order": 10
+    },
+    {
+      "title": "Invalid email format (missing TLD)",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC11",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.2,
+      "step_count": 5,
+      "recommended_order": 11
+    },
+    {
+      "title": "Empty email input",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC12",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.0,
+      "step_count": 4,
+      "recommended_order": 12
+    },
+    {
+      "title": "Valid age input (numeric value)",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC13",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.0,
+      "step_count": 4,
+      "recommended_order": 13
+    },
+    {
+      "title": "Non-numeric age input (abc)",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC14",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.0,
+      "step_count": 4,
+      "recommended_order": 14
+    },
+    {
+      "title": "Valid salary input (numeric value)",
+      "tags": [
+        "@SCRUM-70",
+        "@positive",
+        "@AC15",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 3.2,
+      "step_count": 5,
+      "recommended_order": 15
+    },
+    {
+      "title": "Non-numeric salary input (abc)",
+      "tags": [
+        "@SCRUM-70",
+        "@negative",
+        "@AC16",
+        "@SCRUM_70"
+      ],
+      "risk_score": 19.23,
+      "risk_tier": "LOW",
+      "factors": {
+        "ac_coverage_gap": 0.0,
+        "dom_confidence": 9.23,
+        "historical_failure": 0.0,
+        "business_criticality": 10.0,
+        "step_ambiguity": 0.0
+      },
+      "estimated_min": 2.8,
+      "step_count": 3,
+      "recommended_order": 16
+    }
+  ],
+  "within_budget": [
+    "Email Validation",
+    "Web Tables Validation",
+    "Radio Button Validation",
+    "UI Stability",
+    "Invalid email behavior",
+    "Modal interaction: Add new row",
+    "Access to web pages",
+    "Selectors against live DOM",
+    "Valid email format",
+    "Invalid email format (missing @)",
+    "Invalid email format (missing TLD)",
+    "Empty email input",
+    "Valid age input (numeric value)",
+    "Non-numeric age input (abc)",
+    "Valid salary input (numeric value)",
+    "Non-numeric salary input (abc)"
+  ],
+  "deferred": [],
+  "risk_tiers": {
+    "high": [],
+    "medium": [],
+    "low": [
+      "Email Validation",
+      "Web Tables Validation",
+      "Radio Button Validation",
+      "UI Stability",
+      "Invalid email behavior",
+      "Modal interaction: Add new row",
+      "Access to web pages",
+      "Selectors against live DOM",
+      "Valid email format",
+      "Invalid email format (missing @)",
+      "Invalid email format (missing TLD)",
+      "Empty email input",
+      "Valid age input (numeric value)",
+      "Non-numeric age input (abc)",
+      "Valid salary input (numeric value)",
+      "Non-numeric salary input (abc)"
+    ]
+  }
+}

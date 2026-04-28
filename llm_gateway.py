@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 LLM Gateway - Centralized LLM Provider Interface
-Supports multiple providers: ollama, openai, claude, gemini
+Supports multiple providers: ollama, huggingface, openai, claude, gemini
 All LLM calls should go through this module for consistency.
 
 Fix log
@@ -38,6 +38,12 @@ MODEL_NAME      = os.getenv("MODEL_NAME",      "codellama:13b")
 OPENAI_API_KEY    = os.getenv("OPENAI_API_KEY",    "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 GEMINI_API_KEY    = os.getenv("GEMINI_API_KEY",    "")
+HUGGINGFACE_API_KEY = (
+    os.getenv("HUGGINGFACE_API_KEY", "")
+    or os.getenv("HF_TOKEN", "")
+    or os.getenv("HUGGINGFACEHUB_API_TOKEN", "")
+)
+HUGGINGFACE_BASE_URL = os.getenv("HUGGINGFACE_BASE_URL", "https://router.huggingface.co/v1")
 
 
 class LLMGateway:
@@ -47,6 +53,42 @@ class LLMGateway:
         self.provider     = provider or LLM_PROVIDER
         self._initialized = False
         self._client      = None
+
+    @staticmethod
+    def _agent_env_prefix(agent_name: str) -> str:
+        return re.sub(r'[^A-Z0-9]+', '_', agent_name.upper()).strip('_')
+
+    def resolve_model_for_agent(
+        self,
+        agent_name: str,
+        purpose: str = "chat",
+        fallback_model: Optional[str] = None,
+    ) -> Optional[str]:
+        prefix = self._agent_env_prefix(agent_name)
+        purpose_key = re.sub(r'[^A-Z0-9]+', '_', purpose.upper()).strip('_')
+        for key in (f"{prefix}_{purpose_key}_MODEL", f"{prefix}_MODEL"):
+            value = os.getenv(key, "").strip()
+            if value:
+                return value
+        return fallback_model
+
+    def resolve_provider_for_agent(
+        self,
+        agent_name: str,
+        purpose: str = "chat",
+        fallback_provider: Optional[str] = None,
+    ) -> str:
+        prefix = self._agent_env_prefix(agent_name)
+        purpose_key = re.sub(r'[^A-Z0-9]+', '_', purpose.upper()).strip('_')
+        for key in (
+            f"{prefix}_{purpose_key}_PROVIDER",
+            f"{prefix}_LLM_PROVIDER",
+            f"{prefix}_PROVIDER",
+        ):
+            value = os.getenv(key, "").strip().lower()
+            if value:
+                return value
+        return (fallback_provider or self.provider or LLM_PROVIDER).lower()
 
     # ── Initialization ─────────────────────────────────────────────────────
 
@@ -87,6 +129,11 @@ class LLMGateway:
                 self._available_models = self._get_available_models()
                 self._initialized = True
 
+            elif self.provider == "huggingface":
+                if not HUGGINGFACE_API_KEY:
+                    raise ValueError("HUGGINGFACE_API_KEY or HF_TOKEN not set in .env")
+                self._initialized = True
+
             elif self.provider == "openai":
                 if not OPENAI_API_KEY:
                     raise ValueError("OPENAI_API_KEY not set in .env")
@@ -123,13 +170,16 @@ class LLMGateway:
 
     # ── Embeddings ─────────────────────────────────────────────────────────
 
-    def generate_embedding(self, text: str) -> List[float]:
+    def generate_embedding(self, text: str, model_override: str = None) -> List[float]:
         if not self._initialized:
             if not self.initialize():
                 return []
         try:
             if self.provider == "ollama":
-                return self._generate_embedding_ollama(text)
+                return self._generate_embedding_ollama(text, model_override=model_override)
+            elif self.provider == "huggingface":
+                print("Warning: Hugging Face chat provider does not handle embeddings here; returning empty vector")
+                return []
             elif self.provider == "openai":
                 return self._generate_embedding_openai(text)
             elif self.provider == "claude":
@@ -192,17 +242,17 @@ class LLMGateway:
 
         return [c for c in chunks if c.strip()]
 
-    def _embed_single_ollama(self, text: str) -> List[float]:
+    def _embed_single_ollama(self, text: str, model_override: str = None) -> List[float]:
         """Send one chunk to Ollama and return its raw embedding vector."""
         resp = requests.post(
             f"{OLLAMA_HOST}/api/embeddings",
-            json={"model": EMBEDDING_MODEL, "prompt": text},
+            json={"model": self._resolve_model(model_override or EMBEDDING_MODEL), "prompt": text},
             timeout=30,
         )
         resp.raise_for_status()
         return resp.json().get("embedding", [])
 
-    def _generate_embedding_ollama(self, text: str) -> List[float]:
+    def _generate_embedding_ollama(self, text: str, model_override: str = None) -> List[float]:
         """
         Generate a single 1024-d embedding for *text* regardless of length.
 
@@ -228,7 +278,7 @@ class LLMGateway:
         if len(chunks) == 1:
             # Fast path — single API call, no pooling needed
             try:
-                return self._embed_single_ollama(chunks[0])
+                return self._embed_single_ollama(chunks[0], model_override=model_override)
             except Exception as exc:
                 print(f"Ollama embedding error: {exc}")
                 return []
@@ -238,7 +288,7 @@ class LLMGateway:
         vectors = []
         for idx, chunk in enumerate(chunks):
             try:
-                vec = self._embed_single_ollama(chunk)
+                vec = self._embed_single_ollama(chunk, model_override=model_override)
                 if vec:
                     vectors.append(vec)
                 else:
@@ -299,6 +349,8 @@ class LLMGateway:
         try:
             if self.provider == "ollama":
                 return self._chat_ollama(prompt, system_prompt, model_override=model_override, **kwargs)
+            elif self.provider == "huggingface":
+                return self._chat_huggingface(prompt, system_prompt, model_override=model_override, **kwargs)
             elif self.provider == "openai":
                 return self._chat_openai(prompt, system_prompt, model_override=model_override, **kwargs)
             elif self.provider == "claude":
@@ -395,6 +447,7 @@ class LLMGateway:
     def _chat_ollama(self, prompt, system_prompt=None, model_override=None, **kwargs) -> str:
         model = self._resolve_model(model_override or CHAT_MODEL)
         msgs  = []
+        request_timeout = kwargs.get("timeout", 120)
         if system_prompt:
             msgs.append({"role": "system", "content": system_prompt})
         msgs.append({"role": "user", "content": prompt})
@@ -402,12 +455,55 @@ class LLMGateway:
             resp = requests.post(
                 f"{OLLAMA_HOST}/api/chat",
                 json={"model": model, "messages": msgs, "stream": False},
-                timeout=120,
+                timeout=request_timeout,
             )
             resp.raise_for_status()
             return resp.json().get("message", {}).get("content", "")
         except Exception as exc:
             print(f"Ollama chat error: {exc}")
+            return ""
+
+    def _chat_huggingface(self, prompt, system_prompt=None, model_override=None, **kwargs) -> str:
+        model = model_override or CHAT_MODEL
+        msgs = []
+        if system_prompt:
+            msgs.append({"role": "system", "content": system_prompt})
+        msgs.append({"role": "user", "content": prompt})
+
+        payload = {
+            "model": model,
+            "messages": msgs,
+            "temperature": kwargs.get("temperature", 0.3),
+        }
+        if "max_tokens" in kwargs and kwargs["max_tokens"] is not None:
+            payload["max_tokens"] = kwargs["max_tokens"]
+
+        request_timeout = kwargs.get("timeout", 120)
+        try:
+            resp = requests.post(
+                f"{HUGGINGFACE_BASE_URL.rstrip('/')}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {HUGGINGFACE_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                json=payload,
+                timeout=request_timeout,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            choice = (data.get("choices") or [{}])[0]
+            message = choice.get("message") or {}
+            content = message.get("content", "")
+            if isinstance(content, list):
+                text_parts = [
+                    part.get("text", "")
+                    for part in content
+                    if isinstance(part, dict) and part.get("type") in (None, "text")
+                ]
+                return "".join(text_parts).strip()
+            return str(content or "").strip()
+        except Exception as exc:
+            print(f"Hugging Face chat error: {exc}")
             return ""
 
     def _chat_openai(self, prompt, system_prompt=None, model_override=None, **kwargs) -> str:
@@ -650,7 +746,11 @@ Return ONLY a JSON object with these exact fields, no other text:
             f"Return ONLY the JSON object, no other text."
         )
 
-        model_to_use = MODEL_NAME if MODEL_NAME else None
+        model_to_use = self.resolve_model_for_agent(
+            "step_generator_v1",
+            purpose="analysis",
+            fallback_model=(MODEL_NAME if MODEL_NAME else CHAT_MODEL),
+        )
         response = self.chat(prompt, system_prompt, model_override=model_to_use)
 
         try:
@@ -687,6 +787,42 @@ Return ONLY a JSON object with these exact fields, no other text:
             .replace('\u2018', '"').replace('\u2019', '"')
             .replace('\u201c', '"').replace('\u201d', '"')
         )
+        # Some providers return JS-style comments inside "JSON only" output.
+        # Strip them without corrupting quoted strings like "https://...".
+        cleaned_chars = []
+        in_string = False
+        escape = False
+        i = 0
+        while i < len(response):
+            ch = response[i]
+
+            if in_string:
+                cleaned_chars.append(ch)
+                if escape:
+                    escape = False
+                elif ch == "\\":
+                    escape = True
+                elif ch == '"':
+                    in_string = False
+                i += 1
+                continue
+
+            if ch == '"':
+                in_string = True
+                cleaned_chars.append(ch)
+                i += 1
+                continue
+
+            if ch == "/" and i + 1 < len(response) and response[i + 1] == "/":
+                i += 2
+                while i < len(response) and response[i] not in "\r\n":
+                    i += 1
+                continue
+
+            cleaned_chars.append(ch)
+            i += 1
+
+        response = "".join(cleaned_chars)
 
         brace_pos = response.find('{')
         if brace_pos == -1:
@@ -745,15 +881,17 @@ Return ONLY a JSON object with these exact fields, no other text:
 
 # ── Module-level singleton ─────────────────────────────────────────────────────
 
-_gateway: Optional[LLMGateway] = None
+_gateway_cache: Dict[str, LLMGateway] = {}
 
 
-def get_llm_gateway() -> LLMGateway:
-    global _gateway
-    if _gateway is None:
-        _gateway = LLMGateway()
-        _gateway.initialize()
-    return _gateway
+def get_llm_gateway(provider: Optional[str] = None) -> LLMGateway:
+    resolved_provider = (provider or LLM_PROVIDER).lower()
+    gateway = _gateway_cache.get(resolved_provider)
+    if gateway is None:
+        gateway = LLMGateway(provider=resolved_provider)
+        gateway.initialize()
+        _gateway_cache[resolved_provider] = gateway
+    return gateway
 
 
 def initialize_gateway() -> bool:

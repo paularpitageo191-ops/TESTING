@@ -1,0 +1,1883 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "10242",
+  "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242",
+  "key": "SCRUM-70",
+  "renderedFields": {
+    "statuscategorychangedate": "18/Apr/26 7:48 AM",
+    "issuetype": null,
+    "components": null,
+    "timespent": null,
+    "timeoriginalestimate": null,
+    "project": null,
+    "description": "<p>As a QA Engineer,<br/>\nI want to validate negative scenarios in the Elements module,<br/>\nso that invalid inputs are handled correctly and the UI remains stable under edge conditions.</p>\n\n<p><b>Target Application:</b><br/>\n<a href=\"https://demoqa.com/elements\" title=\"smart-link\" class=\"external-link\" rel=\"nofollow noreferrer\">https://demoqa.com/elements</a>  </p>\n\n<hr />\n\n<h1><a name=\"%E2%9C%85AcceptanceCriteria\"></a>\u2705 <b>Acceptance Criteria</b></h1>\n\n<hr />\n\n<h3><a name=\"AC1%E2%80%93EmailValidation\"></a><b>AC1 \u2013 Email Validation</b></h3>\n\n<ul>\n\t<li>Invalid email input triggers validation error on <tt>#userEmail</tt></li>\n\t<li>Output section (<tt>#output</tt>) is not displayed for invalid input</li>\n</ul>\n\n\n<hr />\n\n<h3><a name=\"AC2%E2%80%93WebTablesValidation\"></a><b>AC2 \u2013 Web Tables Validation</b></h3>\n\n<ul>\n\t<li>Non-numeric values in Age/Salary fields block submission</li>\n\t<li>Registration modal remains open on validation failure</li>\n</ul>\n\n\n<hr />\n\n<h3><a name=\"AC3%E2%80%93RadioButtonValidation\"></a><b>AC3 \u2013 Radio Button Validation</b></h3>\n\n<ul>\n\t<li>\u201cNo\u201d option (<tt>#noRadio</tt>) remains disabled</li>\n\t<li>Clicking the option does not trigger any state change</li>\n</ul>\n\n\n<hr />\n\n<h3><a name=\"AC4%E2%80%93UIStability\"></a><b>AC4 \u2013 UI Stability</b></h3>\n\n<ul>\n\t<li>UI remains stable under obstruction (e.g., overlays)</li>\n\t<li>Elements remain interactable via scroll/visibility handling</li>\n</ul>\n\n\n<hr />\n\n<h1><a name=\"%F0%9F%93%B8UIValidationReference\"></a>\ud83d\udcf8 <b>UI Validation Reference</b></h1>\n\n<p>Annotated screenshots have been attached to illustrate expected UI behavior for each validation scenario.</p>\n\n<p>The screenshots cover:</p>\n\n<ul>\n\t<li><b>Text Box Validation</b>\n\t<ul>\n\t\t<li>Invalid email \u2192 validation error, no output displayed</li>\n\t\t<li>Valid input \u2192 output section rendered</li>\n\t</ul>\n\t</li>\n\t<li><b>Web Tables Validation</b>\n\t<ul>\n\t\t<li>Invalid numeric input \u2192 submission blocked, modal remains open</li>\n\t</ul>\n\t</li>\n\t<li><b>Radio Button Behavior</b>\n\t<ul>\n\t\t<li>Disabled option \u2192 no interaction or state change</li>\n\t</ul>\n\t</li>\n</ul>\n\n\n<p>These screenshots serve as <b>visual references for expected behavior</b> and should be used during test execution to verify UI responses.</p>\n\n<hr />\n\n<h1><a name=\"%F0%9F%A7%AATestData\"></a>\ud83e\uddea <b>Test Data</b></h1>\n\n<ul>\n\t<li>Invalid email formats (e.g., <tt>test@domain</tt>, missing TLD)</li>\n\t<li>Non-numeric values for numeric fields (e.g., <tt>abc</tt>, <tt>12ab</tt>)</li>\n\t<li>Empty/null inputs</li>\n</ul>\n\n\n<hr />\n\n<h1><a name=\"%F0%9F%8E%AFNotes\"></a>\ud83c\udfaf <b>Notes</b></h1>\n\n<ul>\n\t<li>Screenshots are provided as <b>reference (expected behavior)</b></li>\n\t<li>During execution, actual results should be validated against Acceptance Criteria</li>\n\t<li>Any deviation should be logged as a defect with supporting evidence</li>\n</ul>\n",
+    "fixVersions": null,
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": null,
+    "resolution": null,
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10256",
+        "id": "10256",
+        "filename": "demoqa_selector_map_v2.txt",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 12:03 PM",
+        "size": "0.5 kB",
+        "mimeType": "text/plain",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10256"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10255",
+        "id": "10255",
+        "filename": "demoqa_validation_matrix_v2.xlsx",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 12:03 PM",
+        "size": "5 kB",
+        "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10255"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10254",
+        "id": "10254",
+        "filename": "Functional Requirements Document (FRD).pdf",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 12:02 PM",
+        "size": "3.75 MB",
+        "mimeType": "application/pdf",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10254"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10289",
+        "id": "10289",
+        "filename": "radio_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:25 PM",
+        "size": "81 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10289",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10289"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10291",
+        "id": "10291",
+        "filename": "radio_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "78 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10291",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10291"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10296",
+        "id": "10296",
+        "filename": "textbox_invalid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "110 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10296",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10296"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10290",
+        "id": "10290",
+        "filename": "textbox_invalid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "107 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10290",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10290"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10295",
+        "id": "10295",
+        "filename": "textbox_valid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "95 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10295",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10295"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10293",
+        "id": "10293",
+        "filename": "textbox_valid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "92 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10293",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10293"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10294",
+        "id": "10294",
+        "filename": "webtables_invalid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "96 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10294",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10294"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10292",
+        "id": "10292",
+        "filename": "webtables_invalid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "Thursday 4:30 PM",
+        "size": "94 kB",
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10292",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10292"
+      }
+    ],
+    "aggregatetimeestimate": null,
+    "resolutiondate": null,
+    "workratio": null,
+    "summary": null,
+    "issuerestriction": null,
+    "watches": null,
+    "lastViewed": "Yesterday 7:25 PM",
+    "creator": null,
+    "subtasks": null,
+    "created": "18/Apr/26 7:48 AM",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "reporter": null,
+    "aggregateprogress": null,
+    "priority": null,
+    "customfield_10001": null,
+    "labels": null,
+    "customfield_10016": null,
+    "environment": "",
+    "customfield_10019": null,
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": null,
+    "duedate": null,
+    "progress": null,
+    "issuelinks": null,
+    "votes": null,
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "assignee": null,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    },
+    "updated": "Thursday 5:17 PM",
+    "status": null
+  },
+  "fields": {
+    "statuscategorychangedate": "2026-04-18T07:48:00.743+0530",
+    "issuetype": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10004",
+      "id": "10004",
+      "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+      "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+      "name": "Story",
+      "subtask": false,
+      "avatarId": 10315,
+      "entityId": "c9176d74-11b4-45b3-9f9a-d552fbb57755",
+      "hierarchyLevel": 0
+    },
+    "parent": {
+      "id": "10190",
+      "key": "SCRUM-36",
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10190",
+      "fields": {
+        "summary": "Automation & Negative Path Validation \u2013 DemoQA Elements Module",
+        "status": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+          "description": "",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "issuetype": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10001",
+          "id": "10001",
+          "description": "A collection of related bugs, stories, and tasks.",
+          "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+          "name": "Epic",
+          "subtask": false,
+          "avatarId": 10307,
+          "entityId": "e5d10c12-120f-4021-bc69-d8744b8e3731",
+          "hierarchyLevel": 1
+        }
+      }
+    },
+    "timespent": null,
+    "project": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/project/10000",
+      "id": "10000",
+      "key": "SCRUM",
+      "name": "Testament",
+      "projectTypeKey": "software",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408",
+        "24x24": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=small",
+        "16x16": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=xsmall",
+        "32x32": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=medium"
+      }
+    },
+    "fixVersions": [],
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "To Do"
+    },
+    "resolution": null,
+    "resolutiondate": null,
+    "workratio": -1,
+    "issuerestriction": {
+      "issuerestrictions": {},
+      "shouldDisplay": true
+    },
+    "watches": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-70/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "lastViewed": "2026-04-25T19:25:33.499+0530",
+    "created": "2026-04-18T07:48:00.242+0530",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "priority": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [
+      "demoqa",
+      "elements",
+      "tc-negative",
+      "tool-gherkin",
+      "tool-playwright"
+    ],
+    "customfield_10016": null,
+    "customfield_10019": "0|i000fb:",
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": [],
+    "issuelinks": [],
+    "assignee": null,
+    "updated": "2026-04-23T17:17:16.848+0530",
+    "status": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+      "description": "",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10000",
+      "statusCategory": {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "components": [],
+    "timeoriginalestimate": null,
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "As a QA Engineer,"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "I want to validate negative scenarios in the Elements module,"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "so that invalid inputs are handled correctly and the UI remains stable under edge conditions."
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "text",
+              "text": "Target Application:",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "hardBreak"
+            },
+            {
+              "type": "inlineCard",
+              "attrs": {
+                "url": "https://demoqa.com/elements",
+                "localId": "a8c18d677b58"
+              }
+            },
+            {
+              "type": "text",
+              "text": "  "
+            }
+          ],
+          "attrs": {
+            "localId": "7326d06bc325"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "7cfe9fbd8c84"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 1,
+            "localId": "a8df3ab4a01f"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "\u2705 "
+            },
+            {
+              "type": "text",
+              "text": "Acceptance Criteria",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "00ed98bc7eb7"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "420cfde526a6"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AC1 \u2013 Email Validation",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "f0ecb66e-4dce-4ad2-a7d0-3d11a1df8553"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Invalid email input triggers validation error on "
+                    },
+                    {
+                      "type": "text",
+                      "text": "#userEmail",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "d1668f252a15"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "0b0e96e7-a00e-49ad-aaba-0c9ba4d4cff6"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Output section ("
+                    },
+                    {
+                      "type": "text",
+                      "text": "#output",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": ") is not displayed for invalid input"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "2cb422841845"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "235488f68d54"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "74165d1f1255"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "ac5975e42b1b"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AC2 \u2013 Web Tables Validation",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "5b9ab25e-9623-455f-a56c-75d2a1145d82"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Non-numeric values in Age/Salary fields block submission"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "5b7753d17e64"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "e5fbd4e6-0d07-4f51-8139-ae5d89868daf"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Registration modal remains open on validation failure"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "5c701b0e5170"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "4a37afa24ad2"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "d3d26316b7d7"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "d53578b59a6c"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AC3 \u2013 Radio Button Validation",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "6c162359-9985-4305-959c-521497a9f75f"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "\u201cNo\u201d option ("
+                    },
+                    {
+                      "type": "text",
+                      "text": "#noRadio",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": ") remains disabled"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "dc049e227189"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "ec299798-f16b-4db1-bcea-6228402e6742"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Clicking the option does not trigger any state change"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "b1d7e38d6eaf"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "735475ad42e2"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "d0915be7bab2"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "7be81070af33"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AC4 \u2013 UI Stability",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "c279f09c-37e5-40d5-9794-2cb471a76349"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "UI remains stable under obstruction (e.g., overlays)"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "9763f76789b0"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "b4fa0854-4e4a-4088-b5a1-ccdab54e76d6"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Elements remain interactable via scroll/visibility handling"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "168048e8f9dd"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "a939d29a3468"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "af2f389627a8"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 1,
+            "localId": "f4d4f28fb361"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "\ud83d\udcf8 "
+            },
+            {
+              "type": "text",
+              "text": "UI Validation Reference",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Annotated screenshots have been attached to illustrate expected UI behavior for each validation scenario."
+            }
+          ],
+          "attrs": {
+            "localId": "c7d4a4ddc57a"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "The screenshots cover:"
+            }
+          ],
+          "attrs": {
+            "localId": "eb08b46d1074"
+          }
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "6444abb4-61d7-4d72-b352-5aea736045f3"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Text Box Validation",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "94b4576608a8"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "afdf2bb8-14b8-48c3-8f9a-fe2ea93523fc"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Invalid email \u2192 validation error, no output displayed"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "6a045744a37f"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "3c61c5f9-3485-4f85-b26f-030255933a73"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Valid input \u2192 output section rendered"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "9ad9f1c60d1f"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "2621d6ff5536"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "9c30fbc9-7758-4f22-a284-35a3ba92c45d"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Web Tables Validation",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "af45c1671b88"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "d1eb6c16-9a87-4dfe-a997-ac03655b460b"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Invalid numeric input \u2192 submission blocked, modal remains open"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "92493d38154d"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "f0ff336b582f"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "65b16784-8df1-4f22-bd58-e8b14489f34a"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Radio Button Behavior",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "da2ec265e88a"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "8f117bc7-2266-4210-b1a2-edcfbc91669a"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Disabled option \u2192 no interaction or state change"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "c5c56710b1f3"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "7acfa758ba4a"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "85f2ad58105d"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "These screenshots serve as "
+            },
+            {
+              "type": "text",
+              "text": "visual references for expected behavior",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " and should be used during test execution to verify UI responses."
+            }
+          ],
+          "attrs": {
+            "localId": "a252df55b0c5"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "5996b34955df"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 1,
+            "localId": "28e3b4eed695"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "\ud83e\uddea "
+            },
+            {
+              "type": "text",
+              "text": "Test Data",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "837184cc-127c-4543-9437-7ea690d1ca28"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Invalid email formats (e.g., "
+                    },
+                    {
+                      "type": "text",
+                      "text": "test@domain",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": ", missing TLD)"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "6ae1e08ffea1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "10b94473-82c0-41cc-a9f2-8a70b7520009"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Non-numeric values for numeric fields (e.g., "
+                    },
+                    {
+                      "type": "text",
+                      "text": "abc",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": ", "
+                    },
+                    {
+                      "type": "text",
+                      "text": "12ab",
+                      "marks": [
+                        {
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": ")"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "77c8d9d80de5"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "1f6db77c-9285-4901-abb2-d849a54ef67a"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Empty/null inputs"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "fe927d1ac521"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "b9d460162bc6"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "c5eb7445a2b6"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 1,
+            "localId": "ed6cd1d601ae"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "\ud83c\udfaf "
+            },
+            {
+              "type": "text",
+              "text": "Notes",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "ea3dbadd-2842-4abf-a875-1835f397f199"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Screenshots are provided as "
+                    },
+                    {
+                      "type": "text",
+                      "text": "reference (expected behavior)",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "40462d36093b"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "304b0024-d49f-4723-bbd2-b7f0d5d264d0"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "During execution, actual results should be validated against Acceptance Criteria"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "be163b8fbec3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "5a116baa-765c-4edd-b87d-e9c84346495e"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Any deviation should be logged as a defect with supporting evidence"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "956175f782f3"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "7e601ab55c35"
+          }
+        }
+      ]
+    },
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10256",
+        "id": "10256",
+        "filename": "demoqa_selector_map_v2.txt",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T12:03:32.579+0530",
+        "size": 517,
+        "mimeType": "text/plain",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10256"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10255",
+        "id": "10255",
+        "filename": "demoqa_validation_matrix_v2.xlsx",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T12:03:32.600+0530",
+        "size": 5315,
+        "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10255"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10254",
+        "id": "10254",
+        "filename": "Functional Requirements Document (FRD).pdf",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T12:02:29.548+0530",
+        "size": 3928772,
+        "mimeType": "application/pdf",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10254"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10289",
+        "id": "10289",
+        "filename": "radio_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:25:33.560+0530",
+        "size": 82632,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10289",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10289"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10291",
+        "id": "10291",
+        "filename": "radio_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.033+0530",
+        "size": 80377,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10291",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10291"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10296",
+        "id": "10296",
+        "filename": "textbox_invalid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.218+0530",
+        "size": 112453,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10296",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10296"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10290",
+        "id": "10290",
+        "filename": "textbox_invalid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:29.982+0530",
+        "size": 110037,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10290",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10290"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10295",
+        "id": "10295",
+        "filename": "textbox_valid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.140+0530",
+        "size": 97103,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10295",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10295"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10293",
+        "id": "10293",
+        "filename": "textbox_valid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.097+0530",
+        "size": 94265,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10293",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10293"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10294",
+        "id": "10294",
+        "filename": "webtables_invalid_annotated.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.114+0530",
+        "size": 98150,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10294",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10294"
+      },
+      {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/10292",
+        "id": "10292",
+        "filename": "webtables_invalid_raw.png",
+        "author": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+          "emailAddress": "paularpitaseis@gmail.com",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+            "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+          },
+          "displayName": "Arpita Paul",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-23T16:30:30.088+0530",
+        "size": 96355,
+        "mimeType": "image/png",
+        "content": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/content/10292",
+        "thumbnail": "https://paularpitaseis.atlassian.net/rest/api/3/attachment/thumbnail/10292"
+      }
+    ],
+    "aggregatetimeestimate": null,
+    "summary": "Negative Path Validation for DemoQA Elements Module",
+    "creator": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "subtasks": [
+      {
+        "id": "10424",
+        "key": "SCRUM-115",
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10424",
+        "fields": {
+          "summary": "Test Data Preparation & Environment Setup",
+          "status": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+            "description": "",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+            "name": "To Do",
+            "id": "10000",
+            "statusCategory": {
+              "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "priority": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+            "id": "10002",
+            "description": "Subtasks track small pieces of work that are part of a larger task.",
+            "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+            "name": "Subtask",
+            "subtask": true,
+            "avatarId": 10316,
+            "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+            "hierarchyLevel": -1
+          }
+        }
+      },
+      {
+        "id": "10426",
+        "key": "SCRUM-116",
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10426",
+        "fields": {
+          "summary": "Automated Test Script Development",
+          "status": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+            "description": "",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+            "name": "To Do",
+            "id": "10000",
+            "statusCategory": {
+              "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "priority": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+            "id": "10002",
+            "description": "Subtasks track small pieces of work that are part of a larger task.",
+            "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+            "name": "Subtask",
+            "subtask": true,
+            "avatarId": 10316,
+            "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+            "hierarchyLevel": -1
+          }
+        }
+      },
+      {
+        "id": "10428",
+        "key": "SCRUM-117",
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10428",
+        "fields": {
+          "summary": "Validation & Reporting Setup",
+          "status": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+            "description": "",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+            "name": "To Do",
+            "id": "10000",
+            "statusCategory": {
+              "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "priority": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+            "id": "10002",
+            "description": "Subtasks track small pieces of work that are part of a larger task.",
+            "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+            "name": "Subtask",
+            "subtask": true,
+            "avatarId": 10316,
+            "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+            "hierarchyLevel": -1
+          }
+        }
+      },
+      {
+        "id": "10430",
+        "key": "SCRUM-118",
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10430",
+        "fields": {
+          "summary": "Execution & Review",
+          "status": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+            "description": "",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+            "name": "To Do",
+            "id": "10000",
+            "statusCategory": {
+              "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "To Do"
+            }
+          },
+          "priority": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+            "id": "10002",
+            "description": "Subtasks track small pieces of work that are part of a larger task.",
+            "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+            "name": "Subtask",
+            "subtask": true,
+            "avatarId": 10316,
+            "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+            "hierarchyLevel": -1
+          }
+        }
+      }
+    ],
+    "reporter": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_10001": null,
+    "environment": null,
+    "duedate": null,
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "votes": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-70/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  }
+}

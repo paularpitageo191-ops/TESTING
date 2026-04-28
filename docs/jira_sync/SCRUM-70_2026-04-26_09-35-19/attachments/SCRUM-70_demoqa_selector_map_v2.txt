@@ -1,0 +1,18 @@
+DEMOQA SELECTOR MAP (ENHANCED)
+
+[TEXT_BOX]
+#userEmail | type=input | validation=email | required=true | error=.field-error
+#submit | type=button
+#output | type=container | render_on_valid=true
+
+[WEB_TABLES]
+#addNewRecordButton | opens=modal
+#age | type=input:number | validation=numeric_only
+#salary | type=input:number | validation=numeric_only
+#submit | action=submit_modal
+
+[RADIO]
+#noRadio | state=disabled | expected=ignore_click
+
+[OVERLAY]
+type=iframe/div | detection=z-index>1000 | strategy=scroll/force_click

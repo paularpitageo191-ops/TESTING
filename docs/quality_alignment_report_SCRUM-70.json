@@ -1,0 +1,2122 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-26T19:46:16.394497",
+  "feature_file": "tests/features/SCRUM-70.feature",
+  "summary": {
+    "gherkin_ac_coverage_pct": 100.0,
+    "gherkin_signal_coverage_pct": 42.1,
+    "gherkin_scenarios_written": 16,
+    "gherkin_acs_covered": 16,
+    "gherkin_acs_missing": 0,
+    "gherkin_todo_placeholders": 0,
+    "cross_reference_queries": 25,
+    "requirements_checked": 16,
+    "requirements_met": 8,
+    "requirements_missing": 8,
+    "validations_total": 13,
+    "high_confidence": 1,
+    "medium_confidence": 12,
+    "low_confidence": 0,
+    "self_healing_needed": 0,
+    "selectors_checked": 0,
+    "selectors_found": 0,
+    "risky_ui_elements": 75,
+    "overlay_present": false
+  },
+  "gherkin_coverage": {
+    "project_key": "SCRUM-70",
+    "generated_at": "2026-04-26T19:46:11.549933",
+    "summary": {
+      "total_kb_signals": 38,
+      "total_acs_extracted": 16,
+      "scenarios_written": 16,
+      "scenario_outlines": 0,
+      "todo_placeholders": 0,
+      "acs_covered": 16,
+      "acs_missing": 0,
+      "ac_coverage_pct": 100.0,
+      "signal_coverage_pct": 42.1
+    },
+    "breakdown_by_test_type": {
+      "negative": 8,
+      "positive": 8
+    },
+    "breakdown_by_source": {
+      "acceptance_criteria": 4,
+      "subtask": 4,
+      "validation": 8
+    },
+    "breakdown_by_priority": {
+      "high": 16
+    },
+    "covered_ac_ids": [
+      "AC1",
+      "AC2",
+      "AC3",
+      "AC4",
+      "AC5",
+      "AC6",
+      "AC7",
+      "AC8",
+      "AC9",
+      "AC10",
+      "AC11",
+      "AC12",
+      "AC13",
+      "AC14",
+      "AC15",
+      "AC16"
+    ],
+    "missing_coverage": [],
+    "kb_signals": {
+      "acceptance_criteria_blocks": 19,
+      "subtasks": 4,
+      "validation_rules": 9,
+      "attachment_rows": 5,
+      "negative_scenario_blocks": 1
+    }
+  },
+  "cross_reference": [
+    {
+      "query": "Negative Path Validation for DemoQA Elements Module",
+      "dom_elements_found": [
+        {
+          "text": "interactive element. role: link. tag: a. selector: /html/body/div/header/a. intent: Navigation. page: https://demoqa.com",
+          "vector_score": 0.554,
+          "token_score": 0.214,
+          "combined_score": 0.418
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Elements. selector: /html/body/div/div/div/div[2]/div/a. intent: Navigati",
+          "vector_score": 0.542,
+          "token_score": 0.214,
+          "combined_score": 0.411
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.546,
+          "token_score": 0.207,
+          "combined_score": 0.41
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.574,
+          "token_score": 0.11,
+          "combined_score": 0.388
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.561,
+          "token_score": 0.106,
+          "combined_score": 0.379
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nNegative Path Validation for Demo",
+          "score": 0.822
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nNegative Path Validation for Demo",
+          "score": 0.822
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nAutomation & Negative Path Valida",
+          "score": 0.756
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nAutomated Test Script Development",
+          "score": 0.726
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: epic\nType: validation\n\nEpic SCRUM-36: Automation & Negative P",
+          "score": 0.71
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "As a QA Engineer, I want to validate negative scenarios in the Elements module,",
+      "dom_elements_found": [
+        {
+          "text": "interactive element. role: link. tag: a. text: Check Box. selector: /html/body/div/div/div/div/div/div/div/div/div/ul/li",
+          "vector_score": 0.575,
+          "token_score": 0.08,
+          "combined_score": 0.377
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.581,
+          "token_score": 0.0,
+          "combined_score": 0.348
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Type to search. placeholder: Type to search. selector: #searchBox. inte",
+          "vector_score": 0.575,
+          "token_score": 0.0,
+          "combined_score": 0.345
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.571,
+          "token_score": 0.0,
+          "combined_score": 0.343
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Alerts, Frame & Windows. selector: /html/body/div/div/div/div[2]/div/a[3]",
+          "vector_score": 0.568,
+          "token_score": 0.0,
+          "combined_score": 0.341
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nNegative Path Validation for Demo",
+          "score": 0.862
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nNegative Path Validation for Demo",
+          "score": 0.862
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nAutomated Test Script Development",
+          "score": 0.752
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nAutomation & Negative Path Valida",
+          "score": 0.748
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nAcceptance criteria Verify access",
+          "score": 0.729
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Description The system must enforce numeric -only validation for the following f",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.52,
+          "token_score": 0.0,
+          "combined_score": 0.312
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.52,
+          "token_score": 0.0,
+          "combined_score": 0.312
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.502,
+          "token_score": 0.0,
+          "combined_score": 0.301
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.497,
+          "token_score": 0.0,
+          "combined_score": 0.298
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Type to search. placeholder: Type to search. selector: #searchBox. inte",
+          "vector_score": 0.484,
+          "token_score": 0.0,
+          "combined_score": 0.29
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Description  \nThe system must enforce numeric -only validation for the following fields within the \n",
+          "score": 0.76
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.649
+        },
+        {
+          "text": "Validation is enforced at the time of form submission.  \n \nSelectors  \n\u2022 Email Field: #userEmail  \n\u2022",
+          "score": 0.642
+        },
+        {
+          "text": "\ud83d\udcc4 Functional Requirements Document \n(FRD)  \nProject: Enterprise Web UI Validation Engine \u2013 DemoQA \nE",
+          "score": 0.639
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nTarget Application: The goal is t",
+          "score": 0.638
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "addnewrecordbutton",
+      "dom_elements_found": [
+        {
+          "text": "button element. role: button. text: Add. selector: #addNewRecordButton. intent: PrimaryAction. page: https://demoqa.com/",
+          "vector_score": 0.725,
+          "token_score": 0.536,
+          "combined_score": 0.65
+        },
+        {
+          "text": "button element. role: button. selector: #basic-addon2. intent: PrimaryAction. page: https://demoqa.com/webtables.",
+          "vector_score": 0.623,
+          "token_score": 0.0,
+          "combined_score": 0.374
+        },
+        {
+          "text": "button element. role: button. text: Next. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/butt",
+          "vector_score": 0.594,
+          "token_score": 0.0,
+          "combined_score": 0.357
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.582,
+          "token_score": 0.0,
+          "combined_score": 0.349
+        },
+        {
+          "text": "button element. role: button. text: Previous. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/",
+          "vector_score": 0.576,
+          "token_score": 0.0,
+          "combined_score": 0.346
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.512
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.494
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.493
+        },
+        {
+          "text": "Description  \nThe system must enforce numeric -only validation for the following fields within the \n",
+          "score": 0.49
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.483
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "age",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.441,
+          "token_score": 0.0,
+          "combined_score": 0.264
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Book Store Application. selector: /html/body/div/div/div/div[2]/div/a[6].",
+          "vector_score": 0.44,
+          "token_score": 0.0,
+          "combined_score": 0.264
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Dynamic Properties. selector: /html/body/div/div/div/div/div/div/div/div/",
+          "vector_score": 0.438,
+          "token_score": 0.0,
+          "combined_score": 0.263
+        },
+        {
+          "text": "interactive element. role: link. tag: a. selector: /html/body/div/header/a. intent: Navigation. page: https://demoqa.com",
+          "vector_score": 0.436,
+          "token_score": 0.0,
+          "combined_score": 0.262
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Dynamic Properties. selector: /html/body/div/div/div/div/div/div/div/div/",
+          "vector_score": 0.435,
+          "token_score": 0.0,
+          "combined_score": 0.261
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.589
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: comment\nType: validation\n\nThis ensures that if the 'Age' vali",
+          "score": 0.583
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: comments_bulk\nType: validation\n\nThis ensures that if the 'Age",
+          "score": 0.559
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: comments_bulk\nType: validation\n\nThis ensures that if the 'Age",
+          "score": 0.559
+        },
+        {
+          "text": "Description  \nThe system must enforce numeric -only validation for the following fields within the \n",
+          "score": 0.456
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "field",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.489,
+          "token_score": 0.0,
+          "combined_score": 0.293
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.484,
+          "token_score": 0.0,
+          "combined_score": 0.29
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.479,
+          "token_score": 0.0,
+          "combined_score": 0.287
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Yes. name: like. selector: #yesRadio. intent: Input. page: https://demo",
+          "vector_score": 0.476,
+          "token_score": 0.0,
+          "combined_score": 0.285
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Type to search. placeholder: Type to search. selector: #searchBox. inte",
+          "vector_score": 0.471,
+          "token_score": 0.0,
+          "combined_score": 0.282
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.571
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.551
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.529
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.513
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.513
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "salary",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.392,
+          "token_score": 0.0,
+          "combined_score": 0.235
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.391,
+          "token_score": 0.0,
+          "combined_score": 0.235
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.388,
+          "token_score": 0.0,
+          "combined_score": 0.233
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.381,
+          "token_score": 0.0,
+          "combined_score": 0.229
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.36,
+          "token_score": 0.0,
+          "combined_score": 0.216
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.611
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nValidate selectors against live D",
+          "score": 0.468
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nValidate selectors against live DOM",
+          "score": 0.462
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: epic\nType: requirement\n\nEpic: SCRUM-36",
+          "score": 0.439
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.426
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "fie",
+      "dom_elements_found": [
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.449,
+          "token_score": 0.0,
+          "combined_score": 0.269
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.449,
+          "token_score": 0.0,
+          "combined_score": 0.269
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.448,
+          "token_score": 0.0,
+          "combined_score": 0.269
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.447,
+          "token_score": 0.0,
+          "combined_score": 0.268
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.447,
+          "token_score": 0.0,
+          "combined_score": 0.268
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.5
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.497
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.497
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.495
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.487
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "submit",
+      "dom_elements_found": [
+        {
+          "text": "button element. role: button. text: Submit. selector: #submit. intent: PrimaryAction. page: https://demoqa.com/text-box.",
+          "vector_score": 0.617,
+          "token_score": 0.538,
+          "combined_score": 0.585
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.565,
+          "token_score": 0.0,
+          "combined_score": 0.339
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.564,
+          "token_score": 0.0,
+          "combined_score": 0.338
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.559,
+          "token_score": 0.0,
+          "combined_score": 0.335
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.556,
+          "token_score": 0.0,
+          "combined_score": 0.334
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.557
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.548
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.548
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.545
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.543
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "table",
+      "dom_elements_found": [
+        {
+          "text": "interactive element. role: link. tag: a. text: Web Tables. selector: /html/body/div/div/div/div/div/div/div/div/div/ul/l",
+          "vector_score": 0.583,
+          "token_score": 0.0,
+          "combined_score": 0.35
+        },
+        {
+          "text": "interactive element. role: link. tag: a. selector: /html/body/div/header/a. intent: Navigation. page: https://demoqa.com",
+          "vector_score": 0.571,
+          "token_score": 0.0,
+          "combined_score": 0.342
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Web Tables. selector: /html/body/div/div/div/div/div/div/div/div/div/ul/l",
+          "vector_score": 0.568,
+          "token_score": 0.0,
+          "combined_score": 0.341
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Web Tables. selector: /html/body/div/div/div/div/div/div/div/div/div/ul/l",
+          "vector_score": 0.564,
+          "token_score": 0.0,
+          "combined_score": 0.338
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Web Tables. selector: /html/body/div/div/div/div/div/div/div/div/div/ul/l",
+          "vector_score": 0.561,
+          "token_score": 0.0,
+          "combined_score": 0.337
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.598
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.564
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.464
+        },
+        {
+          "text": "Description  \nThe system must enforce numeric -only validation for the following fields within the \n",
+          "score": 0.462
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nAcceptance criteria Verify accessib",
+          "score": 0.458
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "body",
+      "dom_elements_found": [
+        {
+          "text": "button element. role: button. text: Previous. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/",
+          "vector_score": 0.46,
+          "token_score": 0.531,
+          "combined_score": 0.489
+        },
+        {
+          "text": "button element. role: button. text: Last. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/butt",
+          "vector_score": 0.451,
+          "token_score": 0.531,
+          "combined_score": 0.483
+        },
+        {
+          "text": "button element. role: button. text: Next. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/butt",
+          "vector_score": 0.45,
+          "token_score": 0.531,
+          "combined_score": 0.483
+        },
+        {
+          "text": "button element. role: button. text: First. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/but",
+          "vector_score": 0.447,
+          "token_score": 0.531,
+          "combined_score": 0.481
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Book Store Application. selector: /html/body/div/div/div/div[2]/div/a[6].",
+          "vector_score": 0.445,
+          "token_score": 0.526,
+          "combined_score": 0.478
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.491
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nTest data must be prepared and read",
+          "score": 0.471
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: epic\nType: requirement\n\nEpic: SCRUM-36",
+          "score": 0.471
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: assertion\n\nContext This issue involves verifyin",
+          "score": 0.47
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nIt also includes validating selecto",
+          "score": 0.466
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Validate selectors against live DOM: #userEmail #age ,  #salary #noRadio Ensure",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.71,
+          "token_score": 0.069,
+          "combined_score": 0.453
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.694,
+          "token_score": 0.0,
+          "combined_score": 0.416
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.693,
+          "token_score": 0.0,
+          "combined_score": 0.416
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.673,
+          "token_score": 0.0,
+          "combined_score": 0.404
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Dynamic Properties. selector: /html/body/div/div/div/div/div/div/div/div/",
+          "vector_score": 0.642,
+          "token_score": 0.0,
+          "combined_score": 0.385
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nValidate selectors against live D",
+          "score": 0.857
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nValidate selectors against live DOM",
+          "score": 0.838
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nIt also includes validating selec",
+          "score": 0.747
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: validation\n\nIt also includes validating selecto",
+          "score": 0.735
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nScope / Activities Implement Text",
+          "score": 0.722
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "date",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.501,
+          "token_score": 0.0,
+          "combined_score": 0.301
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.498,
+          "token_score": 0.0,
+          "combined_score": 0.299
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.496,
+          "token_score": 0.0,
+          "combined_score": 0.297
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.49,
+          "token_score": 0.0,
+          "combined_score": 0.294
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.48,
+          "token_score": 0.0,
+          "combined_score": 0.288
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.57
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.531
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.52
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.513
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.509
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@do",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.776,
+          "token_score": 0.331,
+          "combined_score": 0.598
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.698,
+          "token_score": 0.331,
+          "combined_score": 0.551
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.714,
+          "token_score": 0.205,
+          "combined_score": 0.51
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.693,
+          "token_score": 0.196,
+          "combined_score": 0.494
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Type to search. placeholder: Type to search. selector: #searchBox. inte",
+          "vector_score": 0.61,
+          "token_score": 0.196,
+          "combined_score": 0.445
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.903
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.882
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.796
+        },
+        {
+          "text": "Validation is enforced at the time of form submission.  \n \nSelectors  \n\u2022 Email Field: #userEmail  \n\u2022",
+          "score": 0.691
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.673
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "text",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.549,
+          "token_score": 0.529,
+          "combined_score": 0.541
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.539,
+          "token_score": 0.536,
+          "combined_score": 0.538
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Dynamic Properties. selector: /html/body/div/div/div/div/div/div/div/div/",
+          "vector_score": 0.541,
+          "token_score": 0.524,
+          "combined_score": 0.534
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Book Store Application. selector: /html/body/div/div/div/div[2]/div/a[6].",
+          "vector_score": 0.539,
+          "token_score": 0.526,
+          "combined_score": 0.534
+        },
+        {
+          "text": "button element. role: button. text: Previous. selector: /html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/",
+          "vector_score": 0.534,
+          "token_score": 0.531,
+          "combined_score": 0.533
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.525
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.512
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.511
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.495
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\nThe screenshots cover: Text Box V",
+          "score": 0.491
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "box",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.583,
+          "token_score": 0.536,
+          "combined_score": 0.564
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.584,
+          "token_score": 0.529,
+          "combined_score": 0.562
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.558,
+          "token_score": 0.528,
+          "combined_score": 0.546
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.555,
+          "token_score": 0.528,
+          "combined_score": 0.544
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.54,
+          "token_score": 0.524,
+          "combined_score": 0.533
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.584
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.567
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.558
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.527
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.512
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "email",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.658,
+          "token_score": 0.528,
+          "combined_score": 0.606
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.572,
+          "token_score": 0.0,
+          "combined_score": 0.343
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.55,
+          "token_score": 0.0,
+          "combined_score": 0.33
+        },
+        {
+          "text": "button element. role: button. text: Submit. selector: #submit. intent: PrimaryAction. page: https://demoqa.com/text-box.",
+          "vector_score": 0.512,
+          "token_score": 0.0,
+          "combined_score": 0.307
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.502,
+          "token_score": 0.0,
+          "combined_score": 0.301
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.619
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.617
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.616
+        },
+        {
+          "text": "Validation is enforced at the time of form submission.  \n \nSelectors  \n\u2022 Email Field: #userEmail  \n\u2022",
+          "score": 0.528
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: jira_main\nType: validation\n\n\ud83e\uddea  Test Data Invalid email format",
+          "score": 0.51
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "missing",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.463,
+          "token_score": 0.0,
+          "combined_score": 0.278
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.446,
+          "token_score": 0.0,
+          "combined_score": 0.267
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Yes. name: like. selector: #yesRadio. intent: Input. page: https://demo",
+          "vector_score": 0.435,
+          "token_score": 0.0,
+          "combined_score": 0.261
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Broken Links - Images. selector: /html/body/div/div/div/div/div/div/div/d",
+          "vector_score": 0.435,
+          "token_score": 0.0,
+          "combined_score": 0.261
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Broken Links - Images. selector: /html/body/div/div/div/div/div/div/div/d",
+          "vector_score": 0.433,
+          "token_score": 0.0,
+          "combined_score": 0.26
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.526
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.516
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.488
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.487
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: assertion\n\nContext This issue involves verifyin",
+          "score": 0.487
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "tld",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.519,
+          "token_score": 0.0,
+          "combined_score": 0.311
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.51,
+          "token_score": 0.0,
+          "combined_score": 0.306
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.505,
+          "token_score": 0.0,
+          "combined_score": 0.303
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.505,
+          "token_score": 0.0,
+          "combined_score": 0.303
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.502,
+          "token_score": 0.0,
+          "combined_score": 0.301
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.659
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.578
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.51
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.504
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.5
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "username",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.532,
+          "token_score": 0.528,
+          "combined_score": 0.53
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.521,
+          "token_score": 0.0,
+          "combined_score": 0.313
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.489,
+          "token_score": 0.0,
+          "combined_score": 0.293
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.487,
+          "token_score": 0.0,
+          "combined_score": 0.292
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.486,
+          "token_score": 0.0,
+          "combined_score": 0.292
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.559
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.554
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.534
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.513
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.508
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "domain",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.557,
+          "token_score": 0.0,
+          "combined_score": 0.334
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.553,
+          "token_score": 0.0,
+          "combined_score": 0.332
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.531,
+          "token_score": 0.0,
+          "combined_score": 0.318
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.514,
+          "token_score": 0.0,
+          "combined_score": 0.309
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Book Store Application. selector: /html/body/div/div/div/div[2]/div/a[6].",
+          "vector_score": 0.499,
+          "token_score": 0.0,
+          "combined_score": 0.299
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.644
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.609
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.495
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.491
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: subtask\nType: assertion\n\nContext This issue involves verifyin",
+          "score": 0.485
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "blocked",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.533,
+          "token_score": 0.0,
+          "combined_score": 0.32
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.512,
+          "token_score": 0.0,
+          "combined_score": 0.307
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Upload and Download. selector: /html/body/div/div/div/div/div/div/div/div",
+          "vector_score": 0.471,
+          "token_score": 0.0,
+          "combined_score": 0.283
+        },
+        {
+          "text": "interactive element. role: link. tag: a. text: Alerts, Frame & Windows. selector: /html/body/div/div/div/div[2]/div/a[3]",
+          "vector_score": 0.47,
+          "token_score": 0.0,
+          "combined_score": 0.282
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.469,
+          "token_score": 0.0,
+          "combined_score": 0.282
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.626
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.609
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.601
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.583
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.583
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "validation_error",
+      "dom_elements_found": [
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.485,
+          "token_score": 0.0,
+          "combined_score": 0.291
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.482,
+          "token_score": 0.0,
+          "combined_score": 0.289
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.467,
+          "token_score": 0.0,
+          "combined_score": 0.28
+        },
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.463,
+          "token_score": 0.0,
+          "combined_score": 0.278
+        },
+        {
+          "text": "button element. role: button. text: Submit. selector: #submit. intent: PrimaryAction. page: https://demoqa.com/text-box.",
+          "vector_score": 0.448,
+          "token_score": 0.0,
+          "combined_score": 0.269
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.65
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.648
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.645
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.643
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.642
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "low",
+      "dom_elements_found": [
+        {
+          "text": "static element. type: radio. role: radio. label: Impressive. name: like. selector: #impressiveRadio. intent: Input. page",
+          "vector_score": 0.446,
+          "token_score": 0.0,
+          "combined_score": 0.268
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: No. name: like. selector: #noRadio. intent: Input. page: https://demoqa",
+          "vector_score": 0.435,
+          "token_score": 0.0,
+          "combined_score": 0.261
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.428,
+          "token_score": 0.0,
+          "combined_score": 0.257
+        },
+        {
+          "text": "static element. type: radio. role: radio. label: Yes. name: like. selector: #yesRadio. intent: Input. page: https://demo",
+          "vector_score": 0.426,
+          "token_score": 0.0,
+          "combined_score": 0.255
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.405,
+          "token_score": 0.0,
+          "combined_score": 0.243
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.47
+        },
+        {
+          "text": "Module: Radio | Field: No | Input Type: Click | Input Value: click | Expected State: Ignored | Error",
+          "score": 0.463
+        },
+        {
+          "text": "Module: Web Tables | Field: Salary | Input Type: Special | Input Value: @@@ | Expected State: Blocke",
+          "score": 0.46
+        },
+        {
+          "text": "Source: PRD\nProject: SCRUM-70\nSection: epic\nType: requirement\n\nEpic: SCRUM-36",
+          "score": 0.454
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.441
+        }
+      ],
+      "match_count": 5
+    },
+    {
+      "query": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked |",
+      "dom_elements_found": [
+        {
+          "text": "input element. type: email. role: textbox. label: name@example.com. placeholder: name@example.com. selector: #userEmail.",
+          "vector_score": 0.733,
+          "token_score": 0.331,
+          "combined_score": 0.572
+        },
+        {
+          "text": "static element. role: textbox. selector: #permanentAddress. intent: Input. page: https://demoqa.com/text-box.",
+          "vector_score": 0.692,
+          "token_score": 0.205,
+          "combined_score": 0.497
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Full Name. placeholder: Full Name. selector: #userName. intent: Input. ",
+          "vector_score": 0.653,
+          "token_score": 0.262,
+          "combined_score": 0.497
+        },
+        {
+          "text": "static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: ",
+          "vector_score": 0.665,
+          "token_score": 0.196,
+          "combined_score": 0.478
+        },
+        {
+          "text": "input element. type: text. role: textbox. label: Type to search. placeholder: Type to search. selector: #searchBox. inte",
+          "vector_score": 0.59,
+          "token_score": 0.196,
+          "combined_score": 0.432
+        }
+      ],
+      "requirements_found": [
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | Error Type: VALIDATI",
+          "score": 0.887
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing @ | Input Value: userdomain.com | Expected Sta",
+          "score": 0.855
+        },
+        {
+          "text": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@domain | Expected Stat",
+          "score": 0.848
+        },
+        {
+          "text": "Validation is enforced at the time of form submission.  \n \nSelectors  \n\u2022 Email Field: #userEmail  \n\u2022",
+          "score": 0.709
+        },
+        {
+          "text": "Module: Web Tables | Field: Age | Input Type: Alpha | Input Value: abc | Expected State: Blocked | E",
+          "score": 0.705
+        }
+      ],
+      "match_count": 5
+    }
+  ],
+  "drift_analysis": [
+    {
+      "requirement": "Negative Path Validation for DemoQA Elements Module",
+      "keywords": [
+        "negative",
+        "path",
+        "validation",
+        "demoqa",
+        "elements"
+      ],
+      "source": "SCRUM-70",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Module: Text Box | Field: Email | Input Type: Missing TLD | Input Value: user@do",
+      "keywords": [
+        "module",
+        "text",
+        "field",
+        "email",
+        "input"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Activities Execute full test suite: Run all automated and/or manual test scenari",
+      "keywords": [
+        "activities",
+        "execute",
+        "full",
+        "test",
+        "suite"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Target Application: \u2705  Acceptance Criteria AC1 \u2013 Email Validation Invalid email ",
+      "keywords": [
+        "target",
+        "application",
+        "acceptance",
+        "criteria",
+        "email"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "It also includes validating selectors against the live DOM",
+      "keywords": [
+        "also",
+        "includes",
+        "validating",
+        "selectors",
+        "against"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Module: Text Box | Field: Email | Input Type: Empty | Expected State: Blocked | ",
+      "keywords": [
+        "module",
+        "text",
+        "field",
+        "email",
+        "input"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "\ud83e\uddea  Test Data Invalid email formats (e",
+      "keywords": [
+        "test",
+        "data",
+        "invalid",
+        "email",
+        "formats"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Description The system must enforce numeric -only validation for the following f",
+      "keywords": [
+        "description",
+        "system",
+        "must",
+        "enforce",
+        "numeric"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "All automated specs generated in Sub-task 2 must include a  @traceability  tag i",
+      "keywords": [
+        "automated",
+        "specs",
+        "generated",
+        "task",
+        "must"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Validation is enforced at the time of form submission",
+      "keywords": [
+        "validation",
+        "enforced",
+        "time",
+        "form",
+        "submission"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Automated Test Script Development Develop automated UI test scripts to validate ",
+      "keywords": [
+        "automated",
+        "test",
+        "script",
+        "development",
+        "develop"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Subtask SCRUM-115: Test Data Preparation & Environment Setup To Do",
+      "keywords": [
+        "subtask",
+        "scrum",
+        "test",
+        "data",
+        "preparation"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Execution & Review Description Execute the complete test suite for the DemoQA El",
+      "keywords": [
+        "execution",
+        "review",
+        "description",
+        "execute",
+        "complete"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Other information All target pages should be accessible",
+      "keywords": [
+        "other",
+        "information",
+        "target",
+        "pages",
+        "should"
+      ],
+      "source": "qdrant",
+      "status": "MISSING"
+    },
+    {
+      "requirement": "Target Application: The goal is to ensure: Input validation works correctly Inva",
+      "keywords": [
+        "target",
+        "application",
+        "goal",
+        "ensure",
+        "input"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    },
+    {
+      "requirement": "Scope / Activities Implement Text Box validation: Use selector  #userEmail Verif",
+      "keywords": [
+        "scope",
+        "activities",
+        "implement",
+        "text",
+        "validation"
+      ],
+      "source": "qdrant",
+      "status": "PRESENT"
+    }
+  ],
+  "validation": [
+    {
+      "element_label": "Full Name",
+      "best_requirement": "Scope / Activities Implement Text Box validation: Use selector  #userEmail Verify invalid email behavior (no  #output  r",
+      "confidence_data": {
+        "composite_score": 0.506,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "text",
+        "id": "userName",
+        "name": null,
+        "placeholder": "Full Name",
+        "className": " mr-sm-2 form-control",
+        "label": "Full Name",
+        "xpath": "//*[@id=\"userName\"]",
+        "relativeSelectors": [
+          "#userName",
+          "[aria-label=\"Full Name\"]",
+          "[placeholder=\"Full Name\"]",
+          "input.mr-sm-2.form-control"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "textbox",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/text-box"
+      }
+    },
+    {
+      "element_label": "name@example.com",
+      "best_requirement": "\ud83e\uddea  Test Data Invalid email formats (e.g.,  test@domain , missing TLD) Non-numeric values for numeric fields (e.g.,  abc ",
+      "confidence_data": {
+        "composite_score": 0.762,
+        "confidence_level": "HIGH",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "email",
+        "id": "userEmail",
+        "name": null,
+        "placeholder": "name@example.com",
+        "className": "mr-sm-2 form-control",
+        "label": "name@example.com",
+        "xpath": "//*[@id=\"userEmail\"]",
+        "relativeSelectors": [
+          "#userEmail",
+          "[aria-label=\"name@example.com\"]",
+          "[placeholder=\"name@example.com\"]",
+          "input.mr-sm-2.form-control"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "textbox",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/text-box"
+      }
+    },
+    {
+      "element_label": "Yes",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.458,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "radio",
+        "id": "yesRadio",
+        "name": "like",
+        "placeholder": null,
+        "className": "form-check-input",
+        "label": "Yes",
+        "xpath": "//*[@id=\"yesRadio\"]",
+        "relativeSelectors": [
+          "#yesRadio",
+          "[aria-label=\"Yes\"]",
+          "[name=\"like\"]",
+          "input.form-check-input"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "radio",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/radio-button"
+      }
+    },
+    {
+      "element_label": "Impressive",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.45,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "radio",
+        "id": "impressiveRadio",
+        "name": "like",
+        "placeholder": null,
+        "className": "form-check-input",
+        "label": "Impressive",
+        "xpath": "//*[@id=\"impressiveRadio\"]",
+        "relativeSelectors": [
+          "#impressiveRadio",
+          "[aria-label=\"Impressive\"]",
+          "[name=\"like\"]",
+          "input.form-check-input"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "radio",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/radio-button"
+      }
+    },
+    {
+      "element_label": "No",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.458,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "radio",
+        "id": "noRadio",
+        "name": "like",
+        "placeholder": null,
+        "className": "form-check-input disabled",
+        "label": "No",
+        "xpath": "//*[@id=\"noRadio\"]",
+        "relativeSelectors": [
+          "#noRadio",
+          "[aria-label=\"No\"]",
+          "[name=\"like\"]",
+          "input.form-check-input.disabled"
+        ],
+        "isVisible": true,
+        "isDisabled": true,
+        "isRequired": false,
+        "ariaRole": "radio",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/radio-button"
+      }
+    },
+    {
+      "element_label": "Type to search",
+      "best_requirement": "Scope / Activities Implement Text Box validation: Use selector  #userEmail Verify invalid email behavior (no  #output  r",
+      "confidence_data": {
+        "composite_score": 0.506,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "type": "text",
+        "id": "searchBox",
+        "name": null,
+        "placeholder": "Type to search",
+        "className": "form-control",
+        "label": "Type to search",
+        "xpath": "//*[@id=\"searchBox\"]",
+        "relativeSelectors": [
+          "#searchBox",
+          "[aria-label=\"Type to search\"]",
+          "[placeholder=\"Type to search\"]",
+          "input.form-control"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "isRequired": false,
+        "ariaRole": "textbox",
+        "intent": "Search",
+        "intentConfidence": 0.85,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "Submit",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "Submit",
+        "id": "submit",
+        "name": null,
+        "className": "btn btn-primary",
+        "xpath": "//*[@id=\"submit\"]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.9,
+        "isDisabled": false,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/text-box"
+      }
+    },
+    {
+      "element_label": "Add",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "Add",
+        "id": "addNewRecordButton",
+        "name": null,
+        "className": "btn btn-primary",
+        "xpath": "//*[@id=\"addNewRecordButton\"]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.9,
+        "isDisabled": false,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "First",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "First",
+        "id": null,
+        "name": null,
+        "className": "mr-2 btn btn-secondary",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/button",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.6,
+        "isDisabled": true,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "Previous",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "Previous",
+        "id": null,
+        "name": null,
+        "className": "mr-2 btn btn-secondary",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/button[2]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.6,
+        "isDisabled": true,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "Next",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "Next",
+        "id": null,
+        "name": null,
+        "className": "mr-2 btn btn-secondary",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/button[3]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.6,
+        "isDisabled": true,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "Last",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.467,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "text": "Last",
+        "id": null,
+        "name": null,
+        "className": "btn btn-secondary",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div[2]/div[3]/div/div/div/button[4]",
+        "ariaRole": "button",
+        "intent": "PrimaryAction",
+        "intentConfidence": 0.6,
+        "isDisabled": true,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/webtables"
+      }
+    },
+    {
+      "element_label": "Current Address",
+      "best_requirement": "Negative Path Validation for DemoQA Elements Module",
+      "confidence_data": {
+        "composite_score": 0.458,
+        "confidence_level": "MEDIUM",
+        "needs_self_healing": false
+      },
+      "element": {
+        "id": "currentAddress",
+        "name": null,
+        "placeholder": "Current Address",
+        "className": "form-control",
+        "label": "Current Address",
+        "xpath": "//*[@id=\"currentAddress\"]",
+        "relativeSelectors": [
+          "#currentAddress",
+          "[aria-label=\"Current Address\"]",
+          "[placeholder=\"Current Address\"]",
+          "textarea.form-control"
+        ],
+        "isVisible": true,
+        "isDisabled": false,
+        "ariaRole": "textbox",
+        "intent": "Input",
+        "intentConfidence": 0.9,
+        "testid": null,
+        "cy": null,
+        "qa": null,
+        "test": null,
+        "page_url": "https://demoqa.com/text-box"
+      }
+    }
+  ],
+  "self_healing": [],
+  "selector_coverage": []
+}

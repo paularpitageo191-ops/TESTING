@@ -1,0 +1,669 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "10424",
+  "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10424",
+  "key": "SCRUM-115",
+  "renderedFields": {
+    "statuscategorychangedate": "Thursday 11:07 AM",
+    "issuetype": null,
+    "components": null,
+    "timespent": null,
+    "timeoriginalestimate": null,
+    "project": null,
+    "description": "<h3><a name=\"Summary\"></a>Summary</h3>\n\n<p>Prepare test data and validate environment readiness for execution.</p>\n\n<h3><a name=\"Context\"></a>Context</h3>\n\n<p>This issue involves verifying the accessibility of specific web pages and ensuring that test data is ready for execution. It also includes validating selectors against the live DOM.</p>\n\n<h3><a name=\"Acceptancecriteria\"></a>Acceptance criteria</h3>\n\n<ul>\n\t<li>Verify accessibility of:\n\t<ul>\n\t\t<li><a href=\"https://demoqa.com/text-box\" title=\"smart-link\" class=\"external-link\" rel=\"nofollow noreferrer\">https://demoqa.com/text-box</a></li>\n\t\t<li><a href=\"https://demoqa.com/webtables\" title=\"smart-link\" class=\"external-link\" rel=\"nofollow noreferrer\">https://demoqa.com/webtables</a></li>\n\t\t<li><a href=\"https://demoqa.com/radio-button\" title=\"smart-link\" class=\"external-link\" rel=\"nofollow noreferrer\">https://demoqa.com/radio-button</a></li>\n\t</ul>\n\t</li>\n\t<li>Extract negative test data from Validation Matrix (Excel).</li>\n\t<li>Validate selectors against live DOM:\n\t<ul>\n\t\t<li><tt>#userEmail</tt></li>\n\t\t<li><tt>#age</tt>, <tt>#salary</tt></li>\n\t\t<li><tt>#noRadio</tt></li>\n\t</ul>\n\t</li>\n\t<li>Ensure selector references are up-to-date and stable.</li>\n</ul>\n\n\n<h3><a name=\"Otherinformation\"></a>Other information</h3>\n\n<ul>\n\t<li>All target pages should be accessible.</li>\n\t<li>Test data must be prepared and ready for execution.</li>\n\t<li>Selectors need to be verified and usable for automation.</li>\n</ul>\n",
+    "fixVersions": null,
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": null,
+    "resolution": null,
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "resolutiondate": null,
+    "workratio": null,
+    "summary": null,
+    "issuerestriction": null,
+    "watches": null,
+    "lastViewed": "Thursday 1:28 PM",
+    "creator": null,
+    "subtasks": null,
+    "created": "Thursday 11:07 AM",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "reporter": null,
+    "aggregateprogress": null,
+    "priority": null,
+    "customfield_10001": null,
+    "labels": null,
+    "customfield_10016": null,
+    "environment": "",
+    "customfield_10019": null,
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": null,
+    "duedate": null,
+    "progress": null,
+    "issuelinks": null,
+    "votes": null,
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10424/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "assignee": null,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    },
+    "updated": "Thursday 1:33 PM",
+    "status": null
+  },
+  "fields": {
+    "statuscategorychangedate": "2026-04-23T11:07:34.788+0530",
+    "issuetype": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+      "id": "10002",
+      "description": "Subtasks track small pieces of work that are part of a larger task.",
+      "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+      "name": "Subtask",
+      "subtask": true,
+      "avatarId": 10316,
+      "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+      "hierarchyLevel": -1
+    },
+    "parent": {
+      "id": "10242",
+      "key": "SCRUM-70",
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242",
+      "fields": {
+        "summary": "Negative Path Validation for DemoQA Elements Module",
+        "status": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+          "description": "",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "issuetype": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10004",
+          "id": "10004",
+          "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+          "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315,
+          "entityId": "c9176d74-11b4-45b3-9f9a-d552fbb57755",
+          "hierarchyLevel": 0
+        }
+      }
+    },
+    "timespent": null,
+    "project": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/project/10000",
+      "id": "10000",
+      "key": "SCRUM",
+      "name": "Testament",
+      "projectTypeKey": "software",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408",
+        "24x24": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=small",
+        "16x16": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=xsmall",
+        "32x32": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=medium"
+      }
+    },
+    "fixVersions": [],
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "To Do"
+    },
+    "resolution": null,
+    "resolutiondate": null,
+    "workratio": -1,
+    "issuerestriction": {
+      "issuerestrictions": {},
+      "shouldDisplay": true
+    },
+    "watches": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-115/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "lastViewed": "2026-04-23T13:28:01.851+0530",
+    "created": "2026-04-23T11:07:34.138+0530",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "priority": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [],
+    "customfield_10016": null,
+    "customfield_10019": "0|i000pb:",
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": [],
+    "issuelinks": [],
+    "assignee": null,
+    "updated": "2026-04-23T13:33:09.955+0530",
+    "status": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+      "description": "",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10000",
+      "statusCategory": {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "components": [],
+    "timeoriginalestimate": null,
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "c5cd39781f82"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Summary"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Prepare test data and validate environment readiness for execution."
+            }
+          ],
+          "attrs": {
+            "localId": "5b4413d12244"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "029c703892c5"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Context"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This issue involves verifying the accessibility of specific web pages and ensuring that test data is ready for execution. It also includes validating selectors against the live DOM."
+            }
+          ],
+          "attrs": {
+            "localId": "64987e262975"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "a27bfc69a6fd"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Acceptance criteria"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "d0ae6c1c7cfa"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Verify accessibility of:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "33c2069ccf85"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "e3adc2d502da"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "inlineCard",
+                              "attrs": {
+                                "url": "https://demoqa.com/text-box",
+                                "localId": "0c82d65c8507"
+                              }
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "28666347b195"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "f3d2b5fe71b8"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "inlineCard",
+                              "attrs": {
+                                "url": "https://demoqa.com/webtables",
+                                "localId": "bea69018fe49"
+                              }
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "7835ca6512ef"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "d4d6ca5b7356"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "inlineCard",
+                              "attrs": {
+                                "url": "https://demoqa.com/radio-button",
+                                "localId": "7164549c32bb"
+                              }
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "33a3ad7aba88"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "17903f5b7435"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "3ce9d983e7b1"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Extract negative test data from Validation Matrix (Excel)."
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "3ae56bb9b0b9"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "def064b38a85"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Validate selectors against live DOM:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "af6ec88e84c1"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "f06f20b1bc6a"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "#userEmail",
+                              "marks": [
+                                {
+                                  "type": "code"
+                                }
+                              ]
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "df2e6eb9aa3d"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "814af63e4434"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "#age",
+                              "marks": [
+                                {
+                                  "type": "code"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": ", "
+                            },
+                            {
+                              "type": "text",
+                              "text": "#salary",
+                              "marks": [
+                                {
+                                  "type": "code"
+                                }
+                              ]
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "64c6c21c1a40"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "4c84276fa314"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "#noRadio",
+                              "marks": [
+                                {
+                                  "type": "code"
+                                }
+                              ]
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "18c267043178"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "d7c884c5dcc9"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "1966fbe2820b"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Ensure selector references are up-to-date and stable."
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "fc56d1d8c0b1"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "139a8b8732c2"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "07ad76d4a26c"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Other information"
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "909b52f317ce"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "All target pages should be accessible."
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "834e5f0cebc7"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "13287be1c869"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Test data must be prepared and ready for execution."
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "8e63c09589e7"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "14fdf4310450"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Selectors need to be verified and usable for automation."
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "9a515a223340"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "4cb591539fb7"
+          }
+        }
+      ]
+    },
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "summary": "Test Data Preparation & Environment Setup",
+    "creator": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "subtasks": [],
+    "reporter": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_10001": null,
+    "environment": null,
+    "duedate": null,
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "votes": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-115/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10424/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  }
+}

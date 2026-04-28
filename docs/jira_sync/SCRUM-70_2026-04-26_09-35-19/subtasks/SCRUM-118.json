@@ -1,0 +1,690 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "10430",
+  "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10430",
+  "key": "SCRUM-118",
+  "renderedFields": {
+    "statuscategorychangedate": "Thursday 11:11 AM",
+    "issuetype": null,
+    "components": null,
+    "timespent": null,
+    "timeoriginalestimate": null,
+    "project": null,
+    "description": "<h3><a name=\"Description\"></a><b>Description</b></h3>\n\n<p>Execute the complete test suite for the DemoQA Elements module and validate results against defined Acceptance Criteria.</p>\n\n<hr />\n\n<h3><a name=\"Activities\"></a><b>Activities</b></h3>\n\n<ul>\n\t<li>Execute full test suite:\n\t<ul>\n\t\t<li>Run all automated and/or manual test scenarios</li>\n\t</ul>\n\t</li>\n\t<li>Validate results:\n\t<ul>\n\t\t<li>Compare test outcomes against Acceptance Criteria (ACs)</li>\n\t\t<li>Ensure expected validation behavior is observed</li>\n\t</ul>\n\t</li>\n\t<li>Review UI behavior and logs:\n\t<ul>\n\t\t<li>Verify UI states (error indicators, modal behavior, disabled interactions)</li>\n\t\t<li>Check execution logs for anomalies or errors</li>\n\t</ul>\n\t</li>\n\t<li>Perform peer review:\n\t<ul>\n\t\t<li>Share results with QA/Team members</li>\n\t\t<li>Validate test coverage and result accuracy</li>\n\t</ul>\n\t</li>\n</ul>\n\n\n<hr />\n\n<h3><a name=\"ExpectedOutcome\"></a><b>Expected Outcome</b></h3>\n\n<ul>\n\t<li>All test cases executed successfully</li>\n\t<li>Results validated against Acceptance Criteria</li>\n\t<li>Any deviations or defects identified and documented</li>\n\t<li>Test results reviewed and approved by team</li>\n</ul>\n",
+    "fixVersions": null,
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": null,
+    "resolution": null,
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "resolutiondate": null,
+    "workratio": null,
+    "summary": null,
+    "issuerestriction": null,
+    "watches": null,
+    "lastViewed": "Thursday 1:36 PM",
+    "creator": null,
+    "subtasks": null,
+    "created": "Thursday 11:11 AM",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "reporter": null,
+    "aggregateprogress": null,
+    "priority": null,
+    "customfield_10001": null,
+    "labels": null,
+    "customfield_10016": null,
+    "environment": "",
+    "customfield_10019": null,
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": null,
+    "duedate": null,
+    "progress": null,
+    "issuelinks": null,
+    "votes": null,
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10430/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "assignee": null,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    },
+    "updated": "Thursday 1:37 PM",
+    "status": null
+  },
+  "fields": {
+    "statuscategorychangedate": "2026-04-23T11:11:51.193+0530",
+    "issuetype": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+      "id": "10002",
+      "description": "Subtasks track small pieces of work that are part of a larger task.",
+      "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+      "name": "Subtask",
+      "subtask": true,
+      "avatarId": 10316,
+      "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+      "hierarchyLevel": -1
+    },
+    "parent": {
+      "id": "10242",
+      "key": "SCRUM-70",
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242",
+      "fields": {
+        "summary": "Negative Path Validation for DemoQA Elements Module",
+        "status": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+          "description": "",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "issuetype": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10004",
+          "id": "10004",
+          "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+          "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315,
+          "entityId": "c9176d74-11b4-45b3-9f9a-d552fbb57755",
+          "hierarchyLevel": 0
+        }
+      }
+    },
+    "timespent": null,
+    "project": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/project/10000",
+      "id": "10000",
+      "key": "SCRUM",
+      "name": "Testament",
+      "projectTypeKey": "software",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408",
+        "24x24": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=small",
+        "16x16": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=xsmall",
+        "32x32": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=medium"
+      }
+    },
+    "fixVersions": [],
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "To Do"
+    },
+    "resolution": null,
+    "resolutiondate": null,
+    "workratio": -1,
+    "issuerestriction": {
+      "issuerestrictions": {},
+      "shouldDisplay": true
+    },
+    "watches": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-118/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "lastViewed": "2026-04-23T13:36:37.979+0530",
+    "created": "2026-04-23T11:11:50.592+0530",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "priority": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [],
+    "customfield_10016": null,
+    "customfield_10019": "0|i000pz:",
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": [],
+    "issuelinks": [],
+    "assignee": null,
+    "updated": "2026-04-23T13:37:18.032+0530",
+    "status": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+      "description": "",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10000",
+      "statusCategory": {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "components": [],
+    "timeoriginalestimate": null,
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "c9d65862386c"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Description",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Execute the complete test suite for the DemoQA Elements module and validate results against defined Acceptance Criteria."
+            }
+          ],
+          "attrs": {
+            "localId": "e845a74a1fef"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "c0ee82411d8a"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "332d13013dcd"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Activities",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "9a44eacb3a23"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Execute full test suite:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "fc83ae76a274"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "4abae668a77b"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Run all automated and/or manual test scenarios"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "7fbc965bccf5"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "9bce58812cfa"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "78917ceb6808"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Validate results:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "260bf5d49b21"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "166042cf3786"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Compare test outcomes against Acceptance Criteria (ACs)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "cb86a766ce4e"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "85308ec21610"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Ensure expected validation behavior is observed"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "8028f863285b"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "0de5b2ad8494"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "7e81defb537f"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Review UI behavior and logs:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "cda431acda30"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "f67dff38c6dc"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Verify UI states (error indicators, modal behavior, disabled interactions)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "2b1a31d89601"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "602903f1382b"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Check execution logs for anomalies or errors"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "93e3d1e28a02"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "65877457e4d7"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "80dfc0d8a848"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Perform peer review:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "ce81619ea0ac"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "2a395e8603b8"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Share results with QA/Team members"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "dae38a510956"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "bf366bd33260"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Validate test coverage and result accuracy"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "d01a7d2108ef"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "76730186662e"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "a1a1426303b1"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "67737300225b"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "ed5a4a03b1a0"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Expected Outcome",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "380f5835e198"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "All test cases executed successfully"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "a3c017042749"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "2d5fa1311f57"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Results validated against Acceptance Criteria"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "76309ea6d96a"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "f56ddfa83dcd"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Any deviations or defects identified and documented"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "b2c47b2b6cbe"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "e971087a1668"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Test results reviewed and approved by team"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "45f807644179"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "fd7acd9801eb"
+          }
+        }
+      ]
+    },
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "summary": "Execution & Review",
+    "creator": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "subtasks": [],
+    "reporter": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_10001": null,
+    "environment": null,
+    "duedate": null,
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "votes": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-118/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10430/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  }
+}

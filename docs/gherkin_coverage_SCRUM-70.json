@@ -1,0 +1,53 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-26T19:46:11.549933",
+  "summary": {
+    "total_kb_signals": 38,
+    "total_acs_extracted": 16,
+    "scenarios_written": 16,
+    "scenario_outlines": 0,
+    "todo_placeholders": 0,
+    "acs_covered": 16,
+    "acs_missing": 0,
+    "ac_coverage_pct": 100.0,
+    "signal_coverage_pct": 42.1
+  },
+  "breakdown_by_test_type": {
+    "negative": 8,
+    "positive": 8
+  },
+  "breakdown_by_source": {
+    "acceptance_criteria": 4,
+    "subtask": 4,
+    "validation": 8
+  },
+  "breakdown_by_priority": {
+    "high": 16
+  },
+  "covered_ac_ids": [
+    "AC1",
+    "AC2",
+    "AC3",
+    "AC4",
+    "AC5",
+    "AC6",
+    "AC7",
+    "AC8",
+    "AC9",
+    "AC10",
+    "AC11",
+    "AC12",
+    "AC13",
+    "AC14",
+    "AC15",
+    "AC16"
+  ],
+  "missing_coverage": [],
+  "kb_signals": {
+    "acceptance_criteria_blocks": 19,
+    "subtasks": 4,
+    "validation_rules": 9,
+    "attachment_rows": 5,
+    "negative_scenario_blocks": 1
+  }
+}

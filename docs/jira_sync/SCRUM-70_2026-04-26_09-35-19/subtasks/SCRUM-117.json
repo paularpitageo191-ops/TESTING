@@ -1,0 +1,779 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "10428",
+  "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10428",
+  "key": "SCRUM-117",
+  "renderedFields": {
+    "statuscategorychangedate": "Thursday 11:10 AM",
+    "issuetype": null,
+    "components": null,
+    "timespent": null,
+    "timeoriginalestimate": null,
+    "project": null,
+    "description": "<h3><a name=\"Description\"></a><b>Description</b></h3>\n\n<p>Validate application behavior against expected outcomes and document test execution results for negative-path scenarios.</p>\n\n<hr />\n\n<h3><a name=\"Activities\"></a><b>Activities</b></h3>\n\n<ul>\n\t<li>Capture validation states:\n\t<ul>\n\t\t<li>Verify UI behavior for invalid inputs (e.g., error states, blocked submission)</li>\n\t</ul>\n\t</li>\n\t<li>Capture screenshots:\n\t<ul>\n\t\t<li>Record screenshots for all failed or unexpected scenarios</li>\n\t\t<li>Include visual evidence of UI behavior (error states, modal persistence, etc.)</li>\n\t</ul>\n\t</li>\n\t<li>Log results:\n\t<ul>\n\t\t<li>Document <b>Expected vs Actual</b> behavior for each test case</li>\n\t\t<li>Record results in test report or execution logs</li>\n\t</ul>\n\t</li>\n\t<li>Classify outcomes:\n\t<ul>\n\t\t<li>Mark results as:\n\t\t<ul>\n\t\t\t<li>Expected validation (PASS)</li>\n\t\t\t<li>Unexpected behavior (FAIL)</li>\n\t\t</ul>\n\t\t</li>\n\t\t<li>Ensure correct categorization of validation vs system errors</li>\n\t</ul>\n\t</li>\n</ul>\n\n\n<hr />\n\n<h3><a name=\"ExpectedOutcome\"></a><b>Expected Outcome</b></h3>\n\n<ul>\n\t<li>All test scenarios have:\n\t<ul>\n\t\t<li>Documented results</li>\n\t\t<li>Supporting screenshots (where applicable)</li>\n\t\t<li>Clear classification (pass/fail)</li>\n\t</ul>\n\t</li>\n\t<li>Test execution is fully traceable and reviewable</li>\n</ul>\n",
+    "fixVersions": null,
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": null,
+    "resolution": null,
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "resolutiondate": null,
+    "workratio": null,
+    "summary": null,
+    "issuerestriction": null,
+    "watches": null,
+    "lastViewed": "Thursday 1:35 PM",
+    "creator": null,
+    "subtasks": null,
+    "created": "Thursday 11:10 AM",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "reporter": null,
+    "aggregateprogress": null,
+    "priority": null,
+    "customfield_10001": null,
+    "labels": null,
+    "customfield_10016": null,
+    "environment": "",
+    "customfield_10019": null,
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": null,
+    "duedate": null,
+    "progress": null,
+    "issuelinks": null,
+    "votes": null,
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10428/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "assignee": null,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    },
+    "updated": "Thursday 1:36 PM",
+    "status": null
+  },
+  "fields": {
+    "statuscategorychangedate": "2026-04-23T11:10:37.550+0530",
+    "issuetype": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10002",
+      "id": "10002",
+      "description": "Subtasks track small pieces of work that are part of a larger task.",
+      "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+      "name": "Subtask",
+      "subtask": true,
+      "avatarId": 10316,
+      "entityId": "26ce0da8-b829-464e-be2a-5cb69838dc8c",
+      "hierarchyLevel": -1
+    },
+    "parent": {
+      "id": "10242",
+      "key": "SCRUM-70",
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10242",
+      "fields": {
+        "summary": "Negative Path Validation for DemoQA Elements Module",
+        "status": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+          "description": "",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+          "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "issuetype": {
+          "self": "https://paularpitaseis.atlassian.net/rest/api/3/issuetype/10004",
+          "id": "10004",
+          "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+          "iconUrl": "https://paularpitaseis.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315,
+          "entityId": "c9176d74-11b4-45b3-9f9a-d552fbb57755",
+          "hierarchyLevel": 0
+        }
+      }
+    },
+    "timespent": null,
+    "project": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/project/10000",
+      "id": "10000",
+      "key": "SCRUM",
+      "name": "Testament",
+      "projectTypeKey": "software",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408",
+        "24x24": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=small",
+        "16x16": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=xsmall",
+        "32x32": "https://paularpitaseis.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10408?size=medium"
+      }
+    },
+    "fixVersions": [],
+    "customfield_10033": null,
+    "aggregatetimespent": null,
+    "statusCategory": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "To Do"
+    },
+    "resolution": null,
+    "resolutiondate": null,
+    "workratio": -1,
+    "issuerestriction": {
+      "issuerestrictions": {},
+      "shouldDisplay": true
+    },
+    "watches": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-117/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "lastViewed": "2026-04-23T13:35:31.302+0530",
+    "created": "2026-04-23T11:10:37.039+0530",
+    "customfield_10020": null,
+    "customfield_10021": null,
+    "priority": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "labels": [],
+    "customfield_10016": null,
+    "customfield_10019": "0|i000pr:",
+    "timeestimate": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": [],
+    "issuelinks": [],
+    "assignee": null,
+    "updated": "2026-04-23T13:36:16.492+0530",
+    "status": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/status/10000",
+      "description": "",
+      "iconUrl": "https://paularpitaseis.atlassian.net/images/icons/statuses/generic.png",
+      "name": "To Do",
+      "id": "10000",
+      "statusCategory": {
+        "self": "https://paularpitaseis.atlassian.net/rest/api/3/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+      }
+    },
+    "components": [],
+    "timeoriginalestimate": null,
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "0253c4c35cf1"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Description",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Validate application behavior against expected outcomes and document test execution results for negative-path scenarios."
+            }
+          ],
+          "attrs": {
+            "localId": "e55fe6bdb0bf"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "6711c5883f58"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "25b1bad0a417"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Activities",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "e983e4a4d950"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Capture validation states:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "6e6460d0bab5"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "46afd2369ee5"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Verify UI behavior for invalid inputs (e.g., error states, blocked submission)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "417d65f41da3"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "2e350892aabe"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "a63081c06574"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Capture screenshots:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "fb90724b57e5"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "f0337bdf7a6e"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Record screenshots for all failed or unexpected scenarios"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "cf2f92c9d532"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "db4a2645b5c5"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Include visual evidence of UI behavior (error states, modal persistence, etc.)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "20634413c353"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "4762ec2a50f4"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "71c4d106e816"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Log results:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "33b029c89355"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "b812d351929d"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Document "
+                            },
+                            {
+                              "type": "text",
+                              "text": "Expected vs Actual",
+                              "marks": [
+                                {
+                                  "type": "strong"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "text": " behavior for each test case"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "77b46276b223"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "ae4dc6b84e79"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Record results in test report or execution logs"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "17312be07911"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "90b0c9956cae"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "65c33fab94bd"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Classify outcomes:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "75ce7ff757c3"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "433e8aea5847"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Mark results as:"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "50659f05d4bb"
+                          }
+                        },
+                        {
+                          "type": "bulletList",
+                          "content": [
+                            {
+                              "type": "listItem",
+                              "attrs": {
+                                "localId": "c754d8e7a9ef"
+                              },
+                              "content": [
+                                {
+                                  "type": "paragraph",
+                                  "content": [
+                                    {
+                                      "type": "text",
+                                      "text": "Expected validation (PASS)"
+                                    }
+                                  ],
+                                  "attrs": {
+                                    "localId": "d601d2fe773f"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "listItem",
+                              "attrs": {
+                                "localId": "e9a113c9bc00"
+                              },
+                              "content": [
+                                {
+                                  "type": "paragraph",
+                                  "content": [
+                                    {
+                                      "type": "text",
+                                      "text": "Unexpected behavior (FAIL)"
+                                    }
+                                  ],
+                                  "attrs": {
+                                    "localId": "3a9d87b2b452"
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "cd1925063f0b"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "a6247639411e"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Ensure correct categorization of validation vs system errors"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "743840f4b5ed"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "9bc7a84d69c5"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "171749975de0"
+          }
+        },
+        {
+          "type": "rule",
+          "attrs": {
+            "localId": "d94f0bd67913"
+          }
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3,
+            "localId": "e26dde87ad3f"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Expected Outcome",
+              "marks": [
+                {
+                  "type": "strong"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "bulletList",
+          "content": [
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "2fc7ddead8aa"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "All test scenarios have:"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "7b934e9b9345"
+                  }
+                },
+                {
+                  "type": "bulletList",
+                  "content": [
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "689148b24aae"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Documented results"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "90e6c3caf562"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "f4ea0d16299d"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Supporting screenshots (where applicable)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "1263acb773b1"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "listItem",
+                      "attrs": {
+                        "localId": "d880b19dab66"
+                      },
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Clear classification (pass/fail)"
+                            }
+                          ],
+                          "attrs": {
+                            "localId": "7b2d6ffeb313"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "7f7562a334c9"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "attrs": {
+                "localId": "fe7e370bf378"
+              },
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Test execution is fully traceable and reviewable"
+                    }
+                  ],
+                  "attrs": {
+                    "localId": "78dd316b6b0f"
+                  }
+                }
+              ]
+            }
+          ],
+          "attrs": {
+            "localId": "1556828e2f49"
+          }
+        }
+      ]
+    },
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "summary": "Validation & Reporting Setup",
+    "creator": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "subtasks": [],
+    "reporter": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/user?accountId=712020%3A5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "accountId": "712020:5cf8182f-cfd3-496b-921e-31310ff97ede",
+      "emailAddress": "paularpitaseis@gmail.com",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "24x24": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "16x16": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png",
+        "32x32": "https://secure.gravatar.com/avatar/56737ec2bc232229dd11ad1b95751e94?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAP-1.png"
+      },
+      "displayName": "Arpita Paul",
+      "active": true,
+      "timeZone": "Asia/Calcutta",
+      "accountType": "atlassian"
+    },
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_10001": null,
+    "environment": null,
+    "duedate": null,
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "votes": {
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/SCRUM-117/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://paularpitaseis.atlassian.net/rest/api/3/issue/10428/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  }
+}

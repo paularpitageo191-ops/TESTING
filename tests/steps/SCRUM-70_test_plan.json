@@ -1,0 +1,282 @@
+{
+  "project_key": "SCRUM-70",
+  "generated_at": "2026-04-28T10:42:07.768789",
+  "budget_s": 1200.0,
+  "top_n": null,
+  "total_tests": 16,
+  "est_total_s": 480.0,
+  "ordered_tests": [
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Email Validation @SCRUM-70 @negative @AC2 @SCRUM_70",
+      "grep_tag": "AC2",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC2",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Web Tables Validation @SCRUM-70 @positive @AC3 @SCRUM_70",
+      "grep_tag": "AC3",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC3",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70",
+      "grep_tag": "AC4",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC4",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "UI Stability @SCRUM-70 @negative @AC5 @SCRUM_116",
+      "grep_tag": "AC5",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC5",
+        "SCRUM_116"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Invalid email behavior @SCRUM-70 @positive @AC6 @SCRUM_116",
+      "grep_tag": "AC6",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC6",
+        "SCRUM_116"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115",
+      "grep_tag": "AC7",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC7",
+        "SCRUM_115"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Access to web pages @SCRUM-70 @positive @AC8 @SCRUM_115",
+      "grep_tag": "AC8",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC8",
+        "SCRUM_115"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Selectors against live DOM @SCRUM-70 @positive @AC9 @SCRUM_70",
+      "grep_tag": "AC9",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC9",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Valid email format @SCRUM-70 @negative @AC10 @SCRUM_70",
+      "grep_tag": "AC10",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC10",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Invalid email format (missing @) @SCRUM-70 @negative @AC11 @SCRUM_70",
+      "grep_tag": "AC11",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC11",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Invalid email format (missing TLD) @SCRUM-70 @negative @AC12 @SCRUM_70",
+      "grep_tag": "AC12",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC12",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Empty email input @SCRUM-70 @positive @AC13 @SCRUM_70",
+      "grep_tag": "AC13",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC13",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Valid age input (numeric value) @SCRUM-70 @negative @AC14 @SCRUM_70",
+      "grep_tag": "AC14",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC14",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70",
+      "grep_tag": "AC15",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC15",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70",
+      "grep_tag": "AC16",
+      "ac_tags": [
+        "SCRUM-70",
+        "AC16",
+        "SCRUM_70"
+      ],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    },
+    {
+      "rank": 1,
+      "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+      "test_title": "Non-numeric salary input (abc)",
+      "grep_tag": "",
+      "ac_tags": [],
+      "composite": 0.28,
+      "change_impact": 0.1,
+      "fail_rate": 0.5,
+      "criticality": 0.2,
+      "est_duration_s": 30.0
+    }
+  ],
+  "grep_tags": [
+    "AC2",
+    "AC3",
+    "AC4",
+    "AC5",
+    "AC6",
+    "AC7",
+    "AC8",
+    "AC9",
+    "AC10",
+    "AC11",
+    "AC12",
+    "AC13",
+    "AC14",
+    "AC15",
+    "AC16"
+  ],
+  "spec_files": [
+    "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts"
+  ]
+}

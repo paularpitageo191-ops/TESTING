@@ -1,0 +1,37 @@
+[
+  {
+    "author": "Arpita Paul",
+    "body": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "All automated specs generated in Sub-task 2 must include a "
+            },
+            {
+              "type": "text",
+              "text": "@traceability",
+              "marks": [
+                {
+                  "type": "code"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " tag in the Gherkin file linking back to the Requirement ID in the attached FRD. This ensures that if the 'Age' validation logic changes in the FRD, we can immediately identify which scripts need updating."
+            }
+          ],
+          "attrs": {
+            "localId": "8873196dc508"
+          }
+        }
+      ]
+    },
+    "created": "2026-04-23T11:26:04.062+0530"
+  }
+]

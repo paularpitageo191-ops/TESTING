@@ -1,0 +1,12 @@
+[
+  {
+    "project_key": "SCRUM-70",
+    "spec_file": "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts",
+    "ac_tags": "AC14,AC8,AC9,AC16,AC13,SCRUM-70,SCRUM_115,AC15,AC5,AC10,SCRUM_70,AC7,SCRUM_116,AC3,AC2,AC4,AC11,AC12,AC6",
+    "change_impact": 0.1,
+    "fail_rate": 0.5,
+    "criticality": 0.2,
+    "composite": 0.28,
+    "scored_at": "2026-04-28T10:40:59.534514"
+  }
+]

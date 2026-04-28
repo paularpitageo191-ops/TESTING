@@ -1,0 +1,51 @@
+[
+  {
+    "key": "SCRUM-70",
+    "summary": "Negative Path Validation for DemoQA Elements Module",
+    "description": "As a QA Engineer,\n\nI want to validate negative scenarios in the Elements module,\n\nso that invalid inputs are handled correctly and the UI remains stable under edge conditions.\n\n\nTarget Application:\n\n\n  \n\n\u2705 \nAcceptance Criteria\n\nAC1 \u2013 Email Validation\nInvalid email input triggers validation error on \n#userEmail\nOutput section (\n#output\n) is not displayed for invalid input\n\nAC2 \u2013 Web Tables Validation\nNon-numeric values in Age/Salary fields block submission\nRegistration modal remains open on validation failure\n\nAC3 \u2013 Radio Button Validation\n\u201cNo\u201d option (\n#noRadio\n) remains disabled\nClicking the option does not trigger any state change\n\nAC4 \u2013 UI Stability\nUI remains stable under obstruction (e.g., overlays)\nElements remain interactable via scroll/visibility handling\n\n\ud83d\udcf8 \nUI Validation Reference\nAnnotated screenshots have been attached to illustrate expected UI behavior for each validation scenario.\nThe screenshots cover:\nText Box Validation\nInvalid email \u2192 validation error, no output displayed\nValid input \u2192 output section rendered\nWeb Tables Validation\nInvalid numeric input \u2192 submission blocked, modal remains open\nRadio Button Behavior\nDisabled option \u2192 no interaction or state change\nThese screenshots serve as \nvisual references for expected behavior\n and should be used during test execution to verify UI responses.\n\n\ud83e\uddea \nTest Data\nInvalid email formats (e.g., \ntest@domain\n, missing TLD)\nNon-numeric values for numeric fields (e.g., \nabc\n, \n12ab\n)\nEmpty/null inputs\n\n\ud83c\udfaf \nNotes\nScreenshots are provided as \nreference (expected behavior)\nDuring execution, actual results should be validated against Acceptance Criteria\nAny deviation should be logged as a defect with supporting evidence",
+    "acceptance_criteria": "AC1 \u2013 Email Validation: Invalid email input triggers validation error on #userEmail Output section (#output) is not displayed for invalid input\n\nAC2 \u2013 Web Tables Validation: Non-numeric values in Age/Salary fields block submission Registration modal remains open on validation failure\n\nAC3 \u2013 Radio Button Validation: \u201cNo\u201d option (#noRadio) remains disabled Clicking the option does not trigger any state change\n\nAC4 \u2013 UI Stability: UI remains stable under obstruction (e.g., overlays) Elements remain interactable via scroll/visibility handling",
+    "project_key": "SCRUM-70",
+    "epic": {
+      "key": "SCRUM-36",
+      "summary": "Automation & Negative Path Validation \u2013 DemoQA Elements Module",
+      "description": "Description\nThis Epic covers validation of the \nElements module on DemoQA Elements\n using automated UI testing.\nTarget Application:\n\n\n \n\nThe goal is to ensure:\nInput validation works correctly\nInvalid data is blocked\nUI behavior remains stable under edge conditions\n\nScope\nIn Scope\nText Box\nWeb Tables\nRadio Button\nOut of Scope\nBackend validation\nOther modules\n\nSuccess Criteria\nAll negative scenarios behave as expected\nNo UI crashes or inconsistent states\nValidation errors are correctly displayed",
+      "status": "To Do",
+      "epic_name": "Automation & Negative Path Validation \u2013 DemoQA Elements Module",
+      "epic_goal": ""
+    },
+    "subtasks": [
+      {
+        "key": "SCRUM-115",
+        "summary": "Test Data Preparation & Environment Setup",
+        "description": "Summary\nPrepare test data and validate environment readiness for execution.\nContext\nThis issue involves verifying the accessibility of specific web pages and ensuring that test data is ready for execution. It also includes validating selectors against the live DOM.\nAcceptance criteria\nVerify accessibility of:\n\n\n\nExtract negative test data from Validation Matrix (Excel).\nValidate selectors against live DOM:\n#userEmail\n#age\n, \n#salary\n#noRadio\nEnsure selector references are up-to-date and stable.\nOther information\nAll target pages should be accessible.\nTest data must be prepared and ready for execution.\nSelectors need to be verified and usable for automation.",
+        "status": "To Do"
+      },
+      {
+        "key": "SCRUM-116",
+        "summary": "Automated Test Script Development",
+        "description": "Develop automated UI test scripts to validate negative-path scenarios across the DemoQA Elements module.\n\nScope / Activities\nImplement Text Box validation:\nUse selector \n#userEmail\nVerify invalid email behavior (no \n#output\n rendered)\nAutomate Web Tables modal interaction:\nOpen modal using \n#addNewRecordButton\nValidate submission is blocked for invalid inputs (\n#age\n, \n#salary\n)\nValidate Radio Button behavior:\nVerify disabled state of \n#noRadio\nEnsure no state change or success message is triggered\nHandle overlay and visibility conditions:\nEnsure elements are interactable (scroll into view if required)\nImplement retry/visibility handling to avoid flaky execution\n\nExpected Outcome\nTest scripts successfully validate all negative scenarios\nScripts are stable and executable without manual intervention\nUI behaviors match defined Acceptance Criteria",
+        "status": "To Do"
+      },
+      {
+        "key": "SCRUM-117",
+        "summary": "Validation & Reporting Setup",
+        "description": "Description\nValidate application behavior against expected outcomes and document test execution results for negative-path scenarios.\n\nActivities\nCapture validation states:\nVerify UI behavior for invalid inputs (e.g., error states, blocked submission)\nCapture screenshots:\nRecord screenshots for all failed or unexpected scenarios\nInclude visual evidence of UI behavior (error states, modal persistence, etc.)\nLog results:\nDocument \nExpected vs Actual\n behavior for each test case\nRecord results in test report or execution logs\nClassify outcomes:\nMark results as:\nExpected validation (PASS)\nUnexpected behavior (FAIL)\nEnsure correct categorization of validation vs system errors\n\nExpected Outcome\nAll test scenarios have:\nDocumented results\nSupporting screenshots (where applicable)\nClear classification (pass/fail)\nTest execution is fully traceable and reviewable",
+        "status": "To Do"
+      },
+      {
+        "key": "SCRUM-118",
+        "summary": "Execution & Review",
+        "description": "Description\nExecute the complete test suite for the DemoQA Elements module and validate results against defined Acceptance Criteria.\n\nActivities\nExecute full test suite:\nRun all automated and/or manual test scenarios\nValidate results:\nCompare test outcomes against Acceptance Criteria (ACs)\nEnsure expected validation behavior is observed\nReview UI behavior and logs:\nVerify UI states (error indicators, modal behavior, disabled interactions)\nCheck execution logs for anomalies or errors\nPerform peer review:\nShare results with QA/Team members\nValidate test coverage and result accuracy\n\nExpected Outcome\nAll test cases executed successfully\nResults validated against Acceptance Criteria\nAny deviations or defects identified and documented\nTest results reviewed and approved by team",
+        "status": "To Do"
+      }
+    ],
+    "comments": [
+      {
+        "issue": "SCRUM-36",
+        "author": "Arpita Paul",
+        "body": "All automated specs generated in Sub-task 2 must include a \n@traceability\n tag in the Gherkin file linking back to the Requirement ID in the attached FRD. This ensures that if the 'Age' validation logic changes in the FRD, we can immediately identify which scripts need updating.",
+        "created": "2026-04-23T11:26:04.062+0530"
+      }
+    ]
+  }
+]

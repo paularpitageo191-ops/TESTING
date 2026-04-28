@@ -1,0 +1,28 @@
+{
+  "run_id": "SCRUM-70-20260428104714-d6ae1b",
+  "project_key": "SCRUM-70",
+  "pw_command": "npx playwright test tests/steps/SCRUM-70.spec.ts --grep \"AC2|AC3|AC4|AC5|AC6|AC7|AC8|AC9|AC10|AC11|AC12|AC13|AC14|AC15|AC16\" --project=chromium --reporter=json",
+  "generated_at": "2026-04-28T10:47:14.956432",
+  "total_tests": 16,
+  "est_total_s": 480.0,
+  "grep_tags": [
+    "AC2",
+    "AC3",
+    "AC4",
+    "AC5",
+    "AC6",
+    "AC7",
+    "AC8",
+    "AC9",
+    "AC10",
+    "AC11",
+    "AC12",
+    "AC13",
+    "AC14",
+    "AC15",
+    "AC16"
+  ],
+  "spec_files": [
+    "/Users/arpitapaul/Documents/Testing_Special_Agents/tests/steps/SCRUM-70.spec.ts"
+  ]
+}
