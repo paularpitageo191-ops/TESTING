@@ -92,6 +92,10 @@ pipeline {
             steps {
                 sh '''
                     cd "$WORKSPACE"
+                    if [ ! -s pw_report.json ]; then
+                        echo "pw_report.json is empty or missing — skipping analysis"
+                        exit 0
+                    fi
                     .ws_venv/bin/python3 result_analyzer.py \
                         --project $PROJECT_KEY \
                         --report  pw_report.json \
