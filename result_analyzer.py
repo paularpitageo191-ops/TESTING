@@ -211,6 +211,8 @@ def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
         cmd,
         cwd=PROJECT_ROOT,
         env=os.environ.copy(),
+        stdout=sys.stdout,
+        stderr=sys.stderr,
         check=True
     )
     except FileNotFoundError:
