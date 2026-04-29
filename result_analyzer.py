@@ -182,41 +182,41 @@ def persist_results(
 # §3  HAND-OFF TO CLASSIFIER
 # ══════════════════════════════════════════════════════════════════════════════
 
-def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
-    """
-    Trigger classifier.py as a subprocess for each failed test.
+# def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
+#     """
+#     Trigger classifier.py as a subprocess for each failed test.
  
-    KEY FIX: pass env=os.environ.copy() so that Jenkins environment
-    variables (QDRANT_URL, OLLAMA_HOST) are inherited by the subprocess.
-    Without this, the child process loses those vars and falls back to
-    localhost, causing connection refused errors in Docker.
-    """
-    cmd = [
-        sys.executable, "classifier.py",
-        "--project", project_key,
-        "--run-id",  run_id,
-        "--db",      db_path,
-    ]
-    print(f"  → Handing off to classifier: {' '.join(cmd)}")
+#     KEY FIX: pass env=os.environ.copy() so that Jenkins environment
+#     variables (QDRANT_URL, OLLAMA_HOST) are inherited by the subprocess.
+#     Without this, the child process loses those vars and falls back to
+#     localhost, causing connection refused errors in Docker.
+#     """
+#     cmd = [
+#         sys.executable, "classifier.py",
+#         "--project", project_key,
+#         "--run-id",  run_id,
+#         "--db",      db_path,
+#     ]
+#     print(f"  → Handing off to classifier: {' '.join(cmd)}")
 
-    try:
-        # subprocess.Popen(
-        #     cmd,
-        #     cwd=PROJECT_ROOT,
-        #     env=os.environ.copy(),   # inherits QDRANT_URL, OLLAMA_HOST
-        #     stdout=sys.stdout,       # 👈 stream logs to Jenkins
-        #     stderr=sys.stderr        # 👈 stream errors to Jenkins
-        # )
-      subprocess.run(
-        cmd,
-        cwd=PROJECT_ROOT,
-        env=os.environ.copy(),
-        stdout=sys.stdout,
-        stderr=sys.stderr,
-        check=True
-    )
-    except FileNotFoundError:
-        print("  ⚠ classifier.py not found — skipping handoff")
+#     try:
+#         # subprocess.Popen(
+#         #     cmd,
+#         #     cwd=PROJECT_ROOT,
+#         #     env=os.environ.copy(),   # inherits QDRANT_URL, OLLAMA_HOST
+#         #     stdout=sys.stdout,       # 👈 stream logs to Jenkins
+#         #     stderr=sys.stderr        # 👈 stream errors to Jenkins
+#         # )
+#       subprocess.run(
+#         cmd,
+#         cwd=PROJECT_ROOT,
+#         env=os.environ.copy(),
+#         stdout=sys.stdout,
+#         stderr=sys.stderr,
+#         check=True
+#     )
+#     except FileNotFoundError:
+#         print("  ⚠ classifier.py not found — skipping handoff")
 # ══════════════════════════════════════════════════════════════════════════════
 # §4  MAIN
 # ══════════════════════════════════════════════════════════════════════════════
@@ -254,8 +254,8 @@ def main() -> None:
     failed = [r for r in records if r["status"] == "failed"]
     print(f"  Failures to classify: {len(failed)}")
 
-    if failed and not args.no_classify:
-        invoke_classifier(project_key, run_id, args.db)
+    # if failed and not args.no_classify:
+    #     invoke_classifier(project_key, run_id, args.db)
 
     print(f"\n{'='*60}")
     print(f"✓ Result Analyzer complete — run_id: {run_id}")
