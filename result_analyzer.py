@@ -24,7 +24,7 @@ import argparse
 import datetime
 import subprocess
 from typing import Dict, List, Optional, Tuple
-
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -184,7 +184,7 @@ def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
     In production this would be async / queued.
     """
     cmd = [
-        "python3", "classifier.py",
+        sys.executable, "classifier.py",
         "--project", project_key,
         "--run-id",  run_id,
         "--db",      db_path,
