@@ -200,13 +200,19 @@ def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
     print(f"  → Handing off to classifier: {' '.join(cmd)}")
 
     try:
-        subprocess.Popen(
-            cmd,
-            cwd=PROJECT_ROOT,
-            env=os.environ.copy(),   # inherits QDRANT_URL, OLLAMA_HOST
-            stdout=sys.stdout,       # 👈 stream logs to Jenkins
-            stderr=sys.stderr        # 👈 stream errors to Jenkins
-        )
+        # subprocess.Popen(
+        #     cmd,
+        #     cwd=PROJECT_ROOT,
+        #     env=os.environ.copy(),   # inherits QDRANT_URL, OLLAMA_HOST
+        #     stdout=sys.stdout,       # 👈 stream logs to Jenkins
+        #     stderr=sys.stderr        # 👈 stream errors to Jenkins
+        # )
+      subprocess.run(
+        cmd,
+        cwd=PROJECT_ROOT,
+        env=os.environ.copy(),
+        check=True
+    )
     except FileNotFoundError:
         print("  ⚠ classifier.py not found — skipping handoff")
 # ══════════════════════════════════════════════════════════════════════════════
