@@ -16,6 +16,9 @@ venv/
 
 .DS_Store
 node_modules/
+failure_history.sqlite
+failure_history.sqlite-shm
+failure_history.sqlite-wal
 # Logs
 
 *.log
