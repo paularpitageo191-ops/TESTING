@@ -8,18 +8,17 @@ import json
 import glob
 import sqlite3
 import argparse
-import subprocess
 import datetime
 import time
 import uuid
 import requests
 from typing import Dict, List, Optional, Tuple
 from dotenv import load_dotenv
-from agent_config import call_llm, embed, log_agent_config
+from agent_config import embed, log_agent_config
 
 load_dotenv()
 
-AGENT_NAME = "selector_healer_v1"
+AGENT_NAME = "selector_healer_v2"
 
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
 DEFAULT_DB = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure_history.sqlite")
@@ -37,6 +36,64 @@ def safe_embed(text: str, retries: int = 3):
         except Exception:
             time.sleep(1)
     return None
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SELECTOR VALIDATION ENGINE
+# ══════════════════════════════════════════════════════════════════════════════
+
+def is_valid_selector(selector: str) -> bool:
+    if not selector:
+        return False
+    if "TODO" in selector:
+        return False
+    if selector.strip().startswith("/*"):
+        return False
+    if len(selector) > 200:
+        return False
+
+    # basic CSS sanity
+    invalid_patterns = [";;", "///", "\\\\"]
+    if any(p in selector for p in invalid_patterns):
+        return False
+
+    return True
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# LIGHT DOM-AWARE HEURISTIC (SAFE)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def estimate_selector_quality(selector: str) -> float:
+    score = 0.0
+
+    if selector.startswith("#"):
+        score += 0.5
+    elif selector.startswith("."):
+        score += 0.3
+
+    if "[" in selector and "]" in selector:
+        score += 0.2
+
+    if "nth-child" in selector:
+        score -= 0.2  # fragile
+
+    return max(0.0, min(score, 1.0))
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CONFIDENCE SCORING
+# ══════════════════════════════════════════════════════════════════════════════
+
+def compute_confidence(old_sel: str, new_sel: str) -> float:
+    score = 0.0
+
+    if old_sel and old_sel in new_sel:
+        score += 0.2
+
+    score += estimate_selector_quality(new_sel)
+
+    return round(min(score, 1.0), 2)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -64,6 +121,7 @@ def _search_healing_memory(project_key: str, old_selector: str) -> Optional[str]
         if not results:
             return None
 
+        # prioritize validated + high score
         candidates = sorted(
             results,
             key=lambda x: (
@@ -76,11 +134,8 @@ def _search_healing_memory(project_key: str, old_selector: str) -> Optional[str]
         best = candidates[0]["payload"]
 
         if best.get("validated") == 0:
-            print("  ⚠ Known bad fix — skipping")
+            print("    ⚠ Skipping known bad fix")
             return None
-
-        if best.get("validated") is None:
-            print("  ⚠ Using unvalidated fix")
 
         return best.get("new_selector")
 
@@ -140,7 +195,7 @@ def build_direct_replacement_map(diff: Dict) -> Dict[str, str]:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PATCH FILE
+# PATCH FILE (SAFE HEALING)
 # ══════════════════════════════════════════════════════════════════════════════
 
 def patch_spec_file(
@@ -158,14 +213,25 @@ def patch_spec_file(
 
     for old_sel, new_sel in replacements.items():
 
-        # 🔥 memory reuse
+        # 🔁 MEMORY FIRST
         try:
             memory_fix = _search_healing_memory(project_key, old_sel)
             if memory_fix and memory_fix != old_sel:
-                print(f"  🧠 Reusing learned fix: {old_sel} → {memory_fix}")
+                print(f"    🧠 Reusing learned fix: {old_sel} → {memory_fix}")
                 new_sel = memory_fix
         except Exception:
             pass
+
+        # 🚫 VALIDATION
+        if not is_valid_selector(new_sel):
+            print(f"    ⚠ Invalid selector skipped: {new_sel}")
+            continue
+
+        confidence = compute_confidence(old_sel, new_sel)
+
+        if confidence < 0.5:
+            print(f"    ⚠ Low confidence skipped: {new_sel} ({confidence})")
+            continue
 
         if old_sel not in content:
             continue
@@ -183,6 +249,7 @@ def patch_spec_file(
             )
 
             if new_content != content:
+                print(f"    ✓ Healing {old_sel} → {new_sel} (conf={confidence})")
                 count += 1
                 content = new_content
                 heals.append((old_sel, new_sel))
@@ -197,7 +264,7 @@ def patch_spec_file(
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# LOG HEALS + LEARNING
+# LOG + LEARNING
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _log_heals(
@@ -236,7 +303,7 @@ def _log_heals(
             payload = {
                 "old_selector": old,
                 "new_selector": new,
-                "mapping": f"{old} -> {new}",
+                "mapping": f"{old}->{new}",
                 "validated": None
             }
 
@@ -252,36 +319,27 @@ def _log_heals(
                 timeout=5
             )
 
-            print(f"    🧠 Learned fix: {old} → {new}")
+            print(f"    🧠 Learned fix stored")
 
         except Exception:
             pass
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# HEAL ORCHESTRATION
+# ORCHESTRATION
 # ══════════════════════════════════════════════════════════════════════════════
 
 def heal_all(project_key: str, diff: Dict, db_path: str, dry_run: bool):
 
     entries = diff.get("diff", {}).get("selector_drift", [])
     if not entries:
-        print("No drift")
+        print("No drift detected")
         return []
 
-    direct_map = build_direct_replacement_map(diff)
-    selectors = list(direct_map.keys())
+    replacements = build_direct_replacement_map(diff)
+    selectors = list(replacements.keys())
 
     affected = find_affected_specs(project_key, selectors)
-
-    replacements = {}
-
-    for entry in entries:
-        old = entry.get("old_selector")
-        new = entry.get("new_selector")
-
-        if old and new:
-            replacements[old] = new
 
     healed = []
 
@@ -311,7 +369,7 @@ def main():
 
     healed = heal_all(args.project, diff, args.db, args.dry_run)
 
-    print(f"Done. Patched: {len(healed)} files")
+    print(f"\nDone. Patched: {len(healed)} files\n")
 
 
 if __name__ == "__main__":
