@@ -64,31 +64,38 @@ pipeline {
                     def planContent = readFile("${WORKSPACE}/tests/steps/${PROJECT_KEY}_test_plan.json")
                     def plan        = new groovy.json.JsonSlurper().parseText(planContent)
                     def specFile    = "tests/steps/${PROJECT_KEY}.spec.ts"
-
-                    def grepArg = ""
-                    if (plan.grep_tags && plan.grep_tags.size() > 0) {
-                        grepArg = "--grep \"${plan.grep_tags.join('|')}\""
-                    }
-
-                    env.PW_COMMAND = "npx playwright test ${specFile} ${grepArg} --project=chromium --reporter=json"
-                    env.RUN_ID     = "${PROJECT_KEY}-${currentBuild.number}"
+        
+                    // Pass grep pattern as a separate env var to avoid pipe interpretation
+                    env.GREP_PATTERN = plan.grep_tags ? plan.grep_tags.join("|") : ""
+                    env.SPEC_FILE    = specFile
+                    env.RUN_ID       = "${PROJECT_KEY}-${currentBuild.number}"
                 }
                 sh '''
                     cd "$WORKSPACE"
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                    NPX=$(which npx 2>/dev/null \
-                          || ls /usr/local/bin/npx 2>/dev/null \
-                          || ls /usr/bin/npx 2>/dev/null \
-                          || echo "npx")
-                    $NPX playwright install chromium --with-deps 2>/dev/null || true
-                    eval "$PW_COMMAND" > pw_report.json 2>&1 || true
-                    echo "--- playwright output ---"
-                    cat pw_report.json | head -50
+                    NPX=$(which npx 2>/dev/null || echo "npx")
+        
+                    # Install chromium only (deps already installed)
+                    $NPX playwright install chromium 2>/dev/null || true
+        
+                    # Run tests — grep pattern quoted so | is treated as regex OR not a pipe
+                    if [ -n "$GREP_PATTERN" ]; then
+                        $NPX playwright test "$SPEC_FILE" \
+                            --grep "$GREP_PATTERN" \
+                            --project=chromium \
+                            --reporter=json > pw_report.json 2>&1 || true
+                    else
+                        $NPX playwright test "$SPEC_FILE" \
+                            --project=chromium \
+                            --reporter=json > pw_report.json 2>&1 || true
+                    fi
+        
+                    echo "--- pw_report.json first 20 lines ---"
+                    head -20 pw_report.json || echo "(empty)"
                 '''
             }
         }
-
         // ── Stage 5: Analyse results (UC-3) ──────────────────────────────
         stage('Analyse results') {
             steps {
