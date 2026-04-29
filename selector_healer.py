@@ -28,7 +28,8 @@ import argparse
 import subprocess
 import datetime
 from typing import Dict, List, Optional, Tuple
-
+import time
+import uuid
 import requests
 from dotenv import load_dotenv
 from agent_config import call_llm, embed, log_agent_config
@@ -42,7 +43,60 @@ DEFAULT_DB  = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure_
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 STEPS_DIR    = os.path.join(PROJECT_ROOT, "tests", "steps")
 
+def _search_healing_memory(project_key: str, old_selector: str) -> Optional[str]:
+    try:
+        collection = f"{project_key}_healing_memory"
 
+        vector = safe_embed(old_selector)
+        if not vector:
+            return None
+
+        r = requests.post(
+            f"{QDRANT_URL}/collections/{collection}/points/search",
+            json={
+                "vector": vector,
+                "limit": 3,
+                "with_payload": True
+            },
+            timeout=5
+        )
+
+        if not r.ok:
+            return None
+
+        results = r.json().get("result", [])
+        if not results:
+            return None
+
+        # 🔥 SORT: prefer successful fixes first
+        candidates = sorted(
+            results,
+            key=lambda x: (
+                x["payload"].get("validated", 0),  # success first
+                x.get("score", 0)
+            ),
+            reverse=True
+        )
+
+        best = candidates[0]["payload"]
+
+        # ❌ skip bad fixes
+        if best.get("validated") == 0:
+            print("  ⚠ Known bad fix — skipping")
+            return None
+
+        return best.get("new_selector")
+
+    except Exception:
+        return None
+
+def safe_embed(text, retries=3):
+    for _ in range(retries):
+        try:
+            return _embed(text)
+        except Exception:
+            time.sleep(1)
+    return None
 # ══════════════════════════════════════════════════════════════════════════════
 # §1  LOAD DIFF REPORT
 # ══════════════════════════════════════════════════════════════════════════════
@@ -277,6 +331,7 @@ def _log_heals(
                 "old_selector": old,
                 "new_selector": new,
                 "mapping": text,
+                "validated": None
             }
 
             requests.put(
