@@ -88,8 +88,10 @@ TRUE_PATTERNS: List[str] = [
 CONFIDENCE_THRESHOLD = 0.70   # minimum to trust rule/embedding verdict without LLM
 
 
+# def _sanitize(name: str) -> str:
+#     return re.sub(r'[^a-zA-Z0-9_]', '_', name).strip('_')
 def _sanitize(name: str) -> str:
-    return re.sub(r'[^a-zA-Z0-9_]', '_', name).strip('_')
+    return name.replace("-", "_")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
