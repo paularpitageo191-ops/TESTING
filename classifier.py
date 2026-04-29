@@ -43,7 +43,9 @@ from agent_config import call_llm, embed, log_agent_config
 # --- ADD THIS IMPORT (top with others) ---
 import uuid
 load_dotenv()
-
+JIRA_BASE_URL   = os.getenv("JIRA_BASE_URL")
+JIRA_API_TOKEN  = os.getenv("JIRA_API_TOKEN")
+JIRA_PROJECT_KEY = os.getenv("JIRA_PROJECT_KEY")
 AGENT_NAME = "classifier_v1"
 
 QDRANT_URL  = os.getenv("QDRANT_URL",  "http://localhost:6333")
@@ -97,7 +99,9 @@ FAILURE_TYPES = [
     "backend",
 ]
 
-CONFIDENCE_THRESHOLD = 0.85   # minimum to trust rule/embedding verdict without LLM
+# ── Thresholds ─────────────────────────────────────────────
+MEMORY_THRESHOLD = 0.90          # strict → only very strong matches reuse memory
+CLASSIFICATION_THRESHOLD = 0.75  # softer → allow embedding-based decisions
 # ══════════════════════════════════════════════════════════════════════════════
 # §0  LAYER 0 — HELPER-FUNCTIONS
 # ══════════════════════════════════════════════════════════════════════════════
@@ -107,40 +111,6 @@ CONFIDENCE_THRESHOLD = 0.85   # minimum to trust rule/embedding verdict without 
 def _sanitize(name: str) -> str:
     return name.replace("-", "_")
 
-
-def search_similar_failure(project_key: str, vector: list, threshold: float = 0.85):
-    collection = _sanitize(f"{project_key}_failure_clusters")
-
-    try:
-        r = requests.post(
-            f"{QDRANT_URL}/collections/{collection}/points/search",
-            json={
-                "vector": vector,
-                "limit": 1,
-                "with_payload": True
-            },
-            timeout=5
-        )
-
-        if not r.ok:
-            print("    ⚠ Qdrant search failed:", r.text)
-            return None
-
-        results = r.json().get("result", [])
-        if not results:
-            return None
-
-        hit = results[0]
-        score = hit.get("score", 0)
-
-        if score >= threshold:
-            print(f"    🧠 Memory hit (score={score:.2f})")
-            return hit.get("payload")
-
-    except Exception as e:
-        print(f"    ⚠ Qdrant search error: {e}")
-
-    return None
 
 def detect_failure_type(error_msg: str, stack: str, rca_summary: str) -> str:
     text = f"{error_msg} {stack} {rca_summary}".lower()
@@ -159,6 +129,143 @@ def detect_failure_type(error_msg: str, stack: str, rca_summary: str) -> str:
         return "backend"
 
     return "selector"
+
+def should_retry(failure_type: str) -> bool:
+    return failure_type in ["timeout", "network"]
+
+def retry_test(test_title: str):
+    print(f"    🔁 Retrying test: {test_title}")
+
+    subprocess.run(
+        ["npx", "playwright", "test", "--grep", test_title],
+        cwd=PROJECT_ROOT,
+        timeout=120
+    )
+
+def is_flaky(test_title: str, db_path: str) -> bool:
+    conn = sqlite3.connect(db_path)
+
+    rows = conn.execute(
+        """
+        SELECT status FROM test_results
+        WHERE test_title = ?
+        ORDER BY id DESC LIMIT 5
+        """,
+        (test_title,)
+    ).fetchall()
+
+    conn.close()
+
+    statuses = [r[0] for r in rows]
+    return "failed" in statuses and "passed" in statuses
+
+def create_jira_ticket(title: str, rca_summary: str):
+    try:
+        requests.post(
+            f"{JIRA_BASE_URL}/rest/api/2/issue",
+            headers={
+                "Authorization": f"Bearer {JIRA_API_TOKEN}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "fields": {
+                    "project": {"key": JIRA_PROJECT_KEY},
+                    "summary": title,
+                    "description": rca_summary,
+                    "issuetype": {"name": "Bug"}
+                }
+            }
+        )
+        print("    🎫 Jira ticket created")
+
+    except Exception as e:
+        print(f"    ⚠ Jira creation failed: {e}")
+      
+
+def retrieve_similar_failures(
+    project_key: str,
+    vector: List[float],
+    limit: int = 3,
+) -> Dict:
+    collection = _sanitize(f"{project_key}_failure_clusters")
+
+    try:
+        r = requests.post(
+            f"{QDRANT_URL}/collections/{collection}/points/search",
+            json={
+                "vector": vector,
+                "limit": limit,
+                "with_payload": True
+            },
+            timeout=5
+        )
+
+        if not r.ok:
+            return _empty_retrieval()
+
+        results = r.json().get("result", [])
+        if not results:
+            return _empty_retrieval()
+
+        contexts = []
+
+        # ── Build contexts (top-k) ───────────────────────────────────────────
+        for hit in results:
+            score = hit.get("score", 0.0)
+            payload = hit.get("payload", {})
+
+            label_full = payload.get("failure_class", "")
+            label = label_full.split(":")[0] if ":" in label_full else label_full
+
+            pattern = (payload.get("pattern_label") or "").strip()
+            rca = payload.get("rca_summary", "")
+
+            contexts.append({
+                "score": round(score, 4),
+                "label": label,
+                "pattern": pattern,
+                "rca": rca,
+            })
+
+        # ── Top hit (for decisions) ──────────────────────────────────────────
+        top = results[0]
+        top_score = top.get("score", 0.0)
+        top_payload = top.get("payload", {})
+
+        top_label_full = top_payload.get("failure_class", "")
+        top_label = top_label_full.split(":")[0] if ":" in top_label_full else top_label_full
+        top_pattern = (top_payload.get("pattern_label") or "").strip()
+
+        # ── Memory (STRICT) ──────────────────────────────────────────────────
+        memory_hit = top_payload if top_score >= MEMORY_THRESHOLD else None
+
+        # ── Classification (CONTROLLED) ──────────────────────────────────────
+        if top_score >= CLASSIFICATION_THRESHOLD and top_label in ("true", "false"):
+            best_label = top_label
+        else:
+            best_label = None
+
+        return {
+            "memory_hit": memory_hit,
+            "contexts": contexts,
+            "best_label": best_label,
+            "confidence": round(top_score, 4),
+            "pattern": top_pattern,
+        }
+
+    except Exception as e:
+        print(f"    ⚠ Qdrant retrieval error: {e}")
+        return _empty_retrieval()
+
+
+def _empty_retrieval():
+    return {
+        "memory_hit": None,
+        "contexts": [],
+        "best_label": None,
+        "confidence": 0.0,
+        "pattern": ""
+    }
 # ══════════════════════════════════════════════════════════════════════════════
 # §1  LAYER 1 — RULE-BASED
 # ══════════════════════════════════════════════════════════════════════════════
@@ -197,67 +304,36 @@ def safe_embed(text, retries=3):
     return None
 
 
-def _search_failure_clusters(project_key: str, vector: List[float]) -> List[Dict]:
-    collection = _sanitize(f"{project_key}_failure_clusters")
-    try:
-        r = requests.post(
-            f"{QDRANT_URL}/collections/{collection}/points/search",
-            json={"vector": vector, "limit": 3, "with_payload": True},
-            timeout=10,
-        )
-        if r.ok:
-            return r.json().get("result", [])
-    except Exception:
-        pass
-    return []
-
-
-def embedding_classify(
-    project_key: str, error_msg: str, stack: str
-) -> Tuple[Optional[str], float, str]:
-    """
-    Returns ('true'|'false'|None, confidence, matched_pattern_label).
-    """
-    text   = f"{error_msg}\n{stack}"[:2000]
-    #vector = _embed(text)
-    vector = safe_embed(text)
-    if not vector:
-        return None, 0.0, ""
-  
-    hits = _search_failure_clusters(project_key, vector)
-    if not hits:
-        return None, 0.0, ""
-
-    top     = hits[0]
-    score   = top.get("score", 0.0)
-    payload = top.get("payload", {})
-    label   = payload.get("failure_class", "")
-    pattern = payload.get("pattern_label", "")
-
-    if score >= CONFIDENCE_THRESHOLD and label in ("true", "false"):
-        return label, round(score, 4), pattern
-
-    return None, round(score, 4), pattern
-  
 # ── NEW: QDRANT UPSERT LOGIC ────────────────────────────────────────────────
-def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: str, rca_summary: str):
+def upsert_failure_vector(
+    project_key: str,
+    text: str,
+    verdict: str,
+    pattern: str,
+    rca_summary: str,
+    vector=None
+):
     collection = _sanitize(f"{project_key}_failure_clusters")
 
-    # vector = _embed(text)
-    # print("    🔍 Vector size:", len(vector))
-    vector = safe_embed(text)
+    # 🔥 reuse embedding if provided
+    if vector is None:
+        vector = safe_embed(text)
+
     print("    🔍 Vector size:", len(vector) if vector else "None")
 
     if not vector:
         print("    ⚠ No embedding generated — skipping Qdrant upsert")
         return
 
+    failure_type = verdict.split(":")[1] if ":" in verdict else "selector"
+
     payload = {
         "failure_class": verdict,
-        "failure_type": failure_type,   # ✅ ADD THIS
-        "pattern_label": pattern or "unknown",
+        "failure_type": failure_type,
+        "pattern_label": (pattern or "unknown").strip(),
         "text": text[:500],
-        "rca_summary": rca_summary
+        "rca_summary": rca_summary,
+        "created_at": datetime.datetime.utcnow().isoformat()
     }
 
     try:
@@ -282,7 +358,6 @@ def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: st
 
     except Exception as e:
         print(f"    ⚠ Qdrant upsert failed: {e}")
-
 # ══════════════════════════════════════════════════════════════════════════════
 # §3  LAYER 3 — LLM ARBITRATION
 # ══════════════════════════════════════════════════════════════════════════════
@@ -295,10 +370,29 @@ def llm_classify(
     l2_verdict:  Optional[str],
     l2_conf:     float,
     l2_pattern:  str,
+    contexts:    Optional[List[Dict]] = None,
 ) -> Tuple[str, str]:
 
-    # ── BUILD PROMPT (missing earlier) ────────────────────────────────────────
+    # ── BUILD CONTEXT BLOCK (RAG) ────────────────────────────────────────────
+    context_text = ""
+
+    if contexts:
+        for i, ctx in enumerate(contexts[:3]):  # top-3 only
+            context_text += f"""
+Example {i+1}:
+- label: {ctx.get('label')}
+- pattern: {ctx.get('pattern')}
+- rca: {ctx.get('rca')}
+"""
+
+    # ── BUILD PROMPT ─────────────────────────────────────────────────────────
     prompt = f"""
+You are a QA failure classifier.
+
+Past similar failures:
+{context_text}
+
+Current failure:
 Test: {test_title}
 
 Error:
@@ -307,8 +401,9 @@ Error:
 Stack:
 {stack}
 
-Layer1 verdict: {l1_verdict}
-Layer2 verdict: {l2_verdict} (confidence={l2_conf}, pattern={l2_pattern})
+Signals:
+- Layer1 verdict: {l1_verdict}
+- Layer2 verdict: {l2_verdict} (confidence={l2_conf}, pattern={l2_pattern})
 
 Decide:
 - "true"  → real product bug
@@ -318,22 +413,29 @@ Return STRICT JSON:
 {{"verdict": "true|false", "rca_summary": "short reason"}}
 """
 
-    system = "You are a QA failure classifier."
+    system = "You are a precise and consistent QA failure classifier. Always return valid JSON."
 
     # ── CALL LLM ─────────────────────────────────────────────────────────────
     raw = call_llm(AGENT_NAME, prompt, system=system)
+
+    # Clean markdown/code fences if present
     raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw.strip())
 
     # ── PARSE RESPONSE ───────────────────────────────────────────────────────
     try:
         obj = json.loads(raw)
-        verdict     = obj.get("verdict", "false")
+
+        verdict = obj.get("verdict", "false")
+        if verdict not in ("true", "false"):
+            verdict = "false"
+
         rca_summary = obj.get("rca_summary", "LLM classification.")
+
         return verdict, rca_summary
 
     except Exception:
+        # fallback safety
         return "false", "Classification via fallback rules."
-
 
 def load_failures(project_key: str, run_id: str, db_path: str) -> List[Dict]:
     conn = sqlite3.connect(db_path)
@@ -391,15 +493,16 @@ def dispatch_rca(
     except FileNotFoundError:
         print(f"    ⚠ {script} not found")
 
+
 # ══════════════════════════════════════════════════════════════════════════════
-# §6  MAIN
+# §6  MAIN (RAG-UNIFIED + MULTI-CONTEXT)
 # ══════════════════════════════════════════════════════════════════════════════
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="UC-3 Classifier")
-    parser.add_argument("--project",  required=True)
-    parser.add_argument("--run-id",   required=True)
-    parser.add_argument("--db",       default=DEFAULT_DB)
+    parser.add_argument("--project", required=True)
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--db", default=DEFAULT_DB)
     parser.add_argument("--no-dispatch", action="store_true")
     args = parser.parse_args()
 
@@ -413,7 +516,7 @@ def main() -> None:
     failures = load_failures(project_key, args.run_id, args.db)
     print(f"  Failures to classify: {len(failures)}")
 
-    true_count  = 0
+    true_count = 0
     false_count = 0
 
     for rec in failures:
@@ -421,34 +524,35 @@ def main() -> None:
         err_msg = rec.get("error_message", "")
         stack   = rec.get("stack_trace", "")
 
-        # ── Layer 1 ──────────────────────────────────────────────────────────
-        l1_verdict, l1_conf = rule_classify(err_msg, stack)
-
-        # ── Layer 2 ──────────────────────────────────────────────────────────
-        l2_verdict, l2_conf, l2_pattern = embedding_classify(project_key, err_msg, stack)
-
-        # ── LLM decision gate ────────────────────────────────────────────────
-        needs_llm = (
-            l1_verdict is None or
-            (l2_verdict and l2_verdict != l1_verdict) or
-            (l1_conf < CONFIDENCE_THRESHOLD and l2_conf < CONFIDENCE_THRESHOLD)
-        )
-
         text = f"{err_msg}\n{stack}"
 
-        # ── Embedding (safe) ─────────────────────────────────────────────────
+        # ── Layer 1 (rules)
+        l1_verdict, l1_conf = rule_classify(err_msg, stack)
+
+        # ── RAG Retrieval
         vector = safe_embed(text)
 
         if vector:
             print(f"    🔍 Vector size: {len(vector)}")
+            retrieval = retrieve_similar_failures(project_key, vector)
         else:
             print("    ⚠ Embedding failed")
+            retrieval = _empty_retrieval()
 
-        memory = None
-        if vector:
-            memory = search_similar_failure(project_key, vector)
+        memory     = retrieval.get("memory_hit")
+        contexts   = retrieval.get("contexts", [])
+        l2_verdict = retrieval.get("best_label")
+        l2_conf    = retrieval.get("confidence", 0.0)
+        l2_pattern = retrieval.get("pattern", "")
 
-        # ── MEMORY FIRST ─────────────────────────────────────────────────────
+        # ── Decide LLM usage
+        needs_llm = (
+            l1_verdict is None or
+            (l2_verdict and l2_verdict != l1_verdict) or
+            (l1_conf < CLASSIFICATION_THRESHOLD and l2_conf < CLASSIFICATION_THRESHOLD)
+        )
+
+        # ── MEMORY FIRST
         if memory:
             verdict_full = memory.get("failure_class", "false:selector")
             rca_summary  = memory.get("rca_summary", "Reused from memory")
@@ -462,76 +566,85 @@ def main() -> None:
             method = "memory"
             print(f"    🧠 Memory hit → {verdict}:{failure_type}")
 
-        # ── LLM ─────────────────────────────────────────────────────────────
+        # ── LLM fallback
         elif needs_llm:
             verdict, rca_summary = llm_classify(
                 title, err_msg, stack,
-                l1_verdict, l2_verdict, l2_conf, l2_pattern
+                l1_verdict, l2_verdict, l2_conf, l2_pattern,
+                contexts=contexts
             )
             failure_type = detect_failure_type(err_msg, stack, rca_summary)
             method = "LLM"
 
-        # ── FALLBACK ─────────────────────────────────────────────────────────
+        # ── Embedding fallback
         else:
-            verdict     = l1_verdict or l2_verdict or "false"
-            rca_summary = f"Rule-based: matched pattern. Confidence={max(l1_conf, l2_conf):.2f}."
+            verdict = l1_verdict or l2_verdict or "false"
+
+            # Only vote when rule layer is uncertain
+            if l1_verdict is None:
+                labels = [c["label"] for c in contexts if c["label"] in ("true", "false")]
+                if labels:
+                    verdict = max(set(labels), key=labels.count)
+
+            rca_summary = f"Embedding-assisted. Confidence={l2_conf:.2f}"
             failure_type = detect_failure_type(err_msg, stack, rca_summary)
-            method      = "rules" if l1_verdict else "embedding"
+            method = "embedding"
 
-        # ── Final enriched verdict ───────────────────────────────────────────
         verdict_with_type = f"{verdict}:{failure_type}"
-
         print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
 
-        # ── DB update ────────────────────────────────────────────────────────
+        # ── Store results
         update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
 
-        # ── Store in Qdrant ──────────────────────────────────────────────────
         upsert_failure_vector(
             project_key,
             text,
             verdict_with_type,
             l2_pattern,
-            rca_summary
+            rca_summary,
+            vector
         )
 
-        # ── Counters ─────────────────────────────────────────────────────────
+        # ── Flaky detection (early exit)
+        if is_flaky(title, args.db):
+            print("    ⚠ Flaky test detected → skipping healing & routing")
+            continue
+
+        # ── Counters
         if verdict == "true":
             true_count += 1
         else:
             false_count += 1
 
-        # ── Dispatch (type-aware, safe fallback) ─────────────────────────────
+        # ── Auto Jira
+        if verdict == "true" and failure_type in ["backend", "assertion"]:
+            if not rec.get("jira_created"):
+                create_jira_ticket(title, rca_summary)
+
+        # ── Routing
         if not args.no_dispatch:
 
             if failure_type == "selector":
                 dispatch_rca(verdict, project_key, rec, args.db)
 
-            elif failure_type == "timeout":
-                print("    ⏱ Timeout issue → retry recommended")
-
-            elif failure_type == "network":
-                print("    🌐 Network issue → mark flaky")
+            elif should_retry(failure_type):
+                print("    🔁 Transient issue → retrying")
+                retry_test(title)
 
             elif failure_type == "assertion":
-                print("    🧪 Assertion issue → likely product bug")
-
-            elif failure_type == "auth":
-                print("    🔐 Auth issue → session/login problem")
-
-            elif failure_type == "data":
-                print("    📊 Data issue → test data mismatch")
+                print("    🧪 Assertion issue → needs review")
 
             elif failure_type == "backend":
-                print("    🏗 Backend issue → real defect")
+                print("    🚨 Backend bug → already escalated")
+
+            elif failure_type == "auth":
+                print("    🔐 Auth issue → session/login")
+
+            elif failure_type == "data":
+                print("    📊 Data issue → input mismatch")
 
             else:
                 dispatch_rca(verdict, project_key, rec, args.db)
 
-    # ── Summary ─────────────────────────────────────────────────────────────
     print(f"\n  Summary: {true_count} true failures  |  {false_count} false failures")
     print(f"\n{'='*60}\n")
-
-
-if __name__ == "__main__":
-    main()
