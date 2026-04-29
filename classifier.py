@@ -622,29 +622,31 @@ def main() -> None:
                 create_jira_ticket(title, rca_summary)
 
         # ── Routing
+        # ── Routing (SAFE + CONTROLLED)
         if not args.no_dispatch:
 
-            if failure_type == "selector":
-                dispatch_rca(verdict, project_key, rec, args.db)
-
-            elif should_retry(failure_type):
-                print("    🔁 Transient issue → retrying")
-                retry_test(title)
-
-            elif failure_type == "assertion":
-                print("    🧪 Assertion issue → needs review")
-
-            elif failure_type == "backend":
-                print("    🚨 Backend bug → already escalated")
-
-            elif failure_type == "auth":
-                print("    🔐 Auth issue → session/login")
-
-            elif failure_type == "data":
-                print("    📊 Data issue → input mismatch")
-
-            else:
-                dispatch_rca(verdict, project_key, rec, args.db)
+        if failure_type == "selector":
+            dispatch_rca(verdict, project_key, rec, args.db)
+    
+        elif should_retry(failure_type):
+            print("    🔁 Transient issue → retrying")
+            retry_test(title)
+    
+        elif failure_type == "assertion":
+            print("    🧪 Assertion issue → needs review")
+    
+        elif failure_type == "backend":
+            print("    🚨 Backend bug → already escalated")
+    
+        elif failure_type == "auth":
+            print("    🔐 Auth issue → session/login")
+    
+        elif failure_type == "data":
+            print("    📊 Data issue → input mismatch")
+    
+        else:
+            # 🚫 DO NOT HEAL UNKNOWN TYPES
+            print(f"    ⚠ Unknown failure type '{failure_type}' → skipping healer")
 
     print(f"\n  Summary: {true_count} true failures  |  {false_count} false failures")
     print(f"\n{'='*60}\n")
