@@ -32,16 +32,14 @@ load_dotenv()
 DEFAULT_DB   = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure_history.sqlite")
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-
 # ══════════════════════════════════════════════════════════════════════════════
 # §1  REPORT PARSER
 # ══════════════════════════════════════════════════════════════════════════════
-
 def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
     """
     Parse Playwright JSON report.
     Returns (summary_dict, list_of_test_records).
- 
+
     Playwright JSON structure:
       {
         "suites": [ {
@@ -55,15 +53,30 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
           } ]
         } ]
       }
- 
+
     Note: with retries=2 each test can have up to 3 result entries.
     We record ONE row per test using only the FINAL result attempt.
     """
     with open(report_path) as f:
         data = json.load(f)
- 
+
     records = []
- 
+
+    def _normalize_status(raw: str) -> str:
+        mapping = {
+            "passed":      "passed",
+            "failed":      "failed",
+            "timedout":    "failed",
+            "skipped":     "skipped",
+            "interrupted": "failed",
+            "flaky":       "flaky",
+        }
+        return mapping.get(raw.lower(), "failed")
+
+    def _extract_page_url(text: str) -> str:
+        m = re.search(r'https?://[^\s"\')\]]+', text)
+        return m.group(0) if m else ""
+
     def _walk_suite(suite: Dict, parent_file: str = "") -> None:
         spec_file = suite.get("file", parent_file) or parent_file
         for spec in suite.get("specs", []):
@@ -72,16 +85,16 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
             for test in spec.get("tests", []):
                 status  = test.get("status", "unknown")
                 results = test.get("results", [{}])
- 
+
                 # ── Use FINAL attempt only (last item in results list) ──
                 # With retries=2, results has up to 3 entries.
                 # The last entry is the conclusive one.
-                final        = results[-1] if results else {}
-                dur_ms       = final.get("duration", 0)   # final attempt duration only
-                error        = final.get("error", {}) or {}
-                err_msg      = error.get("message", "")
-                stack        = error.get("stack",   "")
- 
+                final   = results[-1] if results else {}
+                dur_ms  = final.get("duration", 0)
+                error   = final.get("error", {}) or {}
+                err_msg = error.get("message", "")
+                stack   = error.get("stack",   "")
+
                 records.append({
                     "spec_file":     spec_file,
                     "test_title":    title,
@@ -92,15 +105,15 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
                     "stack_trace":   stack,
                     "timestamp":     datetime.datetime.utcnow().isoformat(),
                     "page_url":      _extract_page_url(err_msg + stack),
-                    "retry_count":   len(results) - 1,   # 0 = passed first time
+                    "retry_count":   len(results) - 1,
                 })
- 
+
         for child in suite.get("suites", []):
             _walk_suite(child, spec_file)
- 
+
     for top_suite in data.get("suites", []):
         _walk_suite(top_suite)
- 
+
     # Use stats block from report (accurate counts)
     stats = data.get("stats", {})
     summary = {
@@ -115,9 +128,8 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
         for s in ("passed", "failed", "skipped", "flaky"):
             summary[s] = sum(1 for r in records if r["status"] == s)
         summary["total"] = len(records)
- 
-    return summary, records
 
+    return summary, records
 # ══════════════════════════════════════════════════════════════════════════════
 # §2  DB WRITE
 # ══════════════════════════════════════════════════════════════════════════════
