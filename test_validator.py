@@ -60,7 +60,31 @@ def restore_spec(spec_path: str, backup_path: str) -> None:
     os.remove(backup_path)
     print(f"  ↩ Spec restored from backup: {os.path.basename(backup_path)}")
 
+def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: bool):
+    import sqlite3
 
+    try:
+        conn = sqlite3.connect(db_path)
+
+        conn.execute(
+          """
+          UPDATE healing_log
+          SET validated = ?
+          WHERE id = (
+              SELECT id FROM healing_log
+              WHERE project_key = ? AND spec_file = ?
+              ORDER BY healed_at DESC
+              LIMIT 1
+          )
+          """,
+          (1 if success else 0, project_key, spec_file),
+      )
+
+        conn.commit()
+        conn.close()
+
+    except Exception as e:
+        print(f"⚠ Failed to update heal success: {e}")
 # ══════════════════════════════════════════════════════════════════════════════
 # §2  VALIDATION STAGES
 # ══════════════════════════════════════════════════════════════════════════════
@@ -246,14 +270,14 @@ def open_github_pr(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="UC-4 Test Validator")
-    parser.add_argument("--project",    required=True)
-    parser.add_argument("--spec",       required=True, help="Patched spec file path")
-    parser.add_argument("--db",         default=DEFAULT_DB)
-    parser.add_argument("--smoke-n",    type=int, default=0,
+    parser.add_argument("--project", required=True)
+    parser.add_argument("--spec", required=True, help="Patched spec file path")
+    parser.add_argument("--db", default=DEFAULT_DB)
+    parser.add_argument("--smoke-n", type=int, default=0,
                         help="Number of tests to smoke-run (0 = skip smoke stage)")
-    parser.add_argument("--open-pr",    action="store_true",
+    parser.add_argument("--open-pr", action="store_true",
                         help="Open GitHub PR if validation passes")
-    parser.add_argument("--dry-run",    action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     project_key = args.project
@@ -274,7 +298,7 @@ def main() -> None:
     all_passed = True
     summary_parts = []
 
-    # Stage 1 — Syntax
+    # ── Stage 1 — Syntax
     print("\n  [Stage 1] TypeScript syntax check …")
     ok, out = stage_syntax_check(spec_path)
     print(f"    {'✓ Passed' if ok else '✗ Failed'}")
@@ -283,7 +307,7 @@ def main() -> None:
         print(f"    {out[:400]}")
         all_passed = False
 
-    # Stage 2 — Locator dry-run (only if syntax OK)
+    # ── Stage 2 — Locator dry-run
     if all_passed:
         print("\n  [Stage 2] Playwright --list locator resolution …")
         ok, out = stage_locator_dryrun(spec_path)
@@ -293,7 +317,7 @@ def main() -> None:
             print(f"    {out[:400]}")
             all_passed = False
 
-    # Stage 3 — Smoke run (optional)
+    # ── Stage 3 — Smoke run
     if all_passed and args.smoke_n > 0:
         print(f"\n  [Stage 3] Smoke run ({args.smoke_n} tests) …")
         ok, out = stage_smoke_run(spec_path, args.smoke_n)
@@ -306,12 +330,15 @@ def main() -> None:
     summary = " | ".join(summary_parts)
     pr_url  = None
 
+    # ────────────────────────────────────────────────────────────────────────
+    # ✅ SUCCESS CASE
+    # ────────────────────────────────────────────────────────────────────────
     if all_passed:
         print(f"\n  ✓ All validation stages passed")
-        os.remove(backup_path)   # clean up backup
+        os.remove(backup_path)
 
         if not args.dry_run:
-            mark_heals_validated(project_key, spec_path, args.db)
+            mark_heal_success(spec_path, project_key, args.db, True)
 
         if args.open_pr and not args.dry_run:
             branch = f"auto-heal/{project_key}-{datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
@@ -319,11 +346,19 @@ def main() -> None:
 
         notify_slack(project_key, spec_path, True, summary, pr_url)
 
+    # ────────────────────────────────────────────────────────────────────────
+    # ❌ FAILURE CASE (FIXED — THIS WAS MISSING)
+    # ────────────────────────────────────────────────────────────────────────
     else:
         print(f"\n  ✗ Validation failed — reverting spec")
         restore_spec(spec_path, backup_path)
+
+        if not args.dry_run:
+            mark_heal_success(spec_path, project_key, args.db, False)
+
         notify_slack(project_key, spec_path, False, summary)
 
+    # ── Final summary
     print(f"\n{'='*60}")
     print(f"{'✓ VALIDATED' if all_passed else '✗ REVERTED'} — {summary}")
     print(f"{'='*60}\n")
