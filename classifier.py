@@ -39,7 +39,8 @@ import sys
 import requests
 from dotenv import load_dotenv
 from agent_config import call_llm, embed, log_agent_config
-
+# --- ADD THIS IMPORT (top with others) ---
+import uuid
 load_dotenv()
 
 AGENT_NAME = "classifier_v1"
@@ -165,7 +166,39 @@ def embedding_classify(
         return label, round(score, 4), pattern
 
     return None, round(score, 4), pattern
+  
+# ── NEW: QDRANT UPSERT LOGIC ────────────────────────────────────────────────
+def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: str):
+    collection = _sanitize(f"{project_key}_failure_clusters")
 
+    vector = _embed(text)
+    if not vector:
+        print("    ⚠ No embedding generated — skipping Qdrant upsert")
+        return
+
+    payload = {
+        "failure_class": verdict,
+        "pattern_label": pattern or "unknown",
+        "text": text[:500]
+    }
+
+    try:
+        requests.put(
+            f"{QDRANT_URL}/collections/{collection}/points",
+            json={
+                "points": [
+                    {
+                        "id": str(uuid.uuid4()),
+                        "vector": vector,
+                        "payload": payload
+                    }
+                ]
+            },
+            timeout=10
+        )
+        print("    ✓ Stored in Qdrant")
+    except Exception as e:
+        print(f"    ⚠ Qdrant upsert failed: {e}")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # §3  LAYER 3 — LLM ARBITRATION
@@ -303,7 +336,14 @@ def main() -> None:
         print(f"  [{method:9s}] {verdict.upper()} — {title[:55]}")
 
         update_classification(rec["id"], verdict, rca_summary, args.db)
-
+        # ── NEW: STORE FAILURE IN QDRANT ────────────────────────────────────────────
+        text = f"{err_msg}\n{stack}"
+        upsert_failure_vector(
+            project_key,
+            text,
+            verdict,
+            l2_pattern
+        )
         if verdict == "true":
             true_count  += 1
         else:
