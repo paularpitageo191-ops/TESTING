@@ -15,7 +15,7 @@ venv/
 # Mac
 
 .DS_Store
-
+node_modules/
 # Logs
 
 *.log
