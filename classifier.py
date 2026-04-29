@@ -172,6 +172,7 @@ def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: st
     collection = _sanitize(f"{project_key}_failure_clusters")
 
     vector = _embed(text)
+    print("    🔍 Vector size:", len(vector))   # 👈 ADD THIS LINE
     if not vector:
         print("    ⚠ No embedding generated — skipping Qdrant upsert")
         return
@@ -183,22 +184,26 @@ def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: st
     }
 
     try:
-        requests.put(
-            f"{QDRANT_URL}/collections/{collection}/points",
-            json={
-                "points": [
-                    {
-                        "id": str(uuid.uuid4()),
-                        "vector": vector,
-                        "payload": payload
-                    }
-                ]
-            },
-            timeout=10
-        )
-        print("    ✓ Stored in Qdrant")
-    except Exception as e:
-        print(f"    ⚠ Qdrant upsert failed: {e}")
+       r = requests.put(
+          f"{QDRANT_URL}/collections/{collection}/points",
+          json={
+              "points": [
+                  {
+                      "id": str(uuid.uuid4()),
+                      "vector": vector,
+                      "payload": payload
+                  }
+              ]
+          },
+          timeout=10
+      )
+      
+      if r.ok:
+          print("    ✓ Stored in Qdrant")
+      else:
+          print("    ❌ Qdrant error:", r.text)
+          except Exception as e:
+              print(f"    ⚠ Qdrant upsert failed: {e}")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # §3  LAYER 3 — LLM ARBITRATION
