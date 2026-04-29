@@ -220,13 +220,41 @@ def llm_classify(
     l2_conf:     float,
     l2_pattern:  str,
 ) -> Tuple[str, str]:
+
+    # ── BUILD PROMPT (missing earlier) ────────────────────────────────────────
+    prompt = f"""
+Test: {test_title}
+
+Error:
+{error_msg}
+
+Stack:
+{stack}
+
+Layer1 verdict: {l1_verdict}
+Layer2 verdict: {l2_verdict} (confidence={l2_conf}, pattern={l2_pattern})
+
+Decide:
+- "true"  → real product bug
+- "false" → infra / flaky / locator issue
+
+Return STRICT JSON:
+{{"verdict": "true|false", "rca_summary": "short reason"}}
+"""
+
+    system = "You are a QA failure classifier."
+
+    # ── CALL LLM ─────────────────────────────────────────────────────────────
     raw = call_llm(AGENT_NAME, prompt, system=system)
     raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw.strip())
+
+    # ── PARSE RESPONSE ───────────────────────────────────────────────────────
     try:
         obj = json.loads(raw)
         verdict     = obj.get("verdict", "false")
         rca_summary = obj.get("rca_summary", "LLM classification.")
         return verdict, rca_summary
+
     except Exception:
         return "false", "Classification via fallback rules."
 
