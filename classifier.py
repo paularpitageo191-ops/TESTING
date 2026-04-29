@@ -35,7 +35,7 @@ import argparse
 import subprocess
 import datetime
 from typing import Dict, List, Optional, Tuple
-
+import sys
 import requests
 from dotenv import load_dotenv
 from agent_config import call_llm, embed, log_agent_config
@@ -230,7 +230,7 @@ def dispatch_rca(
 ) -> None:
     script = "true_failure_rca.py" if verdict == "true" else "false_failure_rca.py"
     cmd = [
-        "python3", script,
+        sys.executable, script,
         "--project",    project_key,
         "--test-id",    str(test_record["id"]),
         "--db",         db_path,
