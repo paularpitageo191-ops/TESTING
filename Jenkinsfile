@@ -6,6 +6,7 @@ pipeline {
         PYTHON      = "python3"
         PIP         = "python3 -m pip"
         OLLAMA_HOST = "http://192.168.1.8:11434"
+        QDRANT_URL  = "http://192.168.1.8:6333"
     }
 
     stages {
