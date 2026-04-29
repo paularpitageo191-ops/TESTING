@@ -5,7 +5,6 @@ pipeline {
         PROJECT_KEY = "SCRUM-70"
         PYTHON      = "python3"
         PIP         = "python3 -m pip"
-        PROJECT_KEY = "SCRUM-70"
         OLLAMA_HOST = "http://192.168.1.8:11434"
     }
 
