@@ -31,7 +31,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # ══════════════════════════════════════════════════════════════════════════════
 
 def backup_spec(spec_path: str) -> str:
-    ts = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    ts = datetime.datetime.now(datetime.UTC).strftime("%Y%m%d%H%M%S")
     backup = f"{spec_path}.bak_{ts}"
     shutil.copy2(spec_path, backup)
     return backup
@@ -48,6 +48,9 @@ def restore_spec(spec_path: str, backup_path: str) -> None:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: bool):
+    """
+    Marks latest heal attempt for this spec as success/failure.
+    """
     try:
         conn = sqlite3.connect(db_path)
 
@@ -72,6 +75,23 @@ def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: b
 
     except Exception as e:
         print(f"⚠ Failed to update heal success: {e}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# OPTIONAL — FUTURE QDRANT UPDATE HOOK (SAFE NO-OP FOR NOW)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def update_healing_validation(project_key: str, spec_file: str, success: bool):
+    """
+    Placeholder hook for future Qdrant update.
+    Keeps system forward-compatible without breaking current flow.
+    """
+    try:
+        # You can later extend this to update Qdrant payload
+        # Currently safe no-op
+        print(f"  🔄 (future) Qdrant update → {project_key} {spec_file} = {success}")
+    except Exception:
+        pass
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -140,8 +160,13 @@ def notify_slack(project_key: str, spec_file: str, passed: bool, summary: str, p
         return
 
     status = "PASSED" if passed else "FAILED"
+
     payload = {
-        "text": f"{'✅' if passed else '❌'} {project_key} — {status}",
+        "text": (
+            f"{'✅' if passed else '❌'} {project_key} — {status}\n"
+            f"Spec: {os.path.basename(spec_file)}\n"
+            f"{summary}"
+        )
     }
 
     try:
@@ -176,57 +201,68 @@ def main() -> None:
         return
 
     backup_path = backup_spec(spec_path)
+    print(f"  Backup created: {os.path.basename(backup_path)}")
 
     all_passed = True
     summary_parts = []
 
-    # Stage 1
+    # ── Stage 1: Syntax
     ok, out = stage_syntax_check(spec_path)
     summary_parts.append(f"Syntax: {'PASS' if ok else 'FAIL'}")
     if not ok:
+        print("  ⚠ Syntax failed")
         print(out[:300])
         all_passed = False
 
-    # Stage 2
+    # ── Stage 2: Locator validation
     if all_passed:
         ok, out = stage_locator_dryrun(spec_path)
         summary_parts.append(f"Locator: {'PASS' if ok else 'FAIL'}")
         if not ok:
+            print("  ⚠ Locator resolution failed")
             print(out[:300])
             all_passed = False
 
-    # Stage 3
+    # ── Stage 3: Smoke test
     if all_passed and args.smoke_n > 0:
         ok, out = stage_smoke_run(spec_path, args.smoke_n)
         summary_parts.append(f"Smoke: {'PASS' if ok else 'FAIL'}")
         if not ok:
+            print("  ⚠ Smoke test failed")
             print(out[:300])
             all_passed = False
 
     summary = " | ".join(summary_parts)
+    print(f"\n  📊 Validation summary → {summary}")
 
+    # ─────────────────────────────────────────────────────────────
     # SUCCESS
+    # ─────────────────────────────────────────────────────────────
     if all_passed:
         print("\n  ✓ Validation passed")
         os.remove(backup_path)
 
         if not args.dry_run:
             mark_heal_success(spec_path, project_key, args.db, True)
+            update_healing_validation(project_key, spec_path, True)
 
         notify_slack(project_key, spec_path, True, summary)
 
+    # ─────────────────────────────────────────────────────────────
     # FAILURE
+    # ─────────────────────────────────────────────────────────────
     else:
         print("\n  ✗ Validation failed — reverting")
         restore_spec(spec_path, backup_path)
 
         if not args.dry_run:
             mark_heal_success(spec_path, project_key, args.db, False)
+            update_healing_validation(project_key, spec_path, False)
 
         notify_slack(project_key, spec_path, False, summary)
 
     print(f"\n{'='*60}")
-    print(summary)
+    print(f"{'✓ VALIDATED' if all_passed else '✗ REVERTED'} — {summary}")
     print(f"{'='*60}\n")
 
 
