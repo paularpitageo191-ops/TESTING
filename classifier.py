@@ -624,7 +624,7 @@ def main() -> None:
         # ── Routing
         # ── Routing (SAFE + CONTROLLED)
         if not args.no_dispatch:
-
+           pass
         if failure_type == "selector":
             dispatch_rca(verdict, project_key, rec, args.db)
     
