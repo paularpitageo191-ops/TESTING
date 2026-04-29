@@ -36,6 +36,7 @@ import subprocess
 import datetime
 from typing import Dict, List, Optional, Tuple
 import sys
+import time
 import requests
 from dotenv import load_dotenv
 from agent_config import call_llm, embed, log_agent_config
@@ -86,8 +87,10 @@ TRUE_PATTERNS: List[str] = [
     r"error: expect\(locator\)\.",
 ]
 
-CONFIDENCE_THRESHOLD = 0.70   # minimum to trust rule/embedding verdict without LLM
-
+CONFIDENCE_THRESHOLD = 0.85   # minimum to trust rule/embedding verdict without LLM
+# ══════════════════════════════════════════════════════════════════════════════
+# §0  LAYER 0 — HELPER-FUNCTIONS
+# ══════════════════════════════════════════════════════════════════════════════
 
 # def _sanitize(name: str) -> str:
 #     return re.sub(r'[^a-zA-Z0-9_]', '_', name).strip('_')
@@ -95,6 +98,39 @@ def _sanitize(name: str) -> str:
     return name.replace("-", "_")
 
 
+def search_similar_failure(project_key: str, vector: list, threshold: float = 0.85):
+    collection = _sanitize(f"{project_key}_failure_clusters")
+
+    try:
+        r = requests.post(
+            f"{QDRANT_URL}/collections/{collection}/points/search",
+            json={
+                "vector": vector,
+                "limit": 1,
+                "with_payload": True
+            },
+            timeout=5
+        )
+
+        if not r.ok:
+            print("    ⚠ Qdrant search failed:", r.text)
+            return None
+
+        results = r.json().get("result", [])
+        if not results:
+            return None
+
+        hit = results[0]
+        score = hit.get("score", 0)
+
+        if score >= threshold:
+            print(f"    🧠 Memory hit (score={score:.2f})")
+            return hit.get("payload")
+
+    except Exception as e:
+        print(f"    ⚠ Qdrant search error: {e}")
+
+    return None
 # ══════════════════════════════════════════════════════════════════════════════
 # §1  LAYER 1 — RULE-BASED
 # ══════════════════════════════════════════════════════════════════════════════
@@ -123,7 +159,14 @@ def rule_classify(error_msg: str, stack: str) -> Tuple[Optional[str], float]:
 
 def _embed(text: str) -> List[float]:
     return embed(AGENT_NAME, text)
-
+  
+def safe_embed(text, retries=3):
+    for _ in range(retries):
+        try:
+            return _embed(text)
+        except Exception:
+            time.sleep(1)
+    return None
 
 
 def _search_failure_clusters(project_key: str, vector: List[float]) -> List[Dict]:
@@ -148,10 +191,11 @@ def embedding_classify(
     Returns ('true'|'false'|None, confidence, matched_pattern_label).
     """
     text   = f"{error_msg}\n{stack}"[:2000]
-    vector = _embed(text)
+    #vector = _embed(text)
+    vector = safe_embed(text)
     if not vector:
         return None, 0.0, ""
-
+  
     hits = _search_failure_clusters(project_key, vector)
     if not hits:
         return None, 0.0, ""
@@ -168,11 +212,13 @@ def embedding_classify(
     return None, round(score, 4), pattern
   
 # ── NEW: QDRANT UPSERT LOGIC ────────────────────────────────────────────────
-def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: str):
+def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: str, rca_summary: str):
     collection = _sanitize(f"{project_key}_failure_clusters")
 
-    vector = _embed(text)
-    print("    🔍 Vector size:", len(vector))
+    # vector = _embed(text)
+    # print("    🔍 Vector size:", len(vector))
+    vector = safe_embed(text)
+    print("    🔍 Vector size:", len(vector) if vector else "None")
 
     if not vector:
         print("    ⚠ No embedding generated — skipping Qdrant upsert")
@@ -181,7 +227,8 @@ def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: st
     payload = {
         "failure_class": verdict,
         "pattern_label": pattern or "unknown",
-        "text": text[:500]
+        "text": text[:500],
+        "rca_summary": rca_summary
     }
 
     try:
@@ -358,16 +405,44 @@ def main() -> None:
             (l1_conf < CONFIDENCE_THRESHOLD and l2_conf < CONFIDENCE_THRESHOLD)
         )
 
-        if needs_llm:
+        text = f"{err_msg}\n{stack}"
+        
+        # 1️⃣ Generate embedding
+        # vector = _embed(text)
+        # print("    🔍 Vector size:", len(vector) if vector else "None")
+        vector = safe_embed(text)
+
+        if vector:
+            print(f"    🔍 Vector size: {len(vector)}")
+        else:
+            print("    ⚠ Embedding failed")
+                
+        memory = None
+      
+        if vector:
+            memory = search_similar_failure(project_key, vector)
+        
+        # 2️⃣ MEMORY FIRST
+        if memory:
+            verdict     = memory.get("failure_class", "false")
+            rca_summary = memory.get("rca_summary", "Reused from memory")
+            method      = "memory"
+        
+            print(f"    🧠 Memory hit → {verdict}")
+        
+        # 3️⃣ LLM NEXT (only if needed)
+        elif needs_llm:
             verdict, rca_summary = llm_classify(
                 title, err_msg, stack, l1_verdict, l2_verdict, l2_conf, l2_pattern
             )
             method = "LLM"
+        
+        # 4️⃣ FALLBACK (rules / embedding)
         else:
             verdict     = l1_verdict or l2_verdict or "false"
             rca_summary = f"Rule-based: matched pattern. Confidence={max(l1_conf, l2_conf):.2f}."
             method      = "rules" if l1_verdict else "embedding"
-
+      
         print(f"  [{method:9s}] {verdict.upper()} — {title[:55]}")
 
         update_classification(rec["id"], verdict, rca_summary, args.db)
@@ -377,7 +452,8 @@ def main() -> None:
             project_key,
             text,
             verdict,
-            l2_pattern
+            l2_pattern,
+            rca_summary   # 👈 ADD THIS
         )
         if verdict == "true":
             true_count  += 1
