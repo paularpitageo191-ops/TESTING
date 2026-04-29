@@ -87,6 +87,16 @@ TRUE_PATTERNS: List[str] = [
     r"error: expect\(locator\)\.",
 ]
 
+FAILURE_TYPES = [
+    "selector",
+    "timeout",
+    "network",
+    "assertion",
+    "data",
+    "auth",
+    "backend",
+]
+
 CONFIDENCE_THRESHOLD = 0.85   # minimum to trust rule/embedding verdict without LLM
 # ══════════════════════════════════════════════════════════════════════════════
 # §0  LAYER 0 — HELPER-FUNCTIONS
@@ -131,6 +141,24 @@ def search_similar_failure(project_key: str, vector: list, threshold: float = 0.
         print(f"    ⚠ Qdrant search error: {e}")
 
     return None
+
+def detect_failure_type(error_msg: str, stack: str, rca_summary: str) -> str:
+    text = f"{error_msg} {stack} {rca_summary}".lower()
+
+    if "timeout" in text:
+        return "timeout"
+    if "net::err" in text or "econn" in text or "network" in text:
+        return "network"
+    if "assert" in text or "expected" in text:
+        return "assertion"
+    if "login" in text or "auth" in text:
+        return "auth"
+    if "data" in text:
+        return "data"
+    if "500" in text or "backend" in text:
+        return "backend"
+
+    return "selector"
 # ══════════════════════════════════════════════════════════════════════════════
 # §1  LAYER 1 — RULE-BASED
 # ══════════════════════════════════════════════════════════════════════════════
@@ -226,6 +254,7 @@ def upsert_failure_vector(project_key: str, text: str, verdict: str, pattern: st
 
     payload = {
         "failure_class": verdict,
+        "failure_type": failure_type,   # ✅ ADD THIS
         "pattern_label": pattern or "unknown",
         "text": text[:500],
         "rca_summary": rca_summary
@@ -390,15 +419,15 @@ def main() -> None:
     for rec in failures:
         title   = rec["test_title"]
         err_msg = rec.get("error_message", "")
-        stack   = rec.get("stack_trace",   "")
+        stack   = rec.get("stack_trace", "")
 
-        # Layer 1
+        # ── Layer 1 ──────────────────────────────────────────────────────────
         l1_verdict, l1_conf = rule_classify(err_msg, stack)
 
-        # Layer 2
+        # ── Layer 2 ──────────────────────────────────────────────────────────
         l2_verdict, l2_conf, l2_pattern = embedding_classify(project_key, err_msg, stack)
 
-        # Decide: escalate to LLM only when layers disagree or confidence is low
+        # ── LLM decision gate ────────────────────────────────────────────────
         needs_llm = (
             l1_verdict is None or
             (l2_verdict and l2_verdict != l1_verdict) or
@@ -406,63 +435,100 @@ def main() -> None:
         )
 
         text = f"{err_msg}\n{stack}"
-        
-        # 1️⃣ Generate embedding
-        # vector = _embed(text)
-        # print("    🔍 Vector size:", len(vector) if vector else "None")
+
+        # ── Embedding (safe) ─────────────────────────────────────────────────
         vector = safe_embed(text)
 
         if vector:
             print(f"    🔍 Vector size: {len(vector)}")
         else:
             print("    ⚠ Embedding failed")
-                
+
         memory = None
-      
         if vector:
             memory = search_similar_failure(project_key, vector)
-        
-        # 2️⃣ MEMORY FIRST
+
+        # ── MEMORY FIRST ─────────────────────────────────────────────────────
         if memory:
-            verdict     = memory.get("failure_class", "false")
-            rca_summary = memory.get("rca_summary", "Reused from memory")
-            method      = "memory"
-        
-            print(f"    🧠 Memory hit → {verdict}")
-        
-        # 3️⃣ LLM NEXT (only if needed)
+            verdict_full = memory.get("failure_class", "false:selector")
+            rca_summary  = memory.get("rca_summary", "Reused from memory")
+
+            if ":" in verdict_full:
+                verdict, failure_type = verdict_full.split(":", 1)
+            else:
+                verdict = verdict_full
+                failure_type = memory.get("failure_type", "selector")
+
+            method = "memory"
+            print(f"    🧠 Memory hit → {verdict}:{failure_type}")
+
+        # ── LLM ─────────────────────────────────────────────────────────────
         elif needs_llm:
             verdict, rca_summary = llm_classify(
-                title, err_msg, stack, l1_verdict, l2_verdict, l2_conf, l2_pattern
+                title, err_msg, stack,
+                l1_verdict, l2_verdict, l2_conf, l2_pattern
             )
+            failure_type = detect_failure_type(err_msg, stack, rca_summary)
             method = "LLM"
-        
-        # 4️⃣ FALLBACK (rules / embedding)
+
+        # ── FALLBACK ─────────────────────────────────────────────────────────
         else:
             verdict     = l1_verdict or l2_verdict or "false"
             rca_summary = f"Rule-based: matched pattern. Confidence={max(l1_conf, l2_conf):.2f}."
+            failure_type = detect_failure_type(err_msg, stack, rca_summary)
             method      = "rules" if l1_verdict else "embedding"
-      
-        print(f"  [{method:9s}] {verdict.upper()} — {title[:55]}")
 
-        update_classification(rec["id"], verdict, rca_summary, args.db)
-        # ── NEW: STORE FAILURE IN QDRANT ────────────────────────────────────────────
-        text = f"{err_msg}\n{stack}"
+        # ── Final enriched verdict ───────────────────────────────────────────
+        verdict_with_type = f"{verdict}:{failure_type}"
+
+        print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
+
+        # ── DB update ────────────────────────────────────────────────────────
+        update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
+
+        # ── Store in Qdrant ──────────────────────────────────────────────────
         upsert_failure_vector(
             project_key,
             text,
-            verdict,
+            verdict_with_type,
             l2_pattern,
-            rca_summary   # 👈 ADD THIS
+            rca_summary
         )
+
+        # ── Counters ─────────────────────────────────────────────────────────
         if verdict == "true":
-            true_count  += 1
+            true_count += 1
         else:
             false_count += 1
 
+        # ── Dispatch (type-aware, safe fallback) ─────────────────────────────
         if not args.no_dispatch:
-            dispatch_rca(verdict, project_key, rec, args.db)
 
+            if failure_type == "selector":
+                dispatch_rca(verdict, project_key, rec, args.db)
+
+            elif failure_type == "timeout":
+                print("    ⏱ Timeout issue → retry recommended")
+
+            elif failure_type == "network":
+                print("    🌐 Network issue → mark flaky")
+
+            elif failure_type == "assertion":
+                print("    🧪 Assertion issue → likely product bug")
+
+            elif failure_type == "auth":
+                print("    🔐 Auth issue → session/login problem")
+
+            elif failure_type == "data":
+                print("    📊 Data issue → test data mismatch")
+
+            elif failure_type == "backend":
+                print("    🏗 Backend issue → real defect")
+
+            else:
+                dispatch_rca(verdict, project_key, rec, args.db)
+
+    # ── Summary ─────────────────────────────────────────────────────────────
     print(f"\n  Summary: {true_count} true failures  |  {false_count} false failures")
     print(f"\n{'='*60}\n")
 
