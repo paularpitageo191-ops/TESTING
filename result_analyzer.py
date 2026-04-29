@@ -41,7 +41,7 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
     """
     Parse Playwright JSON report.
     Returns (summary_dict, list_of_test_records).
-
+ 
     Playwright JSON structure:
       {
         "suites": [ {
@@ -55,76 +55,68 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
           } ]
         } ]
       }
+ 
+    Note: with retries=2 each test can have up to 3 result entries.
+    We record ONE row per test using only the FINAL result attempt.
     """
     with open(report_path) as f:
         data = json.load(f)
-
+ 
     records = []
-
+ 
     def _walk_suite(suite: Dict, parent_file: str = "") -> None:
         spec_file = suite.get("file", parent_file) or parent_file
         for spec in suite.get("specs", []):
             title = spec.get("title", "")
             tags  = re.findall(r'@(AC\d+|SCRUM[-_]\d+)', title)
             for test in spec.get("tests", []):
-                status = test.get("status", "unknown")
-                # Aggregate results
+                status  = test.get("status", "unknown")
                 results = test.get("results", [{}])
-                last    = results[-1] if results else {}
-                dur_ms  = sum(r.get("duration", 0) for r in results)
-                error   = last.get("error", {}) or {}
-                err_msg = error.get("message", "")
-                stack   = error.get("stack",   "")
-
+ 
+                # ── Use FINAL attempt only (last item in results list) ──
+                # With retries=2, results has up to 3 entries.
+                # The last entry is the conclusive one.
+                final        = results[-1] if results else {}
+                dur_ms       = final.get("duration", 0)   # final attempt duration only
+                error        = final.get("error", {}) or {}
+                err_msg      = error.get("message", "")
+                stack        = error.get("stack",   "")
+ 
                 records.append({
-                    "spec_file":    spec_file,
-                    "test_title":   title,
-                    "ac_tags":      ",".join(tags),
-                    "status":       _normalize_status(status),
-                    "duration_ms":  dur_ms,
+                    "spec_file":     spec_file,
+                    "test_title":    title,
+                    "ac_tags":       ",".join(tags),
+                    "status":        _normalize_status(status),
+                    "duration_ms":   dur_ms,
                     "error_message": err_msg,
-                    "stack_trace":  stack,
-                    "timestamp":    datetime.datetime.utcnow().isoformat(),
-                    "page_url":     _extract_page_url(err_msg + stack),
+                    "stack_trace":   stack,
+                    "timestamp":     datetime.datetime.utcnow().isoformat(),
+                    "page_url":      _extract_page_url(err_msg + stack),
+                    "retry_count":   len(results) - 1,   # 0 = passed first time
                 })
+ 
         for child in suite.get("suites", []):
             _walk_suite(child, spec_file)
-
+ 
     for top_suite in data.get("suites", []):
         _walk_suite(top_suite)
-
+ 
+    # Use stats block from report (accurate counts)
+    stats = data.get("stats", {})
     summary = {
-        "total":   data.get("stats", {}).get("expected",  len(records)),
-        "passed":  data.get("stats", {}).get("expected",  0),
-        "failed":  data.get("stats", {}).get("unexpected",0),
-        "skipped": data.get("stats", {}).get("skipped",   0),
-        "flaky":   data.get("stats", {}).get("flaky",     0),
+        "total":   stats.get("expected", 0) + stats.get("unexpected", 0),
+        "passed":  stats.get("expected",  0),
+        "failed":  stats.get("unexpected", 0),
+        "skipped": stats.get("skipped",   0),
+        "flaky":   stats.get("flaky",     0),
     }
-    # Recount from records if stats missing
-    if not any(summary.values()):
+    # Fallback: recount from records if stats block is missing
+    if summary["total"] == 0:
         for s in ("passed", "failed", "skipped", "flaky"):
             summary[s] = sum(1 for r in records if r["status"] == s)
         summary["total"] = len(records)
-
+ 
     return summary, records
-
-
-def _normalize_status(raw: str) -> str:
-    mapping = {
-        "passed":      "passed",
-        "failed":      "failed",
-        "timedout":    "failed",
-        "skipped":     "skipped",
-        "interrupted": "failed",
-        "flaky":       "flaky",
-    }
-    return mapping.get(raw.lower(), "failed")
-
-
-def _extract_page_url(text: str) -> str:
-    m = re.search(r'https?://[^\s"\')\]]+', text)
-    return m.group(0) if m else ""
-
 
 # ══════════════════════════════════════════════════════════════════════════════
 # §2  DB WRITE
@@ -181,7 +173,11 @@ def persist_results(
 def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
     """
     Trigger classifier.py as a subprocess for each failed test.
-    In production this would be async / queued.
+ 
+    KEY FIX: pass env=os.environ.copy() so that Jenkins environment
+    variables (QDRANT_URL, OLLAMA_HOST) are inherited by the subprocess.
+    Without this, the child process loses those vars and falls back to
+    localhost, causing connection refused errors in Docker.
     """
     cmd = [
         sys.executable, "classifier.py",
@@ -191,10 +187,13 @@ def invoke_classifier(project_key: str, run_id: str, db_path: str) -> None:
     ]
     print(f"  → Handing off to classifier: {' '.join(cmd)}")
     try:
-        subprocess.Popen(cmd, cwd=PROJECT_ROOT)
+        subprocess.Popen(
+            cmd,
+            cwd=PROJECT_ROOT,
+            env=os.environ.copy(),   # ← inherits QDRANT_URL, OLLAMA_HOST from Jenkins
+        )
     except FileNotFoundError:
         print("  ⚠ classifier.py not found — skipping handoff")
-
 
 # ══════════════════════════════════════════════════════════════════════════════
 # §4  MAIN
