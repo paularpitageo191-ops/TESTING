@@ -236,11 +236,14 @@ def dispatch_rca(
         "--db",         db_path,
     ]
     try:
-        subprocess.Popen(cmd, cwd=PROJECT_ROOT)
+        subprocess.Popen(
+            cmd,
+            cwd=PROJECT_ROOT,
+            env=os.environ.copy(),   # ← inherits QDRANT_URL, OLLAMA_HOST from Jenkins
+        )
         print(f"    → Dispatched {script} for: {test_record['test_title'][:60]}")
     except FileNotFoundError:
         print(f"    ⚠ {script} not found")
-
 
 # ══════════════════════════════════════════════════════════════════════════════
 # §6  MAIN
