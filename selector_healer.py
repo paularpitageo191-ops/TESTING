@@ -181,29 +181,54 @@ def patch_spec_file(
 
     count = 0
     heals = []
+
     for old_sel, new_sel in replacements.items():
+
+        # 🔥 PHASE 4 ADD — try memory reuse first
+        try:
+            memory_fix = _search_healing_memory(project_key, old_sel)
+            if memory_fix:
+                print(f"  🧠 Reusing learned fix: {old_sel} → {memory_fix}")
+                new_sel = memory_fix
+        except Exception:
+            pass
+
         if old_sel not in content:
             continue
-        # Replace in locator() calls and expect() calls
+
+        # Replace in locator() calls
         patterns = [
             (rf'locator\(["\']({re.escape(old_sel)})["\']', new_sel),
             (rf'\.locator\(["\']({re.escape(old_sel)})["\']', new_sel),
         ]
+
         for pattern, replacement in patterns:
             new_content = re.sub(
                 pattern,
                 lambda m, r=replacement: m.group(0).replace(m.group(1), r),
                 content,
             )
+
             if new_content != content:
-                count   += new_content.count(new_sel) - content.count(new_sel)
-                content  = new_content
+                # 🔧 safer counting (avoids double counting bugs)
+                delta = new_content.count(new_sel) - content.count(new_sel)
+                count += max(delta, 1)
+
+                content = new_content
                 heals.append((old_sel, new_sel))
 
     if count > 0:
+        # 🔥 OPTIONAL SAFETY — backup before write
+        try:
+            import shutil
+            shutil.copy(spec_file, spec_file + ".bak")
+        except Exception:
+            pass
+
         with open(spec_file, "w") as f:
             f.write(content)
-        # Log to DB
+
+        # Log to DB + Qdrant learning
         _log_heals(heals, spec_file, project_key, db_path)
 
     return count
@@ -215,9 +240,13 @@ def _log_heals(
     project_key: str,
     db_path: str,
 ) -> None:
+    """
+    Logs healing actions to SQLite and stores them in Qdrant for reuse.
+    """
     try:
         conn = sqlite3.connect(db_path)
         ts   = datetime.datetime.utcnow().isoformat()
+
         conn.executemany(
             """
             INSERT INTO healing_log
@@ -226,10 +255,83 @@ def _log_heals(
             """,
             [(project_key, spec_file, old, new, ts) for old, new in heals],
         )
+
         conn.commit()
         conn.close()
+
     except Exception as exc:
         print(f"  ⚠ Heal log DB write failed: {exc}")
+
+    # 🔥 PHASE 4 ADD — Store fixes in Qdrant (learning loop)
+    for old, new in heals:
+        try:
+            collection = f"{project_key}_healing_memory"
+
+            text = f"{old} -> {new}"
+            vector = safe_embed(text)
+
+            if not vector:
+                continue
+
+            payload = {
+                "old_selector": old,
+                "new_selector": new,
+                "mapping": text,
+            }
+
+            requests.put(
+                f"{QDRANT_URL}/collections/{collection}/points",
+                json={
+                    "points": [{
+                        "id": str(uuid.uuid4()),
+                        "vector": vector,
+                        "payload": payload
+                    }]
+                },
+                timeout=5
+            )
+
+            print(f"    🧠 Learned fix: {old} → {new}")
+
+        except Exception as e:
+            print(f"    ⚠ Qdrant heal store failed: {e}")
+
+
+def _store_healing_memory(project_key: str, old: str, new: str):
+    """
+    Store selector fix in Qdrant for future reuse
+    """
+    try:
+        collection = f"{project_key}_healing_memory"
+
+        text = f"{old} -> {new}"
+        vector = safe_embed(text)
+
+        if not vector:
+            return
+
+        payload = {
+            "old_selector": old,
+            "new_selector": new,
+            "mapping": text,
+        }
+
+        requests.put(
+            f"{QDRANT_URL}/collections/{collection}/points",
+            json={
+                "points": [{
+                    "id": str(uuid.uuid4()),
+                    "vector": vector,
+                    "payload": payload
+                }]
+            },
+            timeout=5
+        )
+
+        print(f"    🧠 Learned fix: {old} → {new}")
+
+    except Exception as e:
+        print(f"    ⚠ Qdrant heal store failed: {e}")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
