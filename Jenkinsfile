@@ -16,24 +16,21 @@ pipeline {
             steps {
                 sh '''
                     cd "$WORKSPACE"
-
-                    # Create venv inside Jenkins workspace if not cached
+        
+                    # Python venv
                     if [ ! -f ".ws_venv/bin/activate" ]; then
-                        $PYTHON -m venv .ws_venv
+                        python3 -m venv .ws_venv
                     fi
-
-                    # Install requirements
                     .ws_venv/bin/pip install --quiet --upgrade pip
                     .ws_venv/bin/pip install --quiet -r requirements.txt 2>/dev/null || \
-                    .ws_venv/bin/pip install --quiet \
-                        requests python-dotenv qdrant-client
-
-                    # Confirm python works
+                    .ws_venv/bin/pip install --quiet requests python-dotenv qdrant-client
                     .ws_venv/bin/python3 --version
+        
+                    # Node modules — needed for @playwright/test
+                    npm install --silent
                 '''
             }
         }
-
         // ── Stage 2: Bootstrap DB (idempotent) ───────────────────────────
         stage('Bootstrap') {
             steps {
