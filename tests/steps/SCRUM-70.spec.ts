@@ -14,7 +14,7 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.goto("https://demoqa.com/text-box");  // AMBIGUOUS-MATCH
             await basePage.page.locator("#currentAddress").fill("test@domain");
             await basePage.smartAction("I click the Submit button"); /* selector: #currentAddress */
-            await expect(basePage.page.locator("#currentAddress")).toBeVisible();
+            await expect(basePage.page.locator("#output")).toBeVisible();
             await expect(basePage.page.locator("/* TODO: manually map '#output' — not found in current DOM */  /* HEALED from #output via TODO_PLACEHOLDER (conf=0.0) */")).not.toBeVisible();  // FIX RC-4: negation
     });
 
@@ -29,7 +29,7 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
     test("Radio Button Validation @SCRUM-70 @positive @AC4 @SCRUM_70", async ({ page }) => {
             await basePage.page.goto("https://demoqa.com/radio-button");
             await basePage.smartAction("I select the \"#noRadio\" radio button"); /* selector: #impressiveRadio */
-            await basePage.smartAction("the \"#noRadio\" radio button should be disabled");  // verifyDisabled — BasePage will assert element is disabled
+            await expect(basePage.page.locator("#noRadio")).toBeDisabled();
             await basePage.smartAction("the state of the \"#noRadio\" radio button remains unchanged");  // TEA fallback: action_type=unknown /* selector: #impressiveRadio */
     });
 
@@ -47,7 +47,7 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
 
     test("Modal interaction: Add new row @SCRUM-70 @positive @AC7 @SCRUM_115", async ({ page }) => {
             await basePage.page.goto("https://demoqa.com/webtables");  // AMBIGUOUS-MATCH
-            await basePage.smartAction("I click #addNewR");
+            await basePage.page.locator("#addNewRecordButton").click();
             await basePage.smartAction("the modal should be opened");
     });
 
@@ -102,21 +102,21 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.goto("https://demoqa.com/text-box");  // AMBIGUOUS-MATCH
             await basePage.page.locator("#currentAddress").fill("12");
             await basePage.smartAction("the result should display \"Age: 12\""); /* selector: text=static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: Input. page: https://demoqa.com/text-box */  // AMBIGUOUS-MATCH
-            await basePage.smartAction("I should see the success message"); /* selector: text=static element. role: textbox. label: Current Address. placeholder: Current Address. selector: #currentAddress. intent: Input. page: https://demoqa.com/text-box */  // AMBIGUOUS-MATCH
+            await expect(basePage.page.locator("#output")).toBeVisible(); 
     });
 
     test("Non-numeric age input (abc) @SCRUM-70 @positive @AC15 @SCRUM_70", async ({ page }) => {
             await basePage.page.goto("https://demoqa.com/text-box");  // AMBIGUOUS-MATCH
             await basePage.page.locator("#currentAddress").fill("abc");
-            await expect(basePage.page.locator("#currentAddress")).toContainText("Invalid Age");
+            await expect(basePage.page.locator("#output")).toContainText("Invalid Age");
             await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-4: negation
     });
 
     test("Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70", async ({ page }) => {
             await basePage.page.goto("https://demoqa.com/text-box");  // AMBIGUOUS-MATCH
             await basePage.page.locator("#currentAddress").fill("50");
-            await expect(basePage.page.locator("#currentAddress")).toBeVisible();
-            await expect(basePage.page.locator("#currentAddress")).toContainText("Name: 50");
+            await expect(basePage.page.locator("#output")).toBeVisible();
+            await expect(basePage.page.locator("#output")).toContainText("Name: 50");
             await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-4: negation
     });
 
