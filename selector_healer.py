@@ -2,7 +2,7 @@
 """
 selector_healer.py — SAFE / HARDENED VERSION
 """
-
+print("🔥 HARDENED HEALER LOADED")
 from __future__ import annotations
 
 import os
