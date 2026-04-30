@@ -497,178 +497,177 @@ def dispatch_rca(
 # ══════════════════════════════════════════════════════════════════════════════
 # §6  MAIN (RAG-UNIFIED + MULTI-CONTEXT)
 # ══════════════════════════════════════════════════════════════════════════════
-for rec in failures:
-    title   = rec["test_title"]
-    err_msg = rec.get("error_message", "")
-    stack   = rec.get("stack_trace", "")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="UC-3 Classifier")
+    parser.add_argument("--project",     required=True)
+    parser.add_argument("--run-id",      required=True)
+    parser.add_argument("--db",          default=DEFAULT_DB)
+    parser.add_argument("--no-dispatch", action="store_true")
+    args = parser.parse_args()
 
-    text = f"{err_msg}\n{stack}"
+    project_key = args.project
+    log_agent_config(AGENT_NAME)
 
-    # ─────────────────────────────────────────────
-    # 🚨 EARLY DETECTION: UI BLOCKING
-    # ─────────────────────────────────────────────
-    if any(x in err_msg.lower() for x in [
-        "intercepts pointer events",
-        "element is not clickable",
-        "another element would receive the click"
-    ]):
-        failure_type = "ui_blocking"
-        verdict = "false"
-        rca_summary = "UI blocking issue (modal/overlay intercepting clicks)"
-        method = "rule"
+    print(f"\n{'='*60}")
+    print(f"Classifier — {project_key} / run {args.run_id}")
+    print(f"{'='*60}")
+
+    failures = load_failures(project_key, args.run_id, args.db)
+    print(f"  Failures to classify: {len(failures)}")
+
+    true_count  = 0
+    false_count = 0
+
+    for rec in failures:
+        title   = rec["test_title"]
+        err_msg = rec.get("error_message", "")
+        stack   = rec.get("stack_trace",   "")
+        text    = f"{err_msg}\n{stack}"
+
+        # ── EARLY DETECTION: UI BLOCKING ────────────────────────
+        if any(x in err_msg.lower() for x in [
+            "intercepts pointer events",
+            "element is not clickable",
+            "another element would receive the click",
+        ]):
+            failure_type    = "ui_blocking"
+            verdict         = "false"
+            rca_summary     = "UI blocking issue (modal/overlay intercepting clicks)"
+            method          = "rule"
+            verdict_with_type = f"{verdict}:{failure_type}"
+
+            print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
+            print("    ⚠ Modal blocking detected — skipping healer")
+
+            update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
+
+            if not args.no_dispatch:
+                print("    🔁 Retrying test after wait")
+                retry_test(title)
+
+            false_count += 1
+            continue
+
+        # ── Layer 1 (rules) ─────────────────────────────────────
+        l1_verdict, l1_conf = rule_classify(err_msg, stack)
+
+        # ── RAG Retrieval ────────────────────────────────────────
+        vector = safe_embed(text)
+
+        if vector:
+            print(f"    🔍 Vector size: {len(vector)}")
+            retrieval = retrieve_similar_failures(project_key, vector)
+        else:
+            print("    ⚠ Embedding failed")
+            retrieval = _empty_retrieval()
+
+        memory     = retrieval.get("memory_hit")
+        contexts   = retrieval.get("contexts", [])
+        l2_verdict = retrieval.get("best_label")
+        l2_conf    = retrieval.get("confidence", 0.0)
+        l2_pattern = retrieval.get("pattern", "")
+
+        # ── Decide LLM usage ─────────────────────────────────────
+        needs_llm = (
+            l1_verdict is None or
+            (l2_verdict and l2_verdict != l1_verdict) or
+            (l1_conf < CONFIDENCE_THRESHOLD and l2_conf < CONFIDENCE_THRESHOLD)
+        )
+
+        # ── MEMORY FIRST ─────────────────────────────────────────
+        if memory:
+            verdict_full = memory.get("failure_class", "false:selector")
+            rca_summary  = memory.get("rca_summary", "Reused from memory")
+
+            if ":" in verdict_full:
+                verdict, failure_type = verdict_full.split(":", 1)
+            else:
+                verdict      = verdict_full
+                failure_type = memory.get("failure_type", "selector")
+
+            method = "memory"
+            print(f"    🧠 Memory hit → {verdict}:{failure_type}")
+
+        # ── LLM fallback ─────────────────────────────────────────
+        elif needs_llm:
+            verdict, rca_summary = llm_classify(
+                title, err_msg, stack,
+                l1_verdict, l2_verdict, l2_conf, l2_pattern,
+                contexts=contexts,
+            )
+            failure_type = detect_failure_type(err_msg, stack, rca_summary)
+            method       = "LLM"
+
+        # ── Embedding fallback ───────────────────────────────────
+        else:
+            verdict = l1_verdict or l2_verdict or "false"
+
+            if l1_verdict is None:
+                labels = [c["label"] for c in contexts if c["label"] in ("true", "false")]
+                if labels:
+                    verdict = max(set(labels), key=labels.count)
+
+            rca_summary  = f"Embedding-assisted. Confidence={l2_conf:.2f}"
+            failure_type = detect_failure_type(err_msg, stack, rca_summary)
+            method       = "embedding"
 
         verdict_with_type = f"{verdict}:{failure_type}"
-
         print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
-        print("    ⚠ Modal blocking detected — skipping healer")
 
+        # ── Store results ────────────────────────────────────────
         update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
 
-        # Optional retry
-        if not args.no_dispatch:
-            print("    🔁 Retrying test after wait")
-            retry_test(title)
-
-        false_count += 1
-        continue  # 🚨 CRITICAL: skip rest of pipeline
-
-    # ─────────────────────────────────────────────
-    # Layer 1 (rules)
-    # ─────────────────────────────────────────────
-    l1_verdict, l1_conf = rule_classify(err_msg, stack)
-
-    # ─────────────────────────────────────────────
-    # RAG Retrieval
-    # ─────────────────────────────────────────────
-    vector = safe_embed(text)
-
-    if vector:
-        print(f"    🔍 Vector size: {len(vector)}")
-        retrieval = retrieve_similar_failures(project_key, vector)
-    else:
-        print("    ⚠ Embedding failed")
-        retrieval = _empty_retrieval()
-
-    memory     = retrieval.get("memory_hit")
-    contexts   = retrieval.get("contexts", [])
-    l2_verdict = retrieval.get("best_label")
-    l2_conf    = retrieval.get("confidence", 0.0)
-    l2_pattern = retrieval.get("pattern", "")
-
-    # ─────────────────────────────────────────────
-    # Decide LLM usage
-    # ─────────────────────────────────────────────
-    needs_llm = (
-        l1_verdict is None or
-        (l2_verdict and l2_verdict != l1_verdict) or
-        (l1_conf < CLASSIFICATION_THRESHOLD and l2_conf < CLASSIFICATION_THRESHOLD)
-    )
-
-    # ─────────────────────────────────────────────
-    # MEMORY FIRST
-    # ─────────────────────────────────────────────
-    if memory:
-        verdict_full = memory.get("failure_class", "false:selector")
-        rca_summary  = memory.get("rca_summary", "Reused from memory")
-
-        if ":" in verdict_full:
-            verdict, failure_type = verdict_full.split(":", 1)
-        else:
-            verdict = verdict_full
-            failure_type = memory.get("failure_type", "selector")
-
-        method = "memory"
-        print(f"    🧠 Memory hit → {verdict}:{failure_type}")
-
-    # ─────────────────────────────────────────────
-    # LLM fallback
-    # ─────────────────────────────────────────────
-    elif needs_llm:
-        verdict, rca_summary = llm_classify(
-            title, err_msg, stack,
-            l1_verdict, l2_verdict, l2_conf, l2_pattern,
-            contexts=contexts
+        upsert_failure_vector(
+            project_key, text,
+            verdict_with_type, l2_pattern,
+            rca_summary, vector,
         )
-        failure_type = detect_failure_type(err_msg, stack, rca_summary)
-        method = "LLM"
 
-    # ─────────────────────────────────────────────
-    # Embedding fallback
-    # ─────────────────────────────────────────────
-    else:
-        verdict = l1_verdict or l2_verdict or "false"
+        # ── Flaky detection ──────────────────────────────────────
+        if is_flaky(title, args.db):
+            print("    ⚠ Flaky test detected → skipping healing & routing")
+            continue
 
-        if l1_verdict is None:
-            labels = [c["label"] for c in contexts if c["label"] in ("true", "false")]
-            if labels:
-                verdict = max(set(labels), key=labels.count)
-
-        rca_summary = f"Embedding-assisted. Confidence={l2_conf:.2f}"
-        failure_type = detect_failure_type(err_msg, stack, rca_summary)
-        method = "embedding"
-
-    verdict_with_type = f"{verdict}:{failure_type}"
-    print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
-
-    # ─────────────────────────────────────────────
-    # Store results
-    # ─────────────────────────────────────────────
-    update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
-
-    upsert_failure_vector(
-        project_key,
-        text,
-        verdict_with_type,
-        l2_pattern,
-        rca_summary,
-        vector
-    )
-
-    # ─────────────────────────────────────────────
-    # Flaky detection
-    # ─────────────────────────────────────────────
-    if is_flaky(title, args.db):
-        print("    ⚠ Flaky test detected → skipping healing & routing")
-        continue
-
-    # ─────────────────────────────────────────────
-    # Counters
-    # ─────────────────────────────────────────────
-    if verdict == "true":
-        true_count += 1
-    else:
-        false_count += 1
-
-    # ─────────────────────────────────────────────
-    # Auto Jira
-    # ─────────────────────────────────────────────
-    if verdict == "true" and failure_type in ["backend", "assertion"]:
-        if not rec.get("jira_created"):
-            create_jira_ticket(title, rca_summary)
-
-    # ─────────────────────────────────────────────
-    # Routing (FIXED INDENTATION)
-    # ─────────────────────────────────────────────
-    if not args.no_dispatch:
-
-        if failure_type == "selector":
-            dispatch_rca(verdict, project_key, rec, args.db)
-
-        elif should_retry(failure_type):
-            print("    🔁 Transient issue → retrying")
-            retry_test(title)
-
-        elif failure_type == "assertion":
-            print("    🧪 Assertion issue → needs review")
-
-        elif failure_type == "backend":
-            print("    🚨 Backend bug → already escalated")
-
-        elif failure_type == "auth":
-            print("    🔐 Auth issue → session/login")
-
-        elif failure_type == "data":
-            print("    📊 Data issue → input mismatch")
-
+        # ── Counters ─────────────────────────────────────────────
+        if verdict == "true":
+            true_count += 1
         else:
-            print(f"    ⚠ Unknown failure type '{failure_type}' → skipping healer")
+            false_count += 1
+
+        # ── Auto Jira ────────────────────────────────────────────
+        if verdict == "true" and failure_type in ["backend", "assertion"]:
+            if not rec.get("jira_created"):
+                create_jira_ticket(title, rca_summary)
+
+        # ── Routing ──────────────────────────────────────────────
+        if not args.no_dispatch:
+
+            if failure_type == "selector":
+                dispatch_rca(verdict, project_key, rec, args.db)
+
+            elif should_retry(failure_type):
+                print("    🔁 Transient issue → retrying")
+                retry_test(title)
+
+            elif failure_type == "assertion":
+                print("    🧪 Assertion issue → needs review")
+
+            elif failure_type == "backend":
+                print("    🚨 Backend bug → already escalated")
+
+            elif failure_type == "auth":
+                print("    🔐 Auth issue → session/login")
+
+            elif failure_type == "data":
+                print("    📊 Data issue → input mismatch")
+
+            else:
+                print(f"    ⚠ Unknown failure type '{failure_type}' → skipping healer")
+
+    # ── Final summary ────────────────────────────────────────────
+    print(f"\n  Summary: {true_count} true failures  |  {false_count} false failures")
+    print(f"\n{'='*60}\n")
+
+
+if __name__ == "__main__":
+    main()
