@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-test_validator.py — UC-4: Validate Healed Spec Before Committing
+test_validator.py — UC-4: Validate Healed Spec + Learn from Outcome
 """
 
 from __future__ import annotations
@@ -26,9 +26,9 @@ DEFAULT_DB   = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 # BACKUP / RESTORE
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 
 def backup_spec(spec_path: str) -> str:
     ts = datetime.datetime.now(datetime.UTC).strftime("%Y%m%d%H%M%S")
@@ -43,13 +43,14 @@ def restore_spec(spec_path: str, backup_path: str) -> None:
     print(f"  ↩ Spec restored from backup: {os.path.basename(backup_path)}")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# DB — MARK SUCCESS / FAILURE
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
+# 🧠 DB — LEARNING (SUCCESS / FAILURE)
+# ══════════════════════════════════════════════════════════════
 
 def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: bool):
     """
-    Marks latest heal attempt for this spec as success/failure.
+    Updates the latest heal attempt with success/failure.
+    This is the CORE feedback loop used by selector_healer.
     """
     try:
         conn = sqlite3.connect(db_path)
@@ -57,7 +58,7 @@ def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: b
         conn.execute(
             """
             UPDATE healing_log
-            SET validated = ?
+            SET success = ?
             WHERE id = (
                 SELECT id FROM healing_log
                 WHERE project_key = ? AND spec_file = ?
@@ -71,42 +72,37 @@ def mark_heal_success(spec_file: str, project_key: str, db_path: str, success: b
         conn.commit()
         conn.close()
 
-        print(f"  ✓ Heal validation updated → {'SUCCESS' if success else 'FAILED'}")
+        print(f"  🧠 Learning update → {'SUCCESS' if success else 'FAILED'}")
 
     except Exception as e:
         print(f"⚠ Failed to update heal success: {e}")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# OPTIONAL — FUTURE QDRANT UPDATE HOOK (SAFE NO-OP FOR NOW)
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
+# OPTIONAL — FUTURE QDRANT HOOK
+# ══════════════════════════════════════════════════════════════
 
 def update_healing_validation(project_key: str, spec_file: str, success: bool):
-    """
-    Placeholder hook for future Qdrant update.
-    Keeps system forward-compatible without breaking current flow.
-    """
     try:
-        # You can later extend this to update Qdrant payload
-        # Currently safe no-op
         print(f"  🔄 (future) Qdrant update → {project_key} {spec_file} = {success}")
     except Exception:
         pass
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 # VALIDATION STAGES
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 
 def stage_syntax_check(spec_path: str) -> Tuple[bool, str]:
     try:
         result = subprocess.run(
             ["npx", "tsc", "--noEmit", "--skipLibCheck"],
-            capture_output=True, text=True,
-            cwd=PROJECT_ROOT, timeout=60,
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_ROOT,
+            timeout=60,
         )
-        passed = result.returncode == 0
-        return passed, (result.stdout + result.stderr).strip()
+        return result.returncode == 0, (result.stdout + result.stderr).strip()
     except subprocess.TimeoutExpired:
         return False, "tsc timed out"
     except FileNotFoundError:
@@ -118,12 +114,13 @@ def stage_locator_dryrun(spec_path: str) -> Tuple[bool, str]:
     try:
         result = subprocess.run(
             ["npx", "playwright", "test", rel_path, "--list"],
-            capture_output=True, text=True,
-            cwd=PROJECT_ROOT, timeout=30,
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_ROOT,
+            timeout=30,
         )
         output = (result.stdout + result.stderr).strip()
-        passed = result.returncode == 0 and "Error:" not in output
-        return passed, output
+        return result.returncode == 0 and "Error:" not in output, output
     except subprocess.TimeoutExpired:
         return False, "playwright list timed out"
     except FileNotFoundError:
@@ -140,32 +137,31 @@ def stage_smoke_run(spec_path: str, n: int = 3) -> Tuple[bool, str]:
                 "--reporter=line",
                 f"--shard=1/{n}",
             ],
-            capture_output=True, text=True,
-            cwd=PROJECT_ROOT, timeout=120,
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_ROOT,
+            timeout=120,
         )
-        passed = result.returncode == 0
-        return passed, (result.stdout + result.stderr).strip()[-1500:]
+        return result.returncode == 0, (result.stdout + result.stderr).strip()[-1500:]
     except subprocess.TimeoutExpired:
         return False, "smoke run timed out"
     except FileNotFoundError:
         return True, "playwright not available"
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 # NOTIFICATIONS
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 
-def notify_slack(project_key: str, spec_file: str, passed: bool, summary: str, pr_url: Optional[str] = None):
+def notify_slack(project_key: str, spec_file: str, passed: bool, summary: str):
     if not SLACK_WEBHOOK:
         return
 
-    status = "PASSED" if passed else "FAILED"
-
     payload = {
         "text": (
-            f"{'✅' if passed else '❌'} {project_key} — {status}\n"
-            f"Spec: {os.path.basename(spec_file)}\n"
-            f"{summary}"
+            f"{'✅' if passed else '❌'} {project_key} — "
+            f"{'PASSED' if passed else 'FAILED'}\n"
+            f"{os.path.basename(spec_file)}\n{summary}"
         )
     }
 
@@ -175,17 +171,16 @@ def notify_slack(project_key: str, spec_file: str, passed: bool, summary: str, p
         pass
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 # MAIN
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="UC-4 Test Validator")
+def main():
+    parser = argparse.ArgumentParser(description="Test Validator")
     parser.add_argument("--project", required=True)
     parser.add_argument("--spec", required=True)
     parser.add_argument("--db", default=DEFAULT_DB)
     parser.add_argument("--smoke-n", type=int, default=0)
-    parser.add_argument("--open-pr", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -214,32 +209,30 @@ def main() -> None:
         print(out[:300])
         all_passed = False
 
-    # ── Stage 2: Locator validation
+    # ── Stage 2: Locator
     if all_passed:
         ok, out = stage_locator_dryrun(spec_path)
         summary_parts.append(f"Locator: {'PASS' if ok else 'FAIL'}")
         if not ok:
-            print("  ⚠ Locator resolution failed")
+            print("  ⚠ Locator failed")
             print(out[:300])
             all_passed = False
 
-    # ── Stage 3: Smoke test
+    # ── Stage 3: Smoke
     if all_passed and args.smoke_n > 0:
         ok, out = stage_smoke_run(spec_path, args.smoke_n)
         summary_parts.append(f"Smoke: {'PASS' if ok else 'FAIL'}")
         if not ok:
-            print("  ⚠ Smoke test failed")
+            print("  ⚠ Smoke failed")
             print(out[:300])
             all_passed = False
 
     summary = " | ".join(summary_parts)
-    print(f"\n  📊 Validation summary → {summary}")
+    print(f"\n  📊 {summary}")
 
-    # ─────────────────────────────────────────────────────────────
-    # SUCCESS
-    # ─────────────────────────────────────────────────────────────
+    # ── SUCCESS
     if all_passed:
-        print("\n  ✓ Validation passed")
+        print("\n  ✓ Validation passed — learning success")
         os.remove(backup_path)
 
         if not args.dry_run:
@@ -248,11 +241,9 @@ def main() -> None:
 
         notify_slack(project_key, spec_path, True, summary)
 
-    # ─────────────────────────────────────────────────────────────
-    # FAILURE
-    # ─────────────────────────────────────────────────────────────
+    # ── FAILURE
     else:
-        print("\n  ✗ Validation failed — reverting")
+        print("\n  ✗ Validation failed — reverting + learning failure")
         restore_spec(spec_path, backup_path)
 
         if not args.dry_run:
