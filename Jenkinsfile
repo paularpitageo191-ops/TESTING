@@ -109,14 +109,12 @@ pipeline {
                     usernameVariable: 'JIRA_EMAIL',
                     passwordVariable: 'JIRA_API_TOKEN'
                 )]) {
-
+        
                     sh '''
-                        cd "$WORKSPACE"
-
-                        echo "Running classifier..."
-                        pwd
-                        ls
-
+                        cd "$WORKSPACE" && \
+                        echo "Running classifier..." && \
+                        pwd && \
+                        ls && \
                         .ws_venv/bin/python3 classifier.py \
                             --project $PROJECT_KEY \
                             --run-id "$RUN_ID" \
