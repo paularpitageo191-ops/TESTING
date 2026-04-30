@@ -91,11 +91,11 @@ def patch_spec_file(
     heals = []
 
     for old_sel, (new_sel, confidence) in replacements.items():
-
+    
         # 🚫 Skip early if selector not present
         if old_sel not in content:
             continue
-
+    
         # 🧠 MEMORY FIRST
         try:
             memory_fix = _search_healing_memory(project_key, old_sel)
@@ -105,40 +105,48 @@ def patch_spec_file(
                 confidence = 1.0
         except Exception:
             pass
-
+    
         # 🚫 HARD STOPS
         if confidence <= 0:
             print(f"  ⚠ Skipping {old_sel} (zero confidence)")
             continue
-
+    
         if not new_sel or "TODO" in new_sel:
             print(f"  ⚠ Skipping placeholder selector: {new_sel}")
             continue
-
+    
         # 🚫 CONFIDENCE GATE
         if confidence < CONFIDENCE_THRESHOLD:
             print(f"  ⚠ Skipping {old_sel} (low confidence={confidence:.2f})")
             continue
-
+    
         # 🚫 FINAL VALIDATION
         if not is_valid_selector(new_sel):
             print(f"  ⚠ Invalid selector skipped: {new_sel}")
             continue
-
-        # ✅ APPLY HEAL
+    
+        # 🚫 Skip useless replacement
+        if old_sel == new_sel:
+            continue
+    
         print(f"  ✓ Healing: {old_sel} → {new_sel} (conf={confidence:.2f})")
+    
+        patterns = [
+            rf'locator\(["\']({re.escape(old_sel)})["\']',
+            rf'\.locator\(["\']({re.escape(old_sel)})["\']'
+        ]
 
-        pattern = rf'(["\']){re.escape(old_sel)}\1'
-
-        def repl(m):
-            return f'{m.group(1)}{new_sel}{m.group(1)}'
-
-        new_content = re.sub(pattern, repl, content)
-
-        if new_content != content:
-            count += 1
-            content = new_content
-            heals.append((old_sel, new_sel))
+        for pattern in patterns:
+            new_content = re.sub(
+                pattern,
+                lambda m: m.group(0).replace(m.group(1), new_sel),
+                content,
+            )
+    
+            if new_content != content:
+                count += 1
+                content = new_content
+                heals.append((old_sel, new_sel))
 
     # ── WRITE FILE
     if count > 0:
