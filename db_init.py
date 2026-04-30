@@ -96,15 +96,30 @@ CREATE TABLE IF NOT EXISTS healing_log (
     new_selector   TEXT NOT NULL,
     intent         TEXT DEFAULT '',
     healed_at      TEXT NOT NULL,
-    validated      INTEGER DEFAULT 0
+    validated      INTEGER DEFAULT 0,
+    success        INTEGER DEFAULT NULL
 );
 """
+
+
+def migrate_db(conn: sqlite3.Connection) -> None:
+    columns = {
+        row[1]
+        for row in conn.execute("PRAGMA table_info(healing_log)").fetchall()
+    }
+
+    if "validated" not in columns:
+        conn.execute("ALTER TABLE healing_log ADD COLUMN validated INTEGER DEFAULT 0")
+
+    if "success" not in columns:
+        conn.execute("ALTER TABLE healing_log ADD COLUMN success INTEGER DEFAULT NULL")
 
 
 def init_db(db_path: str = DEFAULT_DB) -> None:
     os.makedirs(os.path.dirname(db_path), exist_ok=True) if os.path.dirname(db_path) else None
     conn = sqlite3.connect(db_path)
     conn.executescript(DDL)
+    migrate_db(conn)
     conn.commit()
     conn.close()
     print(f"  ✓ failure_history.sqlite ready: {db_path}")
