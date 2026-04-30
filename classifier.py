@@ -40,21 +40,20 @@ import time
 import requests
 from dotenv import load_dotenv
 from agent_config import call_llm, embed, log_agent_config
-# --- ADD THIS IMPORT (top with others) ---
 import uuid
+
 load_dotenv()
-JIRA_BASE_URL   = os.getenv("JIRA_BASE_URL")
-JIRA_API_TOKEN  = os.getenv("JIRA_API_TOKEN")
+JIRA_BASE_URL = os.getenv("JIRA_BASE_URL")
+JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN")
 JIRA_PROJECT_KEY = os.getenv("JIRA_PROJECT_KEY")
 AGENT_NAME = "classifier_v1"
 
-QDRANT_URL  = os.getenv("QDRANT_URL",  "http://localhost:6333")
-DEFAULT_DB  = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure_history.sqlite")
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+DEFAULT_DB = os.path.join(os.path.abspath(os.path.dirname(__file__)), "failure_history.sqlite")
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # ── Classification constants ──────────────────────────────────────────────────
 
-# Patterns that are ALWAYS false failures (infrastructure / env / selector)
 FALSE_PATTERNS: List[str] = [
     r"timeouterror",
     r"strict mode violation",
@@ -77,7 +76,6 @@ FALSE_PATTERNS: List[str] = [
     r"healed selector",
 ]
 
-# Patterns that are ALWAYS true failures (business logic assertion)
 TRUE_PATTERNS: List[str] = [
     r"assertionerror",
     r"tocontaintext.*expected",
@@ -99,15 +97,20 @@ FAILURE_TYPES = [
     "backend",
 ]
 
-# ── Thresholds ─────────────────────────────────────────────
-MEMORY_THRESHOLD = 0.90          # strict → only very strong matches reuse memory
-CLASSIFICATION_THRESHOLD = 0.75  # softer → allow embedding-based decisions
-# ══════════════════════════════════════════════════════════════════════════════
-# §0  LAYER 0 — HELPER-FUNCTIONS
-# ══════════════════════════════════════════════════════════════════════════════
+MEMORY_THRESHOLD = 0.90
+CLASSIFICATION_THRESHOLD = 0.75
+CONFIDENCE_THRESHOLD = CLASSIFICATION_THRESHOLD
+VAGUE_INTENT_PATTERNS: List[str] = [
+    r"\bi interact with ui elements\b",
+    r"\bi interact with\b$",
+    r"\binteract with ui\b",
+    r"\bui elements\b$",
+    r"\bdo something\b",
+    r"\bperform action\b",
+    r"\bhandle element\b",
+]
 
-# def _sanitize(name: str) -> str:
-#     return re.sub(r'[^a-zA-Z0-9_]', '_', name).strip('_')
+
 def _sanitize(name: str) -> str:
     return name.replace("-", "_")
 
@@ -130,34 +133,35 @@ def detect_failure_type(error_msg: str, stack: str, rca_summary: str) -> str:
 
     return "selector"
 
+
 def should_retry(failure_type: str) -> bool:
     return failure_type in ["timeout", "network"]
 
+
 def retry_test(test_title: str):
     print(f"    🔁 Retrying test: {test_title}")
-
     subprocess.run(
         ["npx", "playwright", "test", "--grep", test_title],
         cwd=PROJECT_ROOT,
-        timeout=120
+        timeout=120,
     )
+
 
 def is_flaky(test_title: str, db_path: str) -> bool:
     conn = sqlite3.connect(db_path)
-
     rows = conn.execute(
         """
         SELECT status FROM test_results
         WHERE test_title = ?
         ORDER BY id DESC LIMIT 5
         """,
-        (test_title,)
+        (test_title,),
     ).fetchall()
-
     conn.close()
 
     statuses = [r[0] for r in rows]
     return "failed" in statuses and "passed" in statuses
+
 
 def create_jira_ticket(title: str, rca_summary: str):
     try:
@@ -165,22 +169,21 @@ def create_jira_ticket(title: str, rca_summary: str):
             f"{JIRA_BASE_URL}/rest/api/2/issue",
             headers={
                 "Authorization": f"Bearer {JIRA_API_TOKEN}",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             json={
                 "fields": {
                     "project": {"key": JIRA_PROJECT_KEY},
                     "summary": title,
                     "description": rca_summary,
-                    "issuetype": {"name": "Bug"}
+                    "issuetype": {"name": "Bug"},
                 }
-            }
+            },
         )
         print("    🎫 Jira ticket created")
-
     except Exception as e:
         print(f"    ⚠ Jira creation failed: {e}")
-      
+
 
 def retrieve_similar_failures(
     project_key: str,
@@ -195,9 +198,9 @@ def retrieve_similar_failures(
             json={
                 "vector": vector,
                 "limit": limit,
-                "with_payload": True
+                "with_payload": True,
             },
-            timeout=5
+            timeout=5,
         )
 
         if not r.ok:
@@ -209,7 +212,6 @@ def retrieve_similar_failures(
 
         contexts = []
 
-        # ── Build contexts (top-k) ───────────────────────────────────────────
         for hit in results:
             score = hit.get("score", 0.0)
             payload = hit.get("payload", {})
@@ -227,7 +229,6 @@ def retrieve_similar_failures(
                 "rca": rca,
             })
 
-        # ── Top hit (for decisions) ──────────────────────────────────────────
         top = results[0]
         top_score = top.get("score", 0.0)
         top_payload = top.get("payload", {})
@@ -236,10 +237,8 @@ def retrieve_similar_failures(
         top_label = top_label_full.split(":")[0] if ":" in top_label_full else top_label_full
         top_pattern = (top_payload.get("pattern_label") or "").strip()
 
-        # ── Memory (STRICT) ──────────────────────────────────────────────────
         memory_hit = top_payload if top_score >= MEMORY_THRESHOLD else None
 
-        # ── Classification (CONTROLLED) ──────────────────────────────────────
         if top_score >= CLASSIFICATION_THRESHOLD and top_label in ("true", "false"):
             best_label = top_label
         else:
@@ -264,17 +263,82 @@ def _empty_retrieval():
         "contexts": [],
         "best_label": None,
         "confidence": 0.0,
-        "pattern": ""
+        "pattern": "",
     }
-# ══════════════════════════════════════════════════════════════════════════════
-# §1  LAYER 1 — RULE-BASED
-# ══════════════════════════════════════════════════════════════════════════════
+
+
+def _resolve_spec_path(spec_file: str) -> Optional[str]:
+    if not spec_file:
+        return None
+    if os.path.isabs(spec_file) and os.path.exists(spec_file):
+        return spec_file
+
+    candidates = [
+        os.path.join(PROJECT_ROOT, spec_file),
+        os.path.join(PROJECT_ROOT, "tests", spec_file),
+    ]
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+    return None
+
+
+def _extract_test_block(spec_path: str, test_title: str) -> str:
+    try:
+        with open(spec_path, encoding="utf-8") as fh:
+            content = fh.read()
+    except OSError:
+        return ""
+
+    title = re.escape(test_title)
+    block_pattern = re.compile(
+        rf'test\(\s*["\']{title}["\']\s*,.*?(?=\n\s*test\(|\Z)',
+        re.DOTALL,
+    )
+    match = block_pattern.search(content)
+    return match.group(0) if match else content
+
+
+def detect_contradictory_assertions(spec_file: str, test_title: str) -> List[str]:
+    spec_path = _resolve_spec_path(spec_file)
+    if not spec_path:
+        return []
+
+    block = _extract_test_block(spec_path, test_title)
+    if not block:
+        return []
+
+    positive = set(
+        re.findall(
+            r'locator\(\s*["\']([^"\']+)["\']\s*\)\s*\.\s*toBeVisible\s*\(',
+            block,
+        )
+    )
+    negative = set(
+        re.findall(
+            r'locator\(\s*["\']([^"\']+)["\']\s*\)\s*\.\s*not\s*\.\s*toBeVisible\s*\(',
+            block,
+        )
+    )
+    return sorted(positive & negative)
+
+
+def extract_missing_intent(error_msg: str, stack: str) -> str:
+    text = f"{error_msg}\n{stack}"
+    match = re.search(r"No locator found for:\s*(.+)", text, re.IGNORECASE)
+    return match.group(1).strip() if match else ""
+
+
+def is_vague_intent(intent: str) -> bool:
+    normalized = re.sub(r"\s+", " ", intent.strip().lower())
+    if not normalized:
+        return True
+    if len(normalized.split()) < 3:
+        return True
+    return any(re.search(pattern, normalized) for pattern in VAGUE_INTENT_PATTERNS)
+
 
 def rule_classify(error_msg: str, stack: str) -> Tuple[Optional[str], float]:
-    """
-    Returns ('true'|'false'|None, confidence).
-    None means "undetermined — escalate to next layer".
-    """
     haystack = (error_msg + " " + stack).lower()
 
     for pattern in FALSE_PATTERNS:
@@ -288,13 +352,10 @@ def rule_classify(error_msg: str, stack: str) -> Tuple[Optional[str], float]:
     return None, 0.0
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# §2  LAYER 2 — EMBEDDING CLUSTER MATCH
-# ══════════════════════════════════════════════════════════════════════════════
-
 def _embed(text: str) -> List[float]:
     return embed(AGENT_NAME, text)
-  
+
+
 def safe_embed(text, retries=3):
     for _ in range(retries):
         try:
@@ -304,18 +365,16 @@ def safe_embed(text, retries=3):
     return None
 
 
-# ── NEW: QDRANT UPSERT LOGIC ────────────────────────────────────────────────
 def upsert_failure_vector(
     project_key: str,
     text: str,
     verdict: str,
     pattern: str,
     rca_summary: str,
-    vector=None
+    vector=None,
 ):
     collection = _sanitize(f"{project_key}_failure_clusters")
 
-    # 🔥 reuse embedding if provided
     if vector is None:
         vector = safe_embed(text)
 
@@ -333,7 +392,7 @@ def upsert_failure_vector(
         "pattern_label": (pattern or "unknown").strip(),
         "text": text[:500],
         "rca_summary": rca_summary,
-        "created_at": datetime.datetime.utcnow().isoformat()
+        "created_at": datetime.datetime.utcnow().isoformat(),
     }
 
     try:
@@ -344,11 +403,11 @@ def upsert_failure_vector(
                     {
                         "id": str(uuid.uuid4()),
                         "vector": vector,
-                        "payload": payload
+                        "payload": payload,
                     }
                 ]
             },
-            timeout=10
+            timeout=10,
         )
 
         if r.ok:
@@ -358,26 +417,22 @@ def upsert_failure_vector(
 
     except Exception as e:
         print(f"    ⚠ Qdrant upsert failed: {e}")
-# ══════════════════════════════════════════════════════════════════════════════
-# §3  LAYER 3 — LLM ARBITRATION
-# ══════════════════════════════════════════════════════════════════════════════
+
 
 def llm_classify(
-    test_title:  str,
-    error_msg:   str,
-    stack:       str,
-    l1_verdict:  Optional[str],
-    l2_verdict:  Optional[str],
-    l2_conf:     float,
-    l2_pattern:  str,
-    contexts:    Optional[List[Dict]] = None,
+    test_title: str,
+    error_msg: str,
+    stack: str,
+    l1_verdict: Optional[str],
+    l2_verdict: Optional[str],
+    l2_conf: float,
+    l2_pattern: str,
+    contexts: Optional[List[Dict]] = None,
 ) -> Tuple[str, str]:
-
-    # ── BUILD CONTEXT BLOCK (RAG) ────────────────────────────────────────────
     context_text = ""
 
     if contexts:
-        for i, ctx in enumerate(contexts[:3]):  # top-3 only
+        for i, ctx in enumerate(contexts[:3]):
             context_text += f"""
 Example {i+1}:
 - label: {ctx.get('label')}
@@ -385,7 +440,6 @@ Example {i+1}:
 - rca: {ctx.get('rca')}
 """
 
-    # ── BUILD PROMPT ─────────────────────────────────────────────────────────
     prompt = f"""
 You are a QA failure classifier.
 
@@ -414,14 +468,9 @@ Return STRICT JSON:
 """
 
     system = "You are a precise and consistent QA failure classifier. Always return valid JSON."
-
-    # ── CALL LLM ─────────────────────────────────────────────────────────────
     raw = call_llm(AGENT_NAME, prompt, system=system)
-
-    # Clean markdown/code fences if present
     raw = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw.strip())
 
-    # ── PARSE RESPONSE ───────────────────────────────────────────────────────
     try:
         obj = json.loads(raw)
 
@@ -430,12 +479,11 @@ Return STRICT JSON:
             verdict = "false"
 
         rca_summary = obj.get("rca_summary", "LLM classification.")
-
         return verdict, rca_summary
 
     except Exception:
-        # fallback safety
         return "false", "Classification via fallback rules."
+
 
 def load_failures(project_key: str, run_id: str, db_path: str) -> List[Dict]:
     conn = sqlite3.connect(db_path)
@@ -452,10 +500,10 @@ def load_failures(project_key: str, run_id: str, db_path: str) -> List[Dict]:
 
 
 def update_classification(
-    test_id:       int,
+    test_id: int,
     failure_class: str,
-    rca_summary:   str,
-    db_path:       str,
+    rca_summary: str,
+    db_path: str,
 ) -> None:
     conn = sqlite3.connect(db_path)
     conn.execute(
@@ -466,42 +514,35 @@ def update_classification(
     conn.close()
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# §5  DISPATCH RCA AGENTS
-# ══════════════════════════════════════════════════════════════════════════════
-
 def dispatch_rca(
-    verdict:     str,
+    verdict: str,
     project_key: str,
     test_record: Dict,
-    db_path:     str,
+    db_path: str,
 ) -> None:
     script = "true_failure_rca.py" if verdict == "true" else "false_failure_rca.py"
     cmd = [
         sys.executable, script,
-        "--project",    project_key,
-        "--test-id",    str(test_record["id"]),
-        "--db",         db_path,
+        "--project", project_key,
+        "--test-id", str(test_record["id"]),
+        "--db", db_path,
     ]
     try:
         subprocess.Popen(
             cmd,
             cwd=PROJECT_ROOT,
-            env=os.environ.copy(),   # ← inherits QDRANT_URL, OLLAMA_HOST from Jenkins
+            env=os.environ.copy(),
         )
         print(f"    → Dispatched {script} for: {test_record['test_title'][:60]}")
     except FileNotFoundError:
         print(f"    ⚠ {script} not found")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# §6  MAIN (RAG-UNIFIED + MULTI-CONTEXT)
-# ══════════════════════════════════════════════════════════════════════════════
 def main() -> None:
     parser = argparse.ArgumentParser(description="UC-3 Classifier")
-    parser.add_argument("--project",     required=True)
-    parser.add_argument("--run-id",      required=True)
-    parser.add_argument("--db",          default=DEFAULT_DB)
+    parser.add_argument("--project", required=True)
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--db", default=DEFAULT_DB)
     parser.add_argument("--no-dispatch", action="store_true")
     args = parser.parse_args()
 
@@ -515,25 +556,54 @@ def main() -> None:
     failures = load_failures(project_key, args.run_id, args.db)
     print(f"  Failures to classify: {len(failures)}")
 
-    true_count  = 0
+    true_count = 0
     false_count = 0
 
     for rec in failures:
-        title   = rec["test_title"]
+        title = rec["test_title"]
         err_msg = rec.get("error_message", "")
-        stack   = rec.get("stack_trace",   "")
-        text    = f"{err_msg}\n{stack}"
+        stack = rec.get("stack_trace", "")
+        text = f"{err_msg}\n{stack}"
 
-        # ── EARLY DETECTION: UI BLOCKING ────────────────────────
+        contradictory_selectors = detect_contradictory_assertions(
+            rec.get("spec_file", ""),
+            title,
+        )
+        if contradictory_selectors:
+            failure_type = "contradictory_test"
+            verdict = "false"
+            rca_summary = (
+                "Contradictory assertions in test block for selector(s): "
+                + ", ".join(contradictory_selectors)
+            )
+            verdict_with_type = f"{verdict}:{failure_type}"
+            print(f"  [rule     ] {verdict_with_type.upper()} — {title[:55]}")
+            print("    ⚠ Contradictory visibility assertions detected — skipping healer")
+            update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
+            false_count += 1
+            continue
+
+        missing_intent = extract_missing_intent(err_msg, stack)
+        if missing_intent and is_vague_intent(missing_intent):
+            failure_type = "invalid_intent"
+            verdict = "false"
+            rca_summary = f"Unresolvable intent: {missing_intent}"
+            verdict_with_type = f"{verdict}:{failure_type}"
+            print(f"  [rule     ] {verdict_with_type.upper()} — {title[:55]}")
+            print("    ⚠ Vague intent detected — skipping healer")
+            update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
+            false_count += 1
+            continue
+
         if any(x in err_msg.lower() for x in [
             "intercepts pointer events",
             "element is not clickable",
             "another element would receive the click",
         ]):
-            failure_type    = "ui_blocking"
-            verdict         = "false"
-            rca_summary     = "UI blocking issue (modal/overlay intercepting clicks)"
-            method          = "rule"
+            failure_type = "ui_blocking"
+            verdict = "false"
+            rca_summary = "UI blocking issue (modal/overlay intercepting clicks)"
+            method = "rule"
             verdict_with_type = f"{verdict}:{failure_type}"
 
             print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
@@ -548,10 +618,7 @@ def main() -> None:
             false_count += 1
             continue
 
-        # ── Layer 1 (rules) ─────────────────────────────────────
         l1_verdict, l1_conf = rule_classify(err_msg, stack)
-
-        # ── RAG Retrieval ────────────────────────────────────────
         vector = safe_embed(text)
 
         if vector:
@@ -561,34 +628,31 @@ def main() -> None:
             print("    ⚠ Embedding failed")
             retrieval = _empty_retrieval()
 
-        memory     = retrieval.get("memory_hit")
-        contexts   = retrieval.get("contexts", [])
+        memory = retrieval.get("memory_hit")
+        contexts = retrieval.get("contexts", [])
         l2_verdict = retrieval.get("best_label")
-        l2_conf    = retrieval.get("confidence", 0.0)
+        l2_conf = retrieval.get("confidence", 0.0)
         l2_pattern = retrieval.get("pattern", "")
 
-        # ── Decide LLM usage ─────────────────────────────────────
         needs_llm = (
             l1_verdict is None or
             (l2_verdict and l2_verdict != l1_verdict) or
             (l1_conf < CONFIDENCE_THRESHOLD and l2_conf < CONFIDENCE_THRESHOLD)
         )
 
-        # ── MEMORY FIRST ─────────────────────────────────────────
         if memory:
             verdict_full = memory.get("failure_class", "false:selector")
-            rca_summary  = memory.get("rca_summary", "Reused from memory")
+            rca_summary = memory.get("rca_summary", "Reused from memory")
 
             if ":" in verdict_full:
                 verdict, failure_type = verdict_full.split(":", 1)
             else:
-                verdict      = verdict_full
+                verdict = verdict_full
                 failure_type = memory.get("failure_type", "selector")
 
             method = "memory"
             print(f"    🧠 Memory hit → {verdict}:{failure_type}")
 
-        # ── LLM fallback ─────────────────────────────────────────
         elif needs_llm:
             verdict, rca_summary = llm_classify(
                 title, err_msg, stack,
@@ -596,9 +660,8 @@ def main() -> None:
                 contexts=contexts,
             )
             failure_type = detect_failure_type(err_msg, stack, rca_summary)
-            method       = "LLM"
+            method = "LLM"
 
-        # ── Embedding fallback ───────────────────────────────────
         else:
             verdict = l1_verdict or l2_verdict or "false"
 
@@ -607,14 +670,13 @@ def main() -> None:
                 if labels:
                     verdict = max(set(labels), key=labels.count)
 
-            rca_summary  = f"Embedding-assisted. Confidence={l2_conf:.2f}"
+            rca_summary = f"Embedding-assisted. Confidence={l2_conf:.2f}"
             failure_type = detect_failure_type(err_msg, stack, rca_summary)
-            method       = "embedding"
+            method = "embedding"
 
         verdict_with_type = f"{verdict}:{failure_type}"
         print(f"  [{method:9s}] {verdict_with_type.upper()} — {title[:55]}")
 
-        # ── Store results ────────────────────────────────────────
         update_classification(rec["id"], verdict_with_type, rca_summary, args.db)
 
         upsert_failure_vector(
@@ -623,48 +685,36 @@ def main() -> None:
             rca_summary, vector,
         )
 
-        # ── Flaky detection ──────────────────────────────────────
         if is_flaky(title, args.db):
             print("    ⚠ Flaky test detected → skipping healing & routing")
             continue
 
-        # ── Counters ─────────────────────────────────────────────
         if verdict == "true":
             true_count += 1
         else:
             false_count += 1
 
-        # ── Auto Jira ────────────────────────────────────────────
         if verdict == "true" and failure_type in ["backend", "assertion"]:
             if not rec.get("jira_created"):
                 create_jira_ticket(title, rca_summary)
 
-        # ── Routing ──────────────────────────────────────────────
         if not args.no_dispatch:
-
             if failure_type == "selector":
                 dispatch_rca(verdict, project_key, rec, args.db)
-
             elif should_retry(failure_type):
                 print("    🔁 Transient issue → retrying")
                 retry_test(title)
-
             elif failure_type == "assertion":
                 print("    🧪 Assertion issue → needs review")
-
             elif failure_type == "backend":
                 print("    🚨 Backend bug → already escalated")
-
             elif failure_type == "auth":
                 print("    🔐 Auth issue → session/login")
-
             elif failure_type == "data":
                 print("    📊 Data issue → input mismatch")
-
             else:
                 print(f"    ⚠ Unknown failure type '{failure_type}' → skipping healer")
 
-    # ── Final summary ────────────────────────────────────────────
     print(f"\n  Summary: {true_count} true failures  |  {false_count} false failures")
     print(f"\n{'='*60}\n")
 
