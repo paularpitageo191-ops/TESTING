@@ -430,10 +430,10 @@ def classify_action(line: str) -> str:
         return "assert_disabled"
     if "tobeenabled" in lower:
         return "assert_enabled"
-    if "tobevisible" in lower or "tobeempty" in lower:
-        return "assert_visible"
     if "not.tobevisible" in lower or "tobehidden" in lower:
         return "assert_hidden"
+    if "tobevisible" in lower or "tobeempty" in lower:
+        return "assert_visible"
     if "tocontaintext" in lower:
         return "assert_text"
     if "smartaction" in lower:
@@ -468,6 +468,14 @@ def extract_indent(line: str) -> str:
     return re.match(r'^(\s*)', line).group(1)
 
 
+def selector_is_placeholder(selector: str) -> bool:
+    sel = (selector or "").strip()
+    if not sel:
+        return False
+    upper = sel.upper()
+    return "TODO" in upper or "PLACEHOLDER" in upper or "/*" in sel or "*/" in sel
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # §7  LINE FIXER  — one rule per root cause, fully generalised
 # ══════════════════════════════════════════════════════════════════════════════
@@ -481,12 +489,32 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     action  = classify_action(stripped)
     indent  = extract_indent(line)
     original = line
+    sel = extract_selector(stripped)
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # RC-0  Placeholder / invalid selector cleanup
+    # ─────────────────────────────────────────────────────────────────────────
+    if sel and selector_is_placeholder(sel):
+        out_sel = best_output_selector(dom_index) or "#output"
+
+        if action == "assert_hidden":
+            new_line = f'{indent}await expect(basePage.page.locator("{out_sel}")).not.toBeVisible();  // FIX RC-0: removed placeholder selector\n'
+        elif action == "assert_visible":
+            new_line = f'{indent}await expect(basePage.page.locator("{out_sel}")).toBeVisible();  // FIX RC-0: removed placeholder selector\n'
+        elif action == "assert_text":
+            val = extract_assert_value(stripped)
+            new_line = f'{indent}await expect(basePage.page.locator("{out_sel}")).toContainText("{val}");  // FIX RC-0: removed placeholder selector\n'
+        else:
+            new_line = line
+
+        if new_line != line:
+            fixes.append(f"RC-0 Placeholder selector removed: `{sel[:40]}` → `{out_sel}`")
+            return new_line
 
     # ─────────────────────────────────────────────────────────────────────────
     # RC-1  Wrong selector on fill — re-map to correct field
     # ─────────────────────────────────────────────────────────────────────────
     if action == "fill":
-        sel = extract_selector(stripped)
         val = extract_fill_value(stripped)
         ctx = test_name + " " + stripped
         if sel and is_ambiguous_selector(sel, ctx, dom_index):
@@ -500,7 +528,6 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     # RC-2  Positional XPath → stable selector or smartAction
     # ─────────────────────────────────────────────────────────────────────────
     if action in ("fill", "click") and is_positional_xpath(extract_selector(stripped)):
-        sel    = extract_selector(stripped)
         # Try to get intent from trailing comment
         comment_m = re.search(r'//\s*(.+?)(?:\s*/\*|$)', stripped)
         intent    = comment_m.group(1).strip() if comment_m else "interact with element"
@@ -538,7 +565,6 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     # RC-4  toBeVisible() with absent/negation intent → not.toBeVisible()
     # ─────────────────────────────────────────────────────────────────────────
     if action == "assert_visible" and line_is_absent_assertion(line):
-        sel = extract_selector(stripped)
         # Prefer a direct output selector if the assertion target is unclear
         if not sel or is_ambiguous_selector(sel, "output display result", dom_index):
             out_sel = best_output_selector(dom_index)
@@ -572,7 +598,6 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     # RC-5  toBeDisabled() on an element that is not disabled in the DOM
     # ─────────────────────────────────────────────────────────────────────────
     if action == "assert_disabled":
-        sel = extract_selector(stripped)
         if sel:
             sel_id  = sel.lstrip("#").lower()
             dom_el  = dom_index.get(sel_id) or dom_index.get(sel.lower())
@@ -589,7 +614,6 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     # RC-6  assert_text / toContainText on an input field — move to output el
     # ─────────────────────────────────────────────────────────────────────────
     if action == "assert_text":
-        sel = extract_selector(stripped)
         if sel and not is_ambiguous_selector(sel, "output display result", dom_index):
             # Selector already looks like an output element — leave it alone
             pass
@@ -608,7 +632,6 @@ def fix_line(line: str, test_name: str, dom_index: Dict,
     # RC-1b  Wrong selector on visible assertion — remap to output element
     # ─────────────────────────────────────────────────────────────────────────
     if action == "assert_visible":
-        sel = extract_selector(stripped)
         if sel and is_ambiguous_selector(sel, "output display result", dom_index):
             out_sel = best_output_selector(dom_index)
             if out_sel and out_sel != sel:
