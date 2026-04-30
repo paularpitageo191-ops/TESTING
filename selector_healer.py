@@ -76,7 +76,7 @@ def _search_healing_memory(project_key: str, old_selector: str) -> Optional[str]
 # ─────────────────────────────────────────────────────────────
 # PATCH SPEC FILE (SAFE CORE)
 # ─────────────────────────────────────────────────────────────
-
+  
 def patch_spec_file(
     spec_file: str,
     replacements: Dict[str, Tuple[str, float]],
@@ -92,10 +92,11 @@ def patch_spec_file(
 
     for old_sel, (new_sel, confidence) in replacements.items():
 
+        # 🚫 Skip early if selector not present
         if old_sel not in content:
             continue
 
-        # 🔥 MEMORY FIRST
+        # 🧠 MEMORY FIRST
         try:
             memory_fix = _search_healing_memory(project_key, old_sel)
             if memory_fix:
@@ -105,15 +106,26 @@ def patch_spec_file(
         except Exception:
             pass
 
-        # 🚫 SAFETY GATES
+        # 🚫 HARD STOPS
+        if confidence <= 0:
+            print(f"  ⚠ Skipping {old_sel} (zero confidence)")
+            continue
+
+        if not new_sel or "TODO" in new_sel:
+            print(f"  ⚠ Skipping placeholder selector: {new_sel}")
+            continue
+
+        # 🚫 CONFIDENCE GATE
         if confidence < CONFIDENCE_THRESHOLD:
             print(f"  ⚠ Skipping {old_sel} (low confidence={confidence:.2f})")
             continue
 
+        # 🚫 FINAL VALIDATION
         if not is_valid_selector(new_sel):
             print(f"  ⚠ Invalid selector skipped: {new_sel}")
             continue
 
+        # ✅ APPLY HEAL
         print(f"  ✓ Healing: {old_sel} → {new_sel} (conf={confidence:.2f})")
 
         pattern = rf'(["\']){re.escape(old_sel)}\1'
