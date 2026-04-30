@@ -140,23 +140,26 @@ def should_retry(failure_type: str) -> bool:
 
 def retry_test(test_title: str):
     print(f"    🔁 Retrying test: {test_title}")
+
     subprocess.run(
         ["npx", "playwright", "test", "--grep", test_title],
         cwd=PROJECT_ROOT,
-        timeout=120,
+        timeout=120
     )
 
 
 def is_flaky(test_title: str, db_path: str) -> bool:
     conn = sqlite3.connect(db_path)
+
     rows = conn.execute(
         """
         SELECT status FROM test_results
         WHERE test_title = ?
         ORDER BY id DESC LIMIT 5
         """,
-        (test_title,),
+        (test_title,)
     ).fetchall()
+
     conn.close()
 
     statuses = [r[0] for r in rows]
@@ -169,18 +172,19 @@ def create_jira_ticket(title: str, rca_summary: str):
             f"{JIRA_BASE_URL}/rest/api/2/issue",
             headers={
                 "Authorization": f"Bearer {JIRA_API_TOKEN}",
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             json={
                 "fields": {
                     "project": {"key": JIRA_PROJECT_KEY},
                     "summary": title,
                     "description": rca_summary,
-                    "issuetype": {"name": "Bug"},
+                    "issuetype": {"name": "Bug"}
                 }
-            },
+            }
         )
         print("    🎫 Jira ticket created")
+
     except Exception as e:
         print(f"    ⚠ Jira creation failed: {e}")
 
@@ -198,9 +202,9 @@ def retrieve_similar_failures(
             json={
                 "vector": vector,
                 "limit": limit,
-                "with_payload": True,
+                "with_payload": True
             },
-            timeout=5,
+            timeout=5
         )
 
         if not r.ok:
@@ -263,7 +267,7 @@ def _empty_retrieval():
         "contexts": [],
         "best_label": None,
         "confidence": 0.0,
-        "pattern": "",
+        "pattern": ""
     }
 
 
@@ -371,7 +375,7 @@ def upsert_failure_vector(
     verdict: str,
     pattern: str,
     rca_summary: str,
-    vector=None,
+    vector=None
 ):
     collection = _sanitize(f"{project_key}_failure_clusters")
 
@@ -392,7 +396,7 @@ def upsert_failure_vector(
         "pattern_label": (pattern or "unknown").strip(),
         "text": text[:500],
         "rca_summary": rca_summary,
-        "created_at": datetime.datetime.utcnow().isoformat(),
+        "created_at": datetime.datetime.utcnow().isoformat()
     }
 
     try:
@@ -403,11 +407,11 @@ def upsert_failure_vector(
                     {
                         "id": str(uuid.uuid4()),
                         "vector": vector,
-                        "payload": payload,
+                        "payload": payload
                     }
                 ]
             },
-            timeout=10,
+            timeout=10
         )
 
         if r.ok:
