@@ -83,13 +83,13 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
             title = spec.get("title", "")
             tags  = re.findall(r'@(AC\d+|SCRUM[-_]\d+)', title)
             for test in spec.get("tests", []):
-                status  = test.get("status", "unknown")
                 results = test.get("results", [{}])
 
                 # ── Use FINAL attempt only (last item in results list) ──
                 # With retries=2, results has up to 3 entries.
                 # The last entry is the conclusive one.
                 final   = results[-1] if results else {}
+                final_status = final.get("status") or test.get("status") or "unknown"
                 dur_ms  = final.get("duration", 0)
                 error   = final.get("error", {}) or {}
                 err_msg = error.get("message", "")
@@ -99,7 +99,7 @@ def parse_pw_report(report_path: str) -> Tuple[Dict, List[Dict]]:
                     "spec_file":     spec_file,
                     "test_title":    title,
                     "ac_tags":       ",".join(tags),
-                    "status":        _normalize_status(status),
+                    "status":        _normalize_status(final_status),
                     "duration_ms":   dur_ms,
                     "error_message": err_msg,
                     "stack_trace":   stack,
