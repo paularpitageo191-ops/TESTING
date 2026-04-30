@@ -111,14 +111,16 @@ pipeline {
                 )]) {
         
                     sh '''
-                        cd "$WORKSPACE" && \
-                        echo "Running classifier..." && \
-                        pwd && \
-                        ls && \
+                        bash -c '
+                        cd "$WORKSPACE";
+                        echo "Running classifier...";
+                        pwd;
+                        ls;
                         .ws_venv/bin/python3 classifier.py \
                             --project $PROJECT_KEY \
                             --run-id "$RUN_ID" \
                             --db failure_history.sqlite
+                        '
                     '''
                 }
             }
