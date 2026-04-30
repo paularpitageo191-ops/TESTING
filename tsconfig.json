@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "commonjs",
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "lib": ["ESNext", "dom"],
     "types": ["node", "@playwright/test"],
     "baseUrl": ".",
@@ -17,9 +18,5 @@
   "include": [
     "tests/**/*.ts",
     "playwright.config.ts"
-  ],
-  "reporter": [
-  ["list"],
-  ["json", { "outputFile": "test-results/results.json" }]
-],
+  ]
 }
