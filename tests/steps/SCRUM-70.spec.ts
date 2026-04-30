@@ -15,7 +15,7 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.locator("#currentAddress").fill("test@domain");
             await basePage.smartAction("I click the Submit button"); /* selector: #currentAddress */
             await expect(basePage.page.locator("#output")).toBeVisible();
-            await expect(basePage.page.locator("/* TODO: manually map '#output' — not found in current DOM */  /* HEALED from #output via TODO_PLACEHOLDER (conf=0.0) */")).not.toBeVisible();  // FIX RC-4: negation
+            await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-0: removed invalid placeholder selector
     });
 
     test("Web Tables Validation @SCRUM-70 @positive @AC3 @SCRUM_70", async ({ page }) => {
