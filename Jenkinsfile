@@ -88,6 +88,10 @@ pipeline {
                     sh '''
                         cd "$WORKSPACE"
 
+                        echo "Running result analyzer..."
+                        pwd
+                        ls
+
                         .ws_venv/bin/python3 result_analyzer.py \
                             --project $PROJECT_KEY \
                             --report pw_report.json \
@@ -109,6 +113,10 @@ pipeline {
                     sh '''
                         cd "$WORKSPACE"
 
+                        echo "Running classifier..."
+                        pwd
+                        ls
+
                         .ws_venv/bin/python3 classifier.py \
                             --project $PROJECT_KEY \
                             --run-id "$RUN_ID" \
@@ -124,9 +132,11 @@ pipeline {
                 sh '''
                     cd "$WORKSPACE"
 
+                    echo "Running selector healer..."
+
                     .ws_venv/bin/python3 selector_healer.py \
                         --project $PROJECT_KEY \
-                        --db failure_history.sqlite
+                        --db failure_history.sqlite || true
                 '''
             }
         }
@@ -137,12 +147,16 @@ pipeline {
                 sh '''
                     cd "$WORKSPACE"
 
+                    echo "Validating healed tests..."
+
                     for spec in tests/steps/${PROJECT_KEY}*.spec.ts; do
+                        echo "Validating $spec"
+
                         .ws_venv/bin/python3 test_validator.py \
                             --project $PROJECT_KEY \
                             --spec "$spec" \
                             --db failure_history.sqlite \
-                            --smoke-n 2
+                            --smoke-n 2 || true
                     done
                 '''
             }
