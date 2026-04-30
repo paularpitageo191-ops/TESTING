@@ -24,7 +24,18 @@ export class BasePage {
         this.page = page;
         this.projectKey = projectKey;
     }
-
+    // ─────────────────────────────────────────────────────────
+    // 🔧 INITIALIZE (REQUIRED)
+    // ─────────────────────────────────────────────────────────
+    async initialize(): Promise<void> {
+        try {
+            await this.page.waitForLoadState('domcontentloaded');
+            await this.page.waitForLoadState('networkidle'); // more stable
+            console.log("✓ BasePage initialized");
+        } catch {
+            console.warn("⚠ Initialization skipped");
+        }
+    }
     // ─────────────────────────────────────────────────────────
     // 🔒 SELECTOR VALIDATION (CRITICAL)
     // ─────────────────────────────────────────────────────────
