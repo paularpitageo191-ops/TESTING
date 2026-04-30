@@ -15,7 +15,7 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.locator("#currentAddress").fill("test@domain");
             await basePage.smartAction("I click the Submit button"); /* selector: #currentAddress */
             await expect(basePage.page.locator("#output")).toBeVisible();
-            await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-0: removed invalid placeholder selector
+            await expect(basePage.page.locator("#output")).toContainText("Current Address");
     });
 
     test("Web Tables Validation @SCRUM-70 @positive @AC3 @SCRUM_70", async ({ page }) => {
@@ -109,7 +109,6 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.goto("https://demoqa.com/text-box");  // AMBIGUOUS-MATCH
             await basePage.page.locator("#currentAddress").fill("abc");
             await expect(basePage.page.locator("#output")).toContainText("Invalid Age");
-            await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-4: negation
     });
 
     test("Valid salary input (numeric value) @SCRUM-70 @negative @AC16 @SCRUM_70", async ({ page }) => {
@@ -117,7 +116,6 @@ test.describe("Negative Path Validation for DemoQA Elements Module", () => {
             await basePage.page.locator("#currentAddress").fill("50");
             await expect(basePage.page.locator("#output")).toBeVisible();
             await expect(basePage.page.locator("#output")).toContainText("Name: 50");
-            await expect(basePage.page.locator("#output")).not.toBeVisible();  // FIX RC-4: negation
     });
 
     test("Non-numeric salary input (abc)", async ({ page }) => {
