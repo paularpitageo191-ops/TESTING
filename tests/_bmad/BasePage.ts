@@ -1,60 +1,101 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
-// ── Config ───────────────────────────────────────────────────
-const QDRANT_URL      = process.env.QDRANT_URL      || 'http://localhost:6333';
-const OLLAMA_HOST     = process.env.OLLAMA_HOST     || 'http://localhost:11434';
+const QDRANT_URL = process.env.QDRANT_URL || 'http://localhost:6333';
+const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost:11434';
 const EMBEDDING_MODEL = process.env.EMBEDDING_MODEL || 'mxbai-embed-large:latest';
 
-// ── Types ────────────────────────────────────────────────────
+const VAGUE_INTENT_PATTERNS = [
+    /\bi interact with ui elements\b/i,
+    /\bi interact with\b$/i,
+    /\bdo something\b/i,
+    /\bperform action\b/i,
+    /\bhandle element\b/i,
+    /\bui elements\b$/i,
+];
+
+type ActionType = 'click' | 'fill' | 'verify';
+
 interface HealingResult {
     selector: string;
     confidence: number;
     intent: string;
-    actionType: string;
+    actionType: ActionType;
 }
 
-// ── BasePage ─────────────────────────────────────────────────
-export class BasePage {
+interface MemoryPayload {
+    selector?: string;
+    success?: number;
+    action?: string;
+    actionType?: string;
+    learning_key?: string;
+}
 
-    private page: Page;
-    private projectKey: string;
-    private healingAttempts: Map<string, HealingResult> = new Map();
+export class BasePage {
+    readonly page: Page;
+    private readonly projectKey: string;
+    private readonly healingAttempts: Map<string, HealingResult> = new Map();
 
     constructor(page: Page, projectKey: string) {
         this.page = page;
         this.projectKey = projectKey;
     }
-    // ─────────────────────────────────────────────────────────
-    // 🔧 INITIALIZE (REQUIRED)
-    // ─────────────────────────────────────────────────────────
+
     async initialize(): Promise<void> {
         try {
             await this.page.waitForLoadState('domcontentloaded');
-            await this.page.waitForLoadState('networkidle'); // more stable
-            console.log("✓ BasePage initialized");
+            await this.page.waitForLoadState('networkidle');
+            console.log('✓ BasePage initialized');
         } catch {
-            console.warn("⚠ Initialization skipped");
+            console.warn('⚠ Initialization skipped');
         }
     }
-    // ─────────────────────────────────────────────────────────
-    // 🔒 SELECTOR VALIDATION (CRITICAL)
-    // ─────────────────────────────────────────────────────────
-    private isValidSelector(selector: string): boolean {
-        if (!selector) return false;
-        if (selector.includes("TODO") || selector.includes("PLACEHOLDER")) return false;
-        if (selector.includes("/*") || selector.includes("*/")) return false;
+
+    private normalizeIntent(intent: string): string {
+        return intent.trim().replace(/\s+/g, ' ').toLowerCase();
+    }
+
+    private detectActionType(intent: string): ActionType {
+        const normalized = this.normalizeIntent(intent);
+        if (normalized.includes('enter') || normalized.includes('fill') || normalized.includes('type')) {
+            return 'fill';
+        }
+        if (normalized.includes('click') || normalized.includes('submit') || normalized.includes('press')) {
+            return 'click';
+        }
+        return 'verify';
+    }
+
+    private buildLearningKey(intent: string, actionType: ActionType): string {
+        return `${this.normalizeIntent(intent)}::${actionType}`;
+    }
+
+    private isVagueIntent(intent: string): boolean {
+        const normalized = this.normalizeIntent(intent);
+        if (!normalized) {
+            return true;
+        }
+        if (normalized.split(' ').length < 3) {
+            return true;
+        }
+        return VAGUE_INTENT_PATTERNS.some((pattern) => pattern.test(normalized));
+    }
+
+    private isValidSelector(selector: string, confidence = 1): boolean {
+        const candidate = selector?.trim();
+        if (!candidate) return false;
+        if (confidence <= 0) return false;
+        if (candidate.length < 2) return false;
+        if (candidate.includes('TODO') || candidate.includes('PLACEHOLDER')) return false;
+        if (candidate.includes('/*') || candidate.includes('*/')) return false;
         return true;
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 🧠 EMBEDDING
-    // ─────────────────────────────────────────────────────────
     private async generateEmbedding(text: string): Promise<number[]> {
         try {
             const res = await fetch(`${OLLAMA_HOST}/api/embeddings`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ model: EMBEDDING_MODEL, prompt: text })
+                body: JSON.stringify({ model: EMBEDDING_MODEL, prompt: text }),
             });
             const data = await res.json();
             return data.embedding || [];
@@ -63,45 +104,48 @@ export class BasePage {
         }
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 🧠 QDRANT SEARCH (PREFER SUCCESS)
-    // ─────────────────────────────────────────────────────────
-    private async searchQdrant(intent: string): Promise<any[]> {
-        const vector = await this.generateEmbedding(intent);
-        if (!vector.length) return [];
+    private async searchQdrant(learningKey: string): Promise<MemoryPayload[]> {
+        try {
+            const vector = await this.generateEmbedding(learningKey);
+            if (!vector.length) return [];
 
-        const res = await fetch(
-            `${QDRANT_URL}/collections/${this.projectKey.replace(/-/g, '_')}_ui_memory/points/search`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    vector,
-                    limit: 5,
-                    with_payload: true
-                })
-            }
-        );
+            const res = await fetch(
+                `${QDRANT_URL}/collections/${this.projectKey.replace(/-/g, '_')}_ui_memory/points/search`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        vector,
+                        limit: 10,
+                        with_payload: true,
+                    }),
+                },
+            );
 
-        const data = await res.json();
-
-        return (data.result || [])
-            .sort((a: any, b: any) =>
-                (b.payload?.success || 0) - (a.payload?.success || 0)
-            )
-            .map((x: any) => x.payload || {});
+            const data = await res.json();
+            return (data.result || []).map((entry: any) => entry.payload || {});
+        } catch {
+            return [];
+        }
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 🧠 STORE SUCCESS (FEEDBACK LOOP)
-    // ─────────────────────────────────────────────────────────
-    private async recordSuccess(intent: string, selector: string, action: string) {
+    private async recordHealingOutcome(
+        intent: string,
+        selector: string,
+        actionType: ActionType,
+        success: 0 | 1,
+    ): Promise<void> {
+        if (!this.isValidSelector(selector)) {
+            return;
+        }
+
+        const learningKey = this.buildLearningKey(intent, actionType);
+        const vector = await this.generateEmbedding(learningKey);
+        if (!vector.length) {
+            return;
+        }
+
         try {
-            if (!this.isValidSelector(selector)) return;
-
-            const vector = await this.generateEmbedding(intent);
-            if (!vector.length) return;
-
             await fetch(
                 `${QDRANT_URL}/collections/${this.projectKey.replace(/-/g, '_')}_ui_memory/points`,
                 {
@@ -113,34 +157,92 @@ export class BasePage {
                             vector,
                             payload: {
                                 project_key: this.projectKey,
-                                intent,
+                                intent: this.normalizeIntent(intent),
                                 selector,
-                                action,
-                                success: 1,
-                                ts: new Date().toISOString()
-                            }
-                        }]
-                    })
-                }
+                                action: actionType,
+                                actionType,
+                                learning_key: learningKey,
+                                success,
+                                ts: new Date().toISOString(),
+                            },
+                        }],
+                    }),
+                },
             );
 
-            console.log(`🧠 Learned selector: ${selector}`);
+            console.log(success === 1 ? `🧠 Learned selector: ${selector}` : `🧠 Learned failed selector: ${selector}`);
         } catch {
-            // silent
         }
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 🔍 FIND LOCATOR (SAFE HEALING)
-    // ─────────────────────────────────────────────────────────
-    private async findLocator(intent: string): Promise<Locator | null> {
+    private async validateActionCompatibility(locator: Locator, actionType: ActionType): Promise<boolean> {
+        try {
+            const meta = await locator.first().evaluate((element) => {
+                const tag = element.tagName.toLowerCase();
+                const role = element.getAttribute('role')?.toLowerCase() || '';
+                const type = (element as HTMLInputElement).type?.toLowerCase() || '';
+                const contentEditable = (element as HTMLElement).isContentEditable;
+                return { tag, role, type, contentEditable };
+            });
 
-        const results = await this.searchQdrant(intent);
+            if (actionType === 'fill') {
+                return (
+                    meta.contentEditable ||
+                    meta.tag === 'textarea' ||
+                    meta.tag === 'select' ||
+                    (meta.tag === 'input' && meta.type !== 'button' && meta.type !== 'submit')
+                );
+            }
 
-        for (const r of results) {
-            const selector = r.selector;
+            return true;
+        } catch {
+            return false;
+        }
+    }
 
-            if (!this.isValidSelector(selector)) {
+    private async findLocator(intent: string, actionType: ActionType): Promise<Locator | null> {
+        const learningKey = this.buildLearningKey(intent, actionType);
+        const results = await this.searchQdrant(learningKey);
+        const successfulSelectors = new Set(
+            results
+                .filter((result) => result.learning_key === learningKey && result.success === 1 && result.selector)
+                .map((result) => result.selector as string),
+        );
+        const failedSelectors = new Set(
+            results
+                .filter(
+                    (result) =>
+                        result.learning_key === learningKey &&
+                        result.success === 0 &&
+                        result.selector &&
+                        !successfulSelectors.has(result.selector),
+                )
+                .map((result) => result.selector as string),
+        );
+
+        for (const result of results) {
+            const selector = result.selector?.trim();
+            const resultAction = result.actionType || result.action;
+            const success = Number(result.success || 0);
+
+            if (!selector || result.learning_key !== learningKey) {
+                continue;
+            }
+
+            if (resultAction !== actionType) {
+                continue;
+            }
+
+            if (success !== 1) {
+                continue;
+            }
+
+            if (failedSelectors.has(selector)) {
+                console.warn(`⚠ Known failed selector skipped: ${selector}`);
+                continue;
+            }
+
+            if (!this.isValidSelector(selector, 1)) {
                 console.warn(`⚠ Invalid selector skipped: ${selector}`);
                 continue;
             }
@@ -149,84 +251,74 @@ export class BasePage {
 
             try {
                 const count = await locator.count();
-
-                if (count === 1) {
-                    console.log(`✓ Healed selector → ${selector}`);
-                    this.healingAttempts.set(intent, {
-                        selector,
-                        confidence: 0.9,
-                        intent,
-                        actionType: 'auto'
-                    });
-                    return locator;
+                if (count !== 1) {
+                    await this.recordHealingOutcome(intent, selector, actionType, 0);
+                    continue;
                 }
 
-                if (count > 1) {
-                    console.warn(`⚠ Multiple match → using first: ${selector}`);
-                    return locator.first();
+                const compatible = await this.validateActionCompatibility(locator, actionType);
+                if (!compatible) {
+                    console.warn(`⚠ Incompatible healed selector skipped: ${selector} for ${actionType}`);
+                    await this.recordHealingOutcome(intent, selector, actionType, 0);
+                    continue;
                 }
 
+                console.log(`✓ Healed selector → ${selector}`);
+                this.healingAttempts.set(learningKey, {
+                    selector,
+                    confidence: 0.9,
+                    intent,
+                    actionType,
+                });
+                return locator;
             } catch {
-                continue;
+                await this.recordHealingOutcome(intent, selector, actionType, 0);
             }
         }
 
         return null;
     }
 
-    // ─────────────────────────────────────────────────────────
-    // 🚀 MAIN ACTION ENGINE
-    // ─────────────────────────────────────────────────────────
-    async smartAction(intent: string, value?: string) {
+    async smartAction(intent: string, value?: string): Promise<void> {
+        const actionType = this.detectActionType(intent);
+        const learningKey = this.buildLearningKey(intent, actionType);
 
-        const normalized = intent.toLowerCase();
+        if (this.isVagueIntent(intent)) {
+            throw new Error(`❌ invalid_intent: ${intent}`);
+        }
 
-        let locator = await this.findLocator(intent);
-
+        const locator = await this.findLocator(intent, actionType);
         if (!locator) {
             throw new Error(`❌ No locator found for: ${intent}`);
         }
 
-        // ─────────────────────────────────────────────────────
-        // CLICK
-        // ─────────────────────────────────────────────────────
-        if (normalized.includes("click")) {
+        const heal = this.healingAttempts.get(learningKey);
 
-            try {
+        try {
+            if (actionType === 'click') {
                 await locator.click({ trial: true });
-            } catch (e: any) {
-                if (e.message?.includes("intercepts pointer events")) {
-                    console.warn("⚠ Modal blocking → retrying");
-                    await this.page.waitForTimeout(1000);
+                await locator.click();
+            } else if (actionType === 'fill') {
+                const compatible = await this.validateActionCompatibility(locator, actionType);
+                if (!compatible) {
+                    if (heal) {
+                        await this.recordHealingOutcome(intent, heal.selector, actionType, 0);
+                    }
+                    throw new Error(`❌ Healed selector is not fill-compatible for: ${intent}`);
                 }
+                await locator.fill(value || '');
+            } else {
+                await expect(locator).toBeVisible();
             }
 
-            await locator.click();
-
-            const heal = this.healingAttempts.get(intent);
-            await this.recordSuccess(intent, heal?.selector || intent, 'click');
-        }
-
-        // ─────────────────────────────────────────────────────
-        // FILL
-        // ─────────────────────────────────────────────────────
-        else if (normalized.includes("enter") || normalized.includes("fill")) {
-
-            await locator.fill(value || "");
-
-            const heal = this.healingAttempts.get(intent);
-            await this.recordSuccess(intent, heal?.selector || intent, 'fill');
-        }
-
-        // ─────────────────────────────────────────────────────
-        // VERIFY
-        // ─────────────────────────────────────────────────────
-        else if (normalized.includes("verify") || normalized.includes("see")) {
-
-            await expect(locator).toBeVisible();
-
-            const heal = this.healingAttempts.get(intent);
-            await this.recordSuccess(intent, heal?.selector || intent, 'verify');
+            if (heal) {
+                await this.recordHealingOutcome(intent, heal.selector, actionType, 1);
+            }
+        } catch (error) {
+            if (heal) {
+                await this.recordHealingOutcome(intent, heal.selector, actionType, 0);
+            }
+            throw error;
         }
     }
 }
